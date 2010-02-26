@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><properties>
+<showEnabledTransitions>true</showEnabledTransitions>
+<checkSimple>false</checkSimple>
+<checkReduced>false</checkReduced>
+<checkContacts>fasle</checkContacts>
+<checkPotentialCausal>true</checkPotentialCausal>
+<checkPotentialConflict>false</checkPotentialConflict>
+<checkActiveCausal>false</checkActiveCausal>
+<checkActiveConflict>false</checkActiveConflict>
+</properties>

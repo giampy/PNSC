@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><settings>
+<showGrid>true</showGrid>
+<snapToGrid>true</snapToGrid>
+<gridSize>35</gridSize>
+<showNodesName>true</showNodesName>
+<compareMode>false</compareMode>
+<startingDir>/home/sh0t/1.pnml</startingDir>
+<executionDelay>600</executionDelay>
+</settings>
