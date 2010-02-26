@@ -1071,7 +1071,7 @@ private Hashtable<Place, Vector<ActiveCase>> checkActiveCausal() {
 
 				MarkingGraph subMg = new MarkingGraph(afterHigh);
 
-				Vector<Case> path = subMg.closestPathTo(low, place);
+				Vector<Case> path = subMg.closestPathTo(low, place);//questa è la sigma..della definizione mi sa...
 				if (path != null) 
 					result.add(new ActiveCase(high, path.get(path.size() - 1).firstTransition(), 
 							mg.get(c).toVector(), path));
