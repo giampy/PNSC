@@ -1071,8 +1071,13 @@ private Hashtable<Place, Vector<ActiveCase>> checkActiveCausal() {
 
 				MarkingGraph subMg = new MarkingGraph(afterHigh);
 
-				Vector<Case> path = subMg.closestPathTo(low, place);//questa è la sigma..della definizione mi sa...
-				if (path != null) 
+				Vector<Case> path = subMg.closestPathTo(low, place);
+				//questa è la sigma..della definizione mi sa...
+				//ma come si garantisce che è il "closest"?
+				//cioè dove ho garanzie che sia il più breve percorso?
+				//cmq non è un problema l'importante è che esista un percorso del genere...
+
+				if (path != null) //se esiste questo percorso allora è un active causal place
 					result.add(new ActiveCase(high, path.get(path.size() - 1).firstTransition(), 
 							mg.get(c).toVector(), path));
 			}
