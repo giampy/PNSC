@@ -5,6 +5,6 @@
 <checkContacts>fasle</checkContacts>
 <checkPotentialCausal>true</checkPotentialCausal>
 <checkPotentialConflict>false</checkPotentialConflict>
-<checkActiveCausal>false</checkActiveCausal>
+<checkActiveCausal>true</checkActiveCausal>
 <checkActiveConflict>false</checkActiveConflict>
 </properties>

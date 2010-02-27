@@ -110,8 +110,10 @@ public class MarkingGraph extends Vector<Case> {
 			
 			Vector<Transition> enabled = thisCase.getEnabledTransitions();
  			for (int e = 0; e < enabled.size(); e++) {
- 				
- 				if (enabled.get(e).equals(transition)) {
+ 								//nelle dispense c'è scritto che nel modello a tre livelli di sicurezza
+ 								//per essere active causal la x tale per cui m[hxl> deve appartenere a (L U H)*
+ 								//perciò togliamo quei percorsi in cui compare una downgrade
+ 				if (enabled.get(e).equals(transition) && !transition.isDowngrade()) {
  					
  					Vector<Case> path = new Vector<Case>();
  					Vertex step = vertex;
