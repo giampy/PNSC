@@ -20,9 +20,10 @@ import java.util.Vector;
 
 import javax.swing.JMenuItem;
 
-import loadstore.XMLAttribute;
-import loadstore.XMLNode;
-import loadstore.XMLTree;
+import xml.XMLAttribute;
+import xml.XMLNode;
+import xml.XMLTree;
+
 
 
 public abstract class Element implements Sketch {

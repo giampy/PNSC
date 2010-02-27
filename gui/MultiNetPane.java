@@ -13,9 +13,9 @@ import javax.swing.JScrollPane;
 
 import structure.Element;
 import structure.Net;
+import xml.Settings;
+import xml.XMLDocument;
 
-import loadstore.Settings;
-import loadstore.XMLDocument;
 
 
 

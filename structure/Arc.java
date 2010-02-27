@@ -10,9 +10,10 @@ import java.awt.Point;
 import java.awt.geom.Line2D;
 import java.util.Vector;
 
-import loadstore.XMLAttribute;
-import loadstore.XMLNode;
-import loadstore.XMLTree;
+import xml.XMLAttribute;
+import xml.XMLNode;
+import xml.XMLTree;
+
 
 
 public class Arc extends Element {

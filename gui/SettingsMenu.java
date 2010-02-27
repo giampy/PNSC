@@ -12,9 +12,10 @@ import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
+import xml.Settings;
+
 import animation.RandomTimer;
 
-import loadstore.Settings;
 
 
 public class SettingsMenu extends JMenu implements Closeable {

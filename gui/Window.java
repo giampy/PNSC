@@ -9,8 +9,9 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 
-import loadstore.Properties;
-import loadstore.Settings;
+import xml.Properties;
+import xml.Settings;
+
 
 
 public class Window extends JFrame implements WindowListener {

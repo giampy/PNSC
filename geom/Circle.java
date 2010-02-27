@@ -6,7 +6,8 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.geom.Ellipse2D;
 
-import loadstore.Settings;
+import xml.Settings;
+
 
 
 public class Circle extends Ellipse2D.Double implements Shape {

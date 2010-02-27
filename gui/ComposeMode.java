@@ -7,6 +7,7 @@ public class ComposeMode {
 	public static ComposeMode STATE = new ComposeMode(1);
 	public static ComposeMode LOW_TRANSITION = new ComposeMode(2);
 	public static ComposeMode HIGH_TRANSITION = new ComposeMode(3);
+	public static ComposeMode DOWNGRADE_TRANSITION = new ComposeMode(7);
 	public static ComposeMode ARC = new ComposeMode(4);
 	public static ComposeMode TOKEN = new ComposeMode(5);
 	public static ComposeMode DELETE = new ComposeMode(6);

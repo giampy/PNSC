@@ -8,8 +8,8 @@ import java.awt.Point;
 import java.awt.geom.Rectangle2D;
 
 import structure.Transition;
+import xml.Settings;
 
-import loadstore.Settings;
 
 
 
@@ -71,6 +71,8 @@ public class Rectangle extends Rectangle2D.Double implements Shape {
 		graphics.draw(this);
 		if (owner.isHigh()) 
 			graphics.drawLine((int)x, (int)y, (int)x + Settings.elementsRadius() * 2, (int)y + (int)(Settings.elementsRadius() * 1.4));
+		else if(owner.isDowngrade())
+			graphics.drawString("D", (int) x+Settings.elementsRadius()-4,(int) y+Settings.elementsRadius());
 	}
 
 }

@@ -14,10 +14,11 @@ import java.util.Vector;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
+
+import xml.Properties;
+import xml.Settings;
 //import javax.swing.filechooser.FileNameExtensionFilter;
 
-import loadstore.Properties;
-import loadstore.Settings;
 
 
 public class FileMenu extends JMenu implements ItemListener {

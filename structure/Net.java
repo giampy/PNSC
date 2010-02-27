@@ -19,6 +19,11 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.Vector;
 
+import xml.Properties;
+import xml.Settings;
+import xml.XMLNode;
+import xml.XMLTree;
+
 
 import algo.ActiveCase;
 import algo.Case;
@@ -28,10 +33,6 @@ import animation.MarkingsHistory;
 import animation.NetHistory;
 import animation.RandomTimer;
 
-import loadstore.Properties;
-import loadstore.Settings;
-import loadstore.XMLNode;
-import loadstore.XMLTree;
 
 public class Net {
 
@@ -317,7 +318,8 @@ public class Net {
 			
 			places.add(new Place(Grid.closestAllowedPoint(point), newId(Element.STATE)));
 			netHistory.addNet(this);
-		} else if (composeMode.is(ComposeMode.LOW_TRANSITION)) {
+		} 
+		else if (composeMode.is(ComposeMode.LOW_TRANSITION)) {
 			
 			if (noNodeInTheWay(point)) {
 				
@@ -326,28 +328,43 @@ public class Net {
 			} else {
 				
 				Element element = findWhoContains(point);
-				if (element != null && element.is(Element.TRANSITION) && ((Transition)element).isHigh()) {
-					
+				if (element != null && element.is(Element.TRANSITION) && !((Transition)element).isLow()){					
 					((Transition)element).setSecurityLevel(Transition.LOW);
 					netHistory.addNet(this);
 				}
 			}
-		} else if (composeMode.is(ComposeMode.HIGH_TRANSITION)) {
+		} 
+		//aggiungiamo gestione downgrade transition 
+		else if (composeMode.is(ComposeMode.DOWNGRADE_TRANSITION)) {
+			if (noNodeInTheWay(point)) {
+				transitions.add(new Transition(Grid.closestAllowedPoint(point), Transition.DOWNGRADE, newId(Element.TRANSITION)));
+				netHistory.addNet(this);
+			} else {
+				Element element = findWhoContains(point); 
+				if (element != null && element.is(Element.TRANSITION) && !((Transition)element).isDowngrade()) {
+					((Transition)element).setSecurityLevel(Transition.DOWNGRADE);
+					netHistory.addNet(this);
+				}
+			}
+		}
+		
+		else if (composeMode.is(ComposeMode.HIGH_TRANSITION)) {
 			
 			if (noNodeInTheWay(point)) {
 				
 				transitions.add(new Transition(Grid.closestAllowedPoint(point), Transition.HIGH, newId(Element.TRANSITION)));
 				netHistory.addNet(this);
 			} else {
-				
-				Element element = findWhoContains(point);
+				Element element = findWhoContains(point);//se sono in compose mode=HIGHTRANS e clicko su una bassa me la trasforma in alta...
 				if (element != null && element.is(Element.TRANSITION) && !((Transition)element).isHigh())  {
-					
 					((Transition)element).setSecurityLevel(Transition.HIGH);
 					netHistory.addNet(this);
 				}
 			}
-		} else if (composeMode.is(ComposeMode.TOKEN)) {
+		} 
+		
+		
+		else if (composeMode.is(ComposeMode.TOKEN)) {
 			
 			Place place = findPlaceContaining(point);
 			if (place != null) {

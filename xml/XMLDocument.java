@@ -1,4 +1,4 @@
-package loadstore;
+package xml;
 
 
 
@@ -126,8 +126,12 @@ public class XMLDocument {
 		
 		if (tree.root().name().equals("place")) 
 			return new Place(extractPosition(tree), extractTokens(tree), extractId(tree));
-		else if (tree.root().name().equals("transition")) 
-			return new Transition(extractPosition(tree), extractLevel(tree), extractId(tree));
+		else if (tree.root().name().equals("transition")){
+			//cambio la chiamata con il costruttore che gestisce i 3 livelli di sicurezza (invece
+			//che con quello con i booleani)
+			//return new Transition(extractPosition(tree), extractLevel(tree), extractId(tree));
+			return new Transition(extractPosition(tree), extractSecurityLevel(tree), extractId(tree)); 
+			}
 		else return null;
 	}
 	
@@ -227,6 +231,23 @@ public class XMLDocument {
 		
 		return false;
 	}
+	
+	private int extractSecurityLevel(XMLTree tree) {
+		
+		for (int c = 0; c < tree.children().size(); c++)
+			if (tree.children().get(c).root().name().equals("toolspecific")) {
+				
+				Vector<XMLTree> gTree = tree.children().get(c).children();
+				
+				for (int g = 0; g < gTree.size(); g++)
+					if (gTree.get(g).root().name().equals("level"))
+						for (int a = 0; a < gTree.get(g).root().attributes().size(); a++)
+							if (gTree.get(g).root().attributes().get(a).name().equals("secLevel"))
+									return Integer.parseInt(gTree.get(g).root().attributes().get(a).value());
+			}		
+		return -1;
+	}
+	
 	
 	public XMLTree getTree() {
 		

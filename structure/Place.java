@@ -20,14 +20,15 @@ import java.util.Vector;
 
 import javax.swing.JMenuItem;
 
+import xml.Properties;
+import xml.XMLAttribute;
+import xml.XMLNode;
+import xml.XMLTree;
+
 
 import algo.ActiveCase;
 import algo.Case;
 
-import loadstore.Properties;
-import loadstore.XMLAttribute;
-import loadstore.XMLNode;
-import loadstore.XMLTree;
 
 
 

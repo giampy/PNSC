@@ -17,19 +17,27 @@ import java.util.Vector;
 
 import javax.swing.JMenuItem;
 
-import loadstore.Properties;
-import loadstore.XMLAttribute;
-import loadstore.XMLNode;
-import loadstore.XMLTree;
+import xml.Properties;
+import xml.XMLAttribute;
+import xml.XMLNode;
+import xml.XMLTree;
+
 
 
 
 public class Transition extends Node {
 
-	public static boolean LOW = false;
-	public static boolean HIGH = true;
+	/*public static boolean LOW = false;
+	public static boolean HIGH = true;*/
 	
-	private boolean isHigh;
+	/*introduciamo tre livelli di sicurezza*/
+	public static final int LOW=0;
+	public static final int DOWNGRADE=1;
+	public static final int HIGH=2;
+	
+	public	int secLevel; //livello della transizione
+	
+	private boolean isHigh; //per ora lo lascio, non da fastidio
 	private boolean explicitelyEnabled = true;
 	
 	private JMenuItem fireItem = fireItem();
@@ -39,6 +47,24 @@ public class Transition extends Node {
 		super(Element.TRANSITION, id);
 		
 		this.isHigh = isHigh;
+		if(this.isHigh())
+			this.secLevel=HIGH;
+		
+		position = point;
+		lastStablePosition = position;
+		shape = new Rectangle(point, this);
+		color = Color.BLUE;
+	}
+	//costruttore che prende il livello (fra i tre) e non il booleano
+	public Transition(Point point, int secLevel, String id) {
+		
+		super(Element.TRANSITION, id);
+		
+		this.setSecurityLevel(secLevel);
+		if(this.secLevel==HIGH) 	//teniamo aggiornata cmq la variabile isHigh anche se penso che la toglierò
+				this.setSecurityLevel(true);
+		else
+			this.setSecurityLevel(false);
 		
 		position = point;
 		lastStablePosition = position;
@@ -52,6 +78,10 @@ public class Transition extends Node {
 		
 		isHigh = transition.isHigh();
 		
+		
+		this.setSecurityLevel(transition.getSecurityLevel()); 
+		
+		
 		position = transition.getPosition();
 		lastStablePosition = position;
 		shape = new Rectangle(position, this);
@@ -59,8 +89,16 @@ public class Transition extends Node {
 	}
 	
 	public boolean isHigh() {
-		
 		return isHigh;
+	}
+	public boolean isDowngrade(){
+		return this.getSecurityLevel()==DOWNGRADE;
+	}
+	public boolean isLow(){
+		return this.getSecurityLevel()==LOW;
+	}
+	public int getSecurityLevel(){
+		return secLevel;
 	}
 	
 	public boolean isEnabled() {
@@ -96,6 +134,14 @@ public class Transition extends Node {
 	public void setSecurityLevel(boolean level) {
 		
 		isHigh = level;
+	}
+	
+	public void setSecurityLevel(int secLevel){
+		this.secLevel=secLevel;
+		if(this.secLevel==HIGH)
+			setSecurityLevel(true);
+		else
+			setSecurityLevel(false);
 	}
 	
 	public void fire() {
@@ -151,6 +197,10 @@ public class Transition extends Node {
 		
 		XMLNode levelNode = new XMLNode("level", "");
 		levelNode.addAttribute(new XMLAttribute("high", String.valueOf(isHigh)));
+		
+		//aggiungiamo un attributo per gestire la security Label della transizione
+		//nello schema a 3 Livelli di sicurezza
+		levelNode.addAttribute(new XMLAttribute("secLevel", String.valueOf(this.secLevel)));
 		
 		XMLNode tsRoot = new XMLNode("toolspecific", "");
 		tsRoot.addAttribute(new XMLAttribute("tool", "PNST"));

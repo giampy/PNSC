@@ -7,11 +7,12 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import structure.Net;
+import xml.Settings;
+import xml.XMLDocument;
 
-import loadstore.Settings;
-import loadstore.XMLDocument;
 
 
 public class InputDialog {
@@ -19,8 +20,8 @@ public class InputDialog {
 	public static void open(MainPane mainPane) {
 		
         JFileChooser chooser = new JFileChooser();
-        //FileNameExtensionFilter filter = new FileNameExtensionFilter("", "pnml");
-        //chooser.setFileFilter(filter);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("", "pnml");
+        chooser.setFileFilter(filter);
         chooser.setCurrentDirectory(new File(Settings.startingDir()));
         int returnVal = chooser.showOpenDialog(null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {

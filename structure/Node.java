@@ -19,9 +19,10 @@ import java.util.Vector;
 
 import javax.swing.JMenuItem;
 
+import xml.Properties;
+import xml.Settings;
 
-import loadstore.Properties;
-import loadstore.Settings;
+
 
 
 

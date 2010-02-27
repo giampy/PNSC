@@ -15,7 +15,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
-import loadstore.Properties;
+import xml.Properties;
+
 
 
 public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeable {

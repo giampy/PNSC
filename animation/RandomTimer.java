@@ -8,8 +8,8 @@ import gui.MainPane;
 import java.util.Timer;
 
 import structure.Net;
+import xml.Settings;
 
-import loadstore.Settings;
 
 
 public class RandomTimer extends Timer {

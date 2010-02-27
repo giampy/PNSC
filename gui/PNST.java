@@ -4,8 +4,9 @@ package gui;
 
 import java.util.Locale;
 
-import loadstore.Properties;
-import loadstore.Settings;
+import xml.Properties;
+import xml.Settings;
+
 
 
 public class PNST {

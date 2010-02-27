@@ -17,6 +17,7 @@ public class ElementaryNetEditingModeBar extends EditingModeBar {
 		add(selectButton(mainPane));
 		add(stateButton(mainPane));
 		add(lowTransitionButton(mainPane));
+		add(downgradeTransitionButton(mainPane));
 		add(highTransitionButton(mainPane));
 		add(arcButton(mainPane));
 		add(tokenButton(mainPane));
@@ -68,6 +69,21 @@ public class ElementaryNetEditingModeBar extends EditingModeBar {
 		
 		return button;
 	}
+	private JToggleButton downgradeTransitionButton(final MainPane mainPane) {
+		
+		JToggleButton button = new JToggleButton(new ImageIcon("toolbarButtonGraphics/general/DowngradeTransition16.gif"));
+		button.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+
+				mainPane.setComposeMode(ComposeMode.DOWNGRADE_TRANSITION);
+			}
+		});
+		button.setToolTipText("Downgrade Transition");
+		
+		return button;
+	}
+
 
 	private JToggleButton highTransitionButton(final MainPane mainPane) {
 		

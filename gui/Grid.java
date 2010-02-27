@@ -5,7 +5,8 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
-import loadstore.Settings;
+import xml.Settings;
+
 
 
 public class Grid {

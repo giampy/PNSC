@@ -12,9 +12,9 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 import structure.Net;
+import xml.Settings;
+import xml.XMLDocument;
 
-import loadstore.Settings;
-import loadstore.XMLDocument;
 
 
 public class HelpMenu extends JMenu {
