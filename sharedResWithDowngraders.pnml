@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><pnml><net><place id="p0"><graphics><position x="105" y="140"/>
+</graphics>
+</place>
+<place id="p1"><graphics><position x="105" y="490"/>
+</graphics>
+<initialMarking><value>1</value>
+</initialMarking>
+</place>
+<place id="p2"><graphics><position x="210" y="280"/>
+</graphics>
+</place>
+<place id="p3"><graphics><position x="420" y="140"/>
+</graphics>
+<initialMarking><value>1</value>
+</initialMarking>
+</place>
+<place id="p4"><graphics><position x="420" y="490"/>
+</graphics>
+</place>
+<place id="p5"><graphics><position x="630" y="280"/>
+</graphics>
+</place>
+<place id="p6"><graphics><position x="630" y="35"/>
+</graphics>
+</place>
+<place id="p7"><graphics><position x="630" y="630"/>
+</graphics>
+</place>
+<place id="p8"><graphics><position x="805" y="140"/>
+</graphics>
+</place>
+<place id="p9"><graphics><position x="805" y="490"/>
+</graphics>
+<initialMarking><value>1</value>
+</initialMarking>
+</place>
+<transition id="t0"><graphics><position x="105" y="280"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
+</toolspecific>
+</transition>
+<transition id="t1"><graphics><position x="210" y="175"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
+</toolspecific>
+</transition>
+<transition id="t2"><graphics><position x="210" y="420"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
+</toolspecific>
+</transition>
+<transition id="t3"><graphics><position x="525" y="35"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="1"/>
+</toolspecific>
+</transition>
+<transition id="t4"><graphics><position x="525" y="630"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="1"/>
+</toolspecific>
+</transition>
+<transition id="t5"><graphics><position x="630" y="140"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="t6"><graphics><position x="630" y="490"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="t7"><graphics><position x="805" y="280"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<arc id="a0" source="p1" target="t0"><graphics><position x="105" y="385"/>
+</graphics>
+</arc>
+<arc id="a1" source="t0" target="p0"><graphics><position x="105" y="210"/>
+</graphics>
+</arc>
+<arc id="a2" source="p0" target="t1"><graphics><position x="156" y="157"/>
+</graphics>
+</arc>
+<arc id="a3" source="t1" target="p2"><graphics><position x="210" y="227"/>
+</graphics>
+</arc>
+<arc id="a4" source="p2" target="t2"><graphics><position x="210" y="350"/>
+</graphics>
+</arc>
+<arc id="a5" source="t2" target="p1"><graphics><position x="158" y="454"/>
+</graphics>
+</arc>
+<arc id="a6" source="t2" target="p3"><graphics><position x="315" y="280"/>
+</graphics>
+</arc>
+<arc id="a7" source="p4" target="t2"><graphics><position x="315" y="456"/>
+</graphics>
+</arc>
+<arc id="a8" source="t1" target="p4"><graphics><position x="314" y="332"/>
+</graphics>
+</arc>
+<arc id="a9" source="p4" target="t4"><graphics><position x="472" y="559"/>
+</graphics>
+</arc>
+<arc id="a10" source="t4" target="p7"><graphics><position x="577" y="630"/>
+</graphics>
+</arc>
+<arc id="a11" source="p7" target="t6"><graphics><position x="630" y="560"/>
+</graphics>
+</arc>
+<arc id="a12" source="t6" target="p9"><graphics><position x="717" y="490"/>
+</graphics>
+</arc>
+<arc id="a13" source="p9" target="t7"><graphics><position x="805" y="385"/>
+</graphics>
+</arc>
+<arc id="a14" source="t7" target="p8"><graphics><position x="805" y="210"/>
+</graphics>
+</arc>
+<arc id="a15" source="p8" target="t5"><graphics><position x="718" y="140"/>
+</graphics>
+</arc>
+<arc id="a16" source="p6" target="t5"><graphics><position x="630" y="87"/>
+</graphics>
+</arc>
+<arc id="a17" source="t5" target="p5"><graphics><position x="630" y="210"/>
+</graphics>
+</arc>
+<arc id="a18" source="p5" target="t6"><graphics><position x="630" y="385"/>
+</graphics>
+</arc>
+<arc id="a19" source="t6" target="p3"><graphics><position x="526" y="315"/>
+</graphics>
+</arc>
+<arc id="a20" source="t5" target="p4"><graphics><position x="526" y="315"/>
+</graphics>
+</arc>
+<arc id="a21" source="p3" target="t3"><graphics><position x="472" y="89"/>
+</graphics>
+</arc>
+<arc id="a22" source="t3" target="p6"><graphics><position x="577" y="35"/>
+</graphics>
+</arc>
+<arc id="a23" source="p3" target="t1"><graphics><position x="316" y="157"/>
+</graphics>
+</arc>
+</net>
+</pnml>
