@@ -4,6 +4,10 @@ package gui;
 
 import java.util.Locale;
 
+import algo.Check;
+import algo.CaseTemplate;
+import algo.TransitionTemplate;
+
 import xml.Properties;
 import xml.Settings;
 
@@ -20,6 +24,7 @@ public class PNST {
 			Settings.retrieve();
 			Properties.retrieve();
 			Window window = new Window("Petri Net Security Checker");
+		
 		} catch (Exception e) {
 			
 			ErrorDialog.show(e);

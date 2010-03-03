@@ -6,18 +6,18 @@ import java.util.Hashtable;
 import java.util.Vector;
 
 
-public class StateTemplate {
+public class CaseTemplate {
 
 	public String name;
-	public Hashtable<TransitionTemplate, StateTemplate> links;
+	public Hashtable<TransitionTemplate, CaseTemplate> links;
 	
-	public StateTemplate(String name) {
+	public CaseTemplate(String name) {
 		
 		this.name = name;
-		links = new Hashtable<TransitionTemplate, StateTemplate>();
+		links = new Hashtable<TransitionTemplate, CaseTemplate>();
 	}
 	
-	public void linkTo(TransitionTemplate transition, StateTemplate state) {
+	public void linkTo(TransitionTemplate transition, CaseTemplate state) {
 		
 		try {
 			
@@ -28,21 +28,21 @@ public class StateTemplate {
 		}
 	}
 	
-	public StateTemplate leadsTo(TransitionTemplate transition) {
+	public CaseTemplate leadsTo(TransitionTemplate transition) {
 		
 		if (transition.equals(TransitionTemplate.NULL_TRANSITION))
 			return this;
 		else return links.get(transition);
 	}
 	
-	public Hashtable<TransitionTemplate, Vector<StateTemplate>> reachLow() {
+	public Hashtable<TransitionTemplate, Vector<CaseTemplate>> reachLow() {
 		
-		return reachLow(new Vector<StateTemplate>());
+		return reachLow(new Vector<CaseTemplate>());
 	}
 	
-	public Hashtable<TransitionTemplate, Vector<StateTemplate>> reachLow(Vector<StateTemplate> path) {
+	public Hashtable<TransitionTemplate, Vector<CaseTemplate>> reachLow(Vector<CaseTemplate> path) {
 		
-		Hashtable<TransitionTemplate, Vector<StateTemplate>> reach = new Hashtable<TransitionTemplate, Vector<StateTemplate>>();
+		Hashtable<TransitionTemplate, Vector<CaseTemplate>> reach = new Hashtable<TransitionTemplate, Vector<CaseTemplate>>();
 		
 		Enumeration<TransitionTemplate> tr = links.keys();
 		if (tr.hasMoreElements()) {
@@ -52,7 +52,7 @@ public class StateTemplate {
 				if (!t.isHigh) {
 
 					if (reach.get(t) == null)
-						reach.put(t, new Vector<StateTemplate>());
+						reach.put(t, new Vector<CaseTemplate>());
 					reach.get(t).add(this);
 				}
 			}
@@ -63,21 +63,21 @@ public class StateTemplate {
 				TransitionTemplate t = tr.nextElement();
 				if (t.isHigh) {
 
-					StateTemplate newState = leadsTo(t);
-					Vector<StateTemplate> newPath = new Vector<StateTemplate>(path);
+					CaseTemplate newState = leadsTo(t);
+					Vector<CaseTemplate> newPath = new Vector<CaseTemplate>(path);
 					if (!path.contains(newState)) {
 
 						newPath.add(newState);
-						Hashtable<TransitionTemplate, Vector<StateTemplate>> newReach = newState.reachLow(newPath);
+						Hashtable<TransitionTemplate, Vector<CaseTemplate>> newReach = newState.reachLow(newPath);
 						Enumeration<TransitionTemplate> newTr = newReach.keys();
 						while (newTr.hasMoreElements()) {
 
 							TransitionTemplate newT = newTr.nextElement();
-							Vector<StateTemplate> newStates = newReach.get(newT);
+							Vector<CaseTemplate> newStates = newReach.get(newT);
 							for (int s = 0; s < newStates.size(); s++) {
 
 								if (reach.get(newT) == null) 
-									reach.put(newT, new Vector<StateTemplate>());
+									reach.put(newT, new Vector<CaseTemplate>());
 
 								if (!reach.get(newT).contains(newStates.get(s)))
 									reach.get(newT).add(newStates.get(s));
@@ -89,7 +89,7 @@ public class StateTemplate {
 		} else {
 			
 			if (reach.get(TransitionTemplate.NULL_TRANSITION) == null)
-				reach.put(TransitionTemplate.NULL_TRANSITION, new Vector<StateTemplate>());
+				reach.put(TransitionTemplate.NULL_TRANSITION, new Vector<CaseTemplate>());
 			reach.get(TransitionTemplate.NULL_TRANSITION).add(this);		
 		}
 		

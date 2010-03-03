@@ -23,7 +23,6 @@ public class NetListener implements MouseListener, MouseMotionListener {
 		this.mainPane = mainPane;
 	}
 	
-	@Override
 	public void mouseClicked(MouseEvent me) {
 		
 		if (me.getClickCount() == 2)

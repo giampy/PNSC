@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><properties>
 <showEnabledTransitions>true</showEnabledTransitions>
-<checkSimple>false</checkSimple>
+<checkSimple>true</checkSimple>
 <checkReduced>true</checkReduced>
 <checkContacts>true</checkContacts>
 <checkPotentialCausal>true</checkPotentialCausal>

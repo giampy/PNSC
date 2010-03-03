@@ -4,10 +4,10 @@ package algo;
 
 public class Couple {
 
-	public StateTemplate first;
-	public StateTemplate second;
+	public CaseTemplate first;
+	public CaseTemplate second;
 	
-	public Couple(StateTemplate first, StateTemplate second) {
+	public Couple(CaseTemplate first, CaseTemplate second) {
 		
 		this.first = first;
 		this.second = second;
