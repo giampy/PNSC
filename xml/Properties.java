@@ -15,6 +15,12 @@ public class Properties {
 	private static boolean checkActiveCausal = false;
 	private static boolean checkActiveConflict = false;
 	
+	
+	private static boolean 	checkPotentialCausalRealTime=false;
+	private static boolean 	checkActiveCausalRealTime=false;
+	private static boolean	checkPotentialConflictRealTime=false;
+	private static boolean	checkActiveConflictRealTime=false;
+	
 	public static void retrieve() throws Exception {
 		
 		doc = new XMLDocument("Properties.xml");
@@ -27,6 +33,13 @@ public class Properties {
 		checkPotentialConflict = Boolean.parseBoolean(doc.getTree().findFirst("checkPotentialConflict").value());
 		checkActiveCausal = Boolean.parseBoolean(doc.getTree().findFirst("checkActiveCausal").value());
 		checkActiveConflict = Boolean.parseBoolean(doc.getTree().findFirst("checkActiveConflict").value());
+		
+		
+		checkPotentialCausalRealTime = Boolean.parseBoolean(doc.getTree().findFirst("checkPotentialCausalRealTime").value());
+		checkPotentialConflictRealTime = Boolean.parseBoolean(doc.getTree().findFirst("checkPotentialConflictRealTime").value());
+		checkActiveCausalRealTime = Boolean.parseBoolean(doc.getTree().findFirst("checkActiveCausalRealTime").value());
+		checkActiveConflictRealTime = Boolean.parseBoolean(doc.getTree().findFirst("checkActiveConflictRealTime").value());
+		
 	}
 	
 	public static void store() {
@@ -121,4 +134,43 @@ public class Properties {
 		checkActiveConflict = mode;
 		doc.getTree().findFirst("checkActiveConflict").setValue(new Boolean(checkActiveConflict));
 	}
+	
+	public static boolean isCheckPotentialCausalRealTimeOn(){
+		return checkPotentialCausalRealTime;
+	}
+	
+	public static void setCheckPotentialCausalRealTime(boolean mode){
+		checkPotentialCausalRealTime=mode;
+		doc.getTree().findFirst("checkPotentialCausalRealTime").setValue(new Boolean(checkPotentialCausalRealTime));
+	}
+	
+	public static boolean isCheckActiveCausalRealTimeOn(){
+		return checkActiveCausalRealTime;
+	}
+	
+	public static void setCheckActiveCausalRealTime(boolean mode){
+		checkActiveCausalRealTime=mode;
+		doc.getTree().findFirst("checkActiveCausalRealTime").setValue(new Boolean(checkActiveCausalRealTime));
+	}
+	
+	public static boolean isCheckPotentialConflictRealTimeOn(){
+		return checkPotentialConflictRealTime;
+	}
+	
+	public static void setCheckPotentialConflictRealTime(boolean mode){
+		checkPotentialConflictRealTime=mode;
+		doc.getTree().findFirst("checkPotentialConflictRealTime").setValue(new Boolean(checkPotentialConflictRealTime));
+	}
+	
+	public static boolean isCheckActiveConflictRealTimeOn(){
+		return checkActiveConflictRealTime;
+	}
+	
+	public static void setCheckActiveConflictRealTime(boolean mode){
+		checkActiveConflictRealTime=mode;
+		doc.getTree().findFirst("checkActiveConflictRealTime").setValue(new Boolean(checkActiveConflictRealTime));
+	}
+	
+	
+	
 }

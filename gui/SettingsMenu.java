@@ -11,7 +11,10 @@ import java.awt.event.MouseListener;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButtonMenuItem;
 
+import xml.Properties;
 import xml.Settings;
 
 import animation.RandomTimer;
@@ -29,13 +32,44 @@ public class SettingsMenu extends JMenu implements Closeable {
 		gridSettingsItem.add(snapToGridItem(mainPane));
 		gridSettingsItem.add(gridSizeItem(mainPane));
 		add(gridSettingsItem);
-//		addSeparator();
+		addSeparator();
 		add(showNodesNameItem(mainPane));
-//		addSeparator();
+		addSeparator();
 		add(executionSpeedItem(mainPane));
-//		addSeparator();
+		addSeparator();
 		add(compareItem(mainPane));
+		add(mode(mainPane));
 	}
+	
+	public JMenu mode(final MainPane mainPane){
+         JMenu modeCheckingMenu = new JMenu("Mode Checking");
+		 ButtonGroup directionGroup = new ButtonGroup();
+		 JRadioButtonMenuItem realTime = new JRadioButtonMenuItem("real time", true);
+		 JRadioButtonMenuItem onDemand = new JRadioButtonMenuItem("on demand");
+		 realTime.addActionListener(new ActionListener(){
+			 public void actionPerformed(ActionEvent e){
+				 Properties.setCheckActiveCausalRealTime(true);
+				 Properties.setCheckPotentialCausalRealTime(true);
+				 Properties.setCheckActiveConflictRealTime(true);
+				 Properties.setCheckPotentialConflictRealTime(true);
+			 }
+		 });
+		 onDemand.addActionListener(new ActionListener(){
+			 public void actionPerformed(ActionEvent e){
+				 Properties.setCheckActiveCausalRealTime(false);
+				 Properties.setCheckPotentialCausalRealTime(false);
+				 Properties.setCheckActiveConflictRealTime(false);
+				 Properties.setCheckPotentialConflictRealTime(false);
+			 }
+		 });
+		 modeCheckingMenu.add(realTime);
+		 modeCheckingMenu.add(onDemand);
+		 directionGroup.add(realTime);
+		 directionGroup.add(onDemand);
+		 return modeCheckingMenu;
+		 
+	}
+	
 	
 	public void close(JMenu menu) {
 		
