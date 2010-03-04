@@ -45,7 +45,9 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 		addSeparator();
 		add(checkPotentialCausalItem());
 		add(checkPotentialConflictItem());
-		add(checkActiveItem());
+		add(checkActiveCausalItem());
+		add(checkActiveConflictItem());
+		//add(checkActiveItem());
 		addSeparator();
 		add(checkSBNDCItem());
 		add(checkBSNNIItem());
@@ -77,7 +79,9 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 		addSeparator();
 		add(checkPotentialCausalItem());
 		add(checkPotentialConflictItem());
-		add(checkActiveItem());
+		//add(checkActiveItem());
+		add(checkActiveCausalItem());
+		add(checkActiveConflictItem());
 		addSeparator();
 		add(checkSBNDCItem());
 		add(checkBSNNIItem());
@@ -202,6 +206,8 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 	private JMenuItem checkPotentialCausalItem() {
 		
 		JMenuItem causal = new  JMenuItem("Check potential causal places");
+		if(mainPane.getNet() == null)
+			causal.setEnabled(false);
 		if(Properties.isCheckPotentialCausalRealTimeOn())
 			causal.setEnabled(false);
 		causal.addActionListener(new ActionListener() {
@@ -216,6 +222,8 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 	private JMenuItem checkPotentialConflictItem() {
 		
 		JMenuItem conflict = new  JMenuItem("Check potential conflict places");
+		if(mainPane.getNet() == null)
+			conflict.setEnabled(false);
 		if(Properties.isCheckPotentialConflictRealTimeOn())
 			conflict.setEnabled(false);
 		conflict.addActionListener(new ActionListener() {
@@ -227,8 +235,37 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 		});
 		return	conflict;
 	}
+	private JMenuItem checkActiveCausalItem(){
+		JMenuItem causal = new  JMenuItem("Check active casual places");
+		if(mainPane.getNet() == null)
+			causal.setEnabled(false);
+		if(Properties.isCheckActiveCausalRealTimeOn())
+			causal.setEnabled(false);
+		causal.addActionListener(new ActionListener() {
 
-	private CheckableSubMenu checkActiveItem() {
+			public void actionPerformed(ActionEvent e) {
+					mainPane.getNet().showIfAnyActiveCausal();
+					mainPane.repaint();
+			}
+		});
+		return	causal;
+	}
+	private JMenuItem checkActiveConflictItem(){
+		JMenuItem conflict = new  JMenuItem("Check active conflict places");
+		if(mainPane.getNet() == null)
+			conflict.setEnabled(false);
+		if(Properties.isCheckActiveConflictRealTimeOn())
+			conflict.setEnabled(false);
+		conflict.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+					mainPane.getNet().showIfAnyActiveConflict();
+					mainPane.repaint();
+			}
+		});
+		return	conflict;
+	}
+	/*private CheckableSubMenu checkActiveItem() {
 		
 		CheckableSubMenu item = new CheckableSubMenu("Check active places", this);
 		
@@ -266,7 +303,7 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 		
 		return item;
 	}
-	/*private CheckableSubMenu checkPotentialItem() {
+	private CheckableSubMenu checkPotentialItem() {
 		
 		CheckableSubMenu item = new CheckableSubMenu("Check potential places", this);
 		

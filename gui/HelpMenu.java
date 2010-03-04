@@ -10,6 +10,7 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 import structure.Net;
 import xml.Settings;
@@ -28,7 +29,7 @@ public class HelpMenu extends JMenu {
 			
 			public void actionPerformed(ActionEvent ae) {
 				
-				Net net1 = null;
+				/*Net net1 = null;
 				Net net2 = null;
 				
 				JFileChooser chooser = new JFileChooser();
@@ -69,8 +70,9 @@ public class HelpMenu extends JMenu {
 		        		ErrorDialog.show(exc);
 		        	}
 		        }		
-
-		        net1.isBisimilar(net2);
+*/
+		      JOptionPane.showMessageDialog(null, "Not implemented Yet");
+		      
 			}
 		});
 		

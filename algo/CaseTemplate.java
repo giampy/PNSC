@@ -42,7 +42,8 @@ public class CaseTemplate {
 	
 	public Hashtable<TransitionTemplate, Vector<CaseTemplate>> reachLow(Vector<CaseTemplate> path) {
 		
-		Hashtable<TransitionTemplate, Vector<CaseTemplate>> reach = new Hashtable<TransitionTemplate, Vector<CaseTemplate>>();
+		Hashtable<TransitionTemplate, Vector<CaseTemplate>> reach = 
+			new Hashtable<TransitionTemplate, Vector<CaseTemplate>>();
 		
 		Enumeration<TransitionTemplate> tr = links.keys();
 		if (tr.hasMoreElements()) {

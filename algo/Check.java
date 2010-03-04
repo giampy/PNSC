@@ -395,7 +395,6 @@ public class Check {
 		couples.add(new Couple(s1, s2));
 		
 		for (int co = 0; co < couples.size(); co++) {
-			
 			Couple couple = couples.get(co);
 			Hashtable<TransitionTemplate, Vector<CaseTemplate>> firstReach = couple.first.reachLow();
 			Hashtable<TransitionTemplate, Vector<CaseTemplate>> secondReach = couple.second.reachLow();

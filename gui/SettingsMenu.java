@@ -44,8 +44,16 @@ public class SettingsMenu extends JMenu implements Closeable {
 	public JMenu mode(final MainPane mainPane){
          JMenu modeCheckingMenu = new JMenu("Mode Checking");
 		 ButtonGroup directionGroup = new ButtonGroup();
-		 JRadioButtonMenuItem realTime = new JRadioButtonMenuItem("real time", true);
+		 JRadioButtonMenuItem realTime = new JRadioButtonMenuItem("real time");
 		 JRadioButtonMenuItem onDemand = new JRadioButtonMenuItem("on demand");
+		 if(Properties.isCheckActiveCausalRealTimeOn()){
+			 realTime.setSelected(true);
+			 onDemand.setSelected(false);
+			 }
+		 else{
+			 realTime.setSelected(false);
+			 onDemand.setSelected(true);
+		 }
 		 realTime.addActionListener(new ActionListener(){
 			 public void actionPerformed(ActionEvent e){
 				 Properties.setCheckActiveCausalRealTime(true);
