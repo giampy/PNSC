@@ -43,11 +43,15 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 //		add(checkReducedItem(mainPane));
 //		add(checkContactsItem(mainPane));
 		addSeparator();
-		add(checkPotentialCausalItem());
-		add(checkPotentialConflictItem());
-		add(checkActiveCausalItem());
-		add(checkActiveConflictItem());
-		//add(checkActiveItem());
+		if(!Properties.isCheckActiveCausalRealTimeOn()){
+			add(checkPotentialCausalItem());
+			add(checkPotentialConflictItem());
+			add(checkActiveCausalItem());
+			add(checkActiveConflictItem());
+		}
+		else
+			add(checkActiveItemRealTime());
+		
 		addSeparator();
 		add(checkSBNDCItem());
 		add(checkBSNNIItem());
@@ -77,11 +81,14 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 //		add(checkReducedItem(mainPane));
 //		add(checkContactsItem(mainPane));
 		addSeparator();
-		add(checkPotentialCausalItem());
-		add(checkPotentialConflictItem());
-		//add(checkActiveItem());
-		add(checkActiveCausalItem());
-		add(checkActiveConflictItem());
+		if(!Properties.isCheckActiveCausalRealTimeOn()){
+			add(checkPotentialCausalItem());
+			add(checkPotentialConflictItem());
+			add(checkActiveCausalItem());
+			add(checkActiveConflictItem());
+		}
+		else
+			add(checkActiveItemRealTime());
 		addSeparator();
 		add(checkSBNDCItem());
 		add(checkBSNNIItem());
@@ -265,7 +272,7 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 		});
 		return	conflict;
 	}
-	/*private CheckableSubMenu checkActiveItem() {
+	private CheckableSubMenu checkActiveItemRealTime() {
 		
 		CheckableSubMenu item = new CheckableSubMenu("Check active places", this);
 		
@@ -303,7 +310,7 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 		
 		return item;
 	}
-	private CheckableSubMenu checkPotentialItem() {
+	private CheckableSubMenu checkPotentialItemRealTime() {
 		
 		CheckableSubMenu item = new CheckableSubMenu("Check potential places", this);
 		
@@ -334,45 +341,6 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 		return item;
 	}
 
-	private CheckableSubMenu checkActiveItem() {
-		
-		CheckableSubMenu item = new CheckableSubMenu("Check active places", this);
-		
-		final JCheckBoxMenuItem actCausalItem = new JCheckBoxMenuItem("Active causal", Properties.isCheckActiveCausalOn());
-		actCausalItem.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				Properties.setCheckActiveCausal(actCausalItem.isSelected());
-				mainPane.updateNodesProperties();
-				mainPane.repaint();
-			}
-		});
-		item.add(actCausalItem);
-		
-		final JCheckBoxMenuItem actConflictItem = new JCheckBoxMenuItem("Active conflict", Properties.isCheckActiveConflictOn());
-		actConflictItem.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				Properties.setCheckActiveConflict(actConflictItem.isSelected());
-				mainPane.updateNodesProperties();
-				mainPane.repaint();
-			}
-		});
-		item.add(actConflictItem);
-		
-		if (mainPane.getNet() == null || mainPane.getNet().getInitialMarking().size() == 0) {
-			
-			actCausalItem.setEnabled(false);
-			actConflictItem.setEnabled(false);
-			actCausalItem.setToolTipText("Need to set the initial marking first");
-			actConflictItem.setToolTipText("Need to set the initial marking first");
-		}
-		
-		return item;
-	}*/
-	
 	private JMenuItem checkSBNDCItem() {
 		
 		JMenuItem item = new JMenuItem("Check SBNDC Property");

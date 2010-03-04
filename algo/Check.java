@@ -308,7 +308,7 @@ public class Check {
 					newState.linkTo(transTable.get(transitions.get(t)), stateTable2.get(state.goThrough(transitions.get(t))));
 		}
 		
-		if (bisimilar(stateTable1.get(markingGraph1.get(0)), stateTable2.get(markingGraph2.get(0))))
+		if (lowViewBisimilar(stateTable1.get(markingGraph1.get(0)), stateTable2.get(markingGraph2.get(0))))
 			return true;
 		else return false;
 	}
@@ -379,7 +379,7 @@ public class Check {
 				if (enabled.isHigh()) {
 					
 					Case nextMarking = marking.goThrough(enabled);
-					if (!bisimilar(caseTable1.get(marking), caseTable2.get(nextMarking)))
+					if (!lowViewBisimilar(caseTable1.get(marking), caseTable2.get(nextMarking)))
 						SBNDC = false;
 				}
 			}
@@ -388,12 +388,13 @@ public class Check {
 		return SBNDC;
 	}
 	
-	public static boolean bisimilar(CaseTemplate s1, CaseTemplate s2) {
+	public static boolean lowViewBisimilar(CaseTemplate s1, CaseTemplate s2) {
 		
 		CoupleVector couples = new CoupleVector();
 		
 		couples.add(new Couple(s1, s2));
-		
+		//la size di couples viene modificata nel ciclo
+		// è una specie di visita breadth-first con pila
 		for (int co = 0; co < couples.size(); co++) {
 			Couple couple = couples.get(co);
 			Hashtable<TransitionTemplate, Vector<CaseTemplate>> firstReach = couple.first.reachLow();
