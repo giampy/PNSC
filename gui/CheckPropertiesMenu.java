@@ -376,6 +376,7 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 				Check.BSNNI(mainPane.getNet());
 				JOptionPane.showMessageDialog(mainPane, "Net is " + (Check.BSNNI(mainPane.getNet())? "" : "not ") + "BSNNI",
 						"BSNNI Property",JOptionPane.INFORMATION_MESSAGE);
+				
 			}				
 		});
 		

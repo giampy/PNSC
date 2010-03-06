@@ -11,7 +11,7 @@ import structure.Net;
 import xml.Properties;
 
 
-public class NetListener implements MouseListener, MouseMotionListener {
+public class NetListener implements  MouseListener, MouseMotionListener {
 
 	private Net net;
 	private NetPanel netPanel;
@@ -62,12 +62,14 @@ public class NetListener implements MouseListener, MouseMotionListener {
 	}
 
 	public void mouseReleased(MouseEvent me) {
-		mainPane.getToolbar().updateLabel();
+	
+		
 		if (me.getButton() == MouseEvent.BUTTON1) {
 
 			net.quitDragging(me.getPoint(), me.isControlDown());
 			netPanel.requestFocus();
 			mainPane.repaint();
+			mainPane.getToolbar().updateLabel();
 		}
 	}
 
