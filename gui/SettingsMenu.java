@@ -41,41 +41,20 @@ public class SettingsMenu extends JMenu implements Closeable {
 		add(mode(mainPane));
 	}
 	
-	public JMenu mode(final MainPane mainPane){
-         JMenu modeCheckingMenu = new JMenu("Mode Checking");
-		 ButtonGroup directionGroup = new ButtonGroup();
-		 JRadioButtonMenuItem realTime = new JRadioButtonMenuItem("real time");
-		 JRadioButtonMenuItem onDemand = new JRadioButtonMenuItem("on demand");
-		 if(Properties.isCheckActiveCausalRealTimeOn()){
-			 realTime.setSelected(true);
-			 onDemand.setSelected(false);
-			 }
-		 else{
-			 realTime.setSelected(false);
-			 onDemand.setSelected(true);
-		 }
-		 realTime.addActionListener(new ActionListener(){
-			 public void actionPerformed(ActionEvent e){
-				 Properties.setCheckActiveCausalRealTime(true);
-				 Properties.setCheckPotentialCausalRealTime(true);
-				 Properties.setCheckActiveConflictRealTime(true);
-				 Properties.setCheckPotentialConflictRealTime(true);
-			 }
-		 });
-		 onDemand.addActionListener(new ActionListener(){
-			 public void actionPerformed(ActionEvent e){
-				 Properties.setCheckActiveCausalRealTime(false);
-				 Properties.setCheckPotentialCausalRealTime(false);
-				 Properties.setCheckActiveConflictRealTime(false);
-				 Properties.setCheckPotentialConflictRealTime(false);
-			 }
-		 });
-		 modeCheckingMenu.add(realTime);
-		 modeCheckingMenu.add(onDemand);
-		 directionGroup.add(realTime);
-		 directionGroup.add(onDemand);
+	public JCheckBoxMenuItem mode(final MainPane mainPane){
+         JCheckBoxMenuItem modeCheckingMenu=new JCheckBoxMenuItem("Real Time Verification Mode", false);
+         modeCheckingMenu.addActionListener(new ActionListener(){
+        	 public void actionPerformed(ActionEvent e){
+        		JCheckBoxMenuItem tmp=(JCheckBoxMenuItem)e.getSource();
+        		if(tmp.getState())
+        			Properties.setCheckRealTime(true);       
+        		else
+        			Properties.setCheckRealTime(false);
+        		
+        		mainPane.getToolbar().createUpdateCheckBar();
+        	 }
+         });
 		 return modeCheckingMenu;
-		 
 	}
 	
 	
@@ -172,7 +151,7 @@ public class SettingsMenu extends JMenu implements Closeable {
 	
 	private JCheckBoxMenuItem compareItem(final MainPane mainPane) {
 		
-		final JCheckBoxMenuItem item = new JCheckBoxMenuItem("Compare mode", Settings.isCompareMode());
+		final JCheckBoxMenuItem item = new JCheckBoxMenuItem("Comparison Mode", Settings.isCompareMode());
 		item.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {

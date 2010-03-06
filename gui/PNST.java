@@ -4,12 +4,9 @@ package gui;
 
 import java.util.Locale;
 
-import algo.Check;
-import algo.CaseTemplate;
-import algo.TransitionTemplate;
-
 import xml.Properties;
 import xml.Settings;
+
 
 
 

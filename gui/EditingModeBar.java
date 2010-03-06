@@ -34,4 +34,10 @@ public class EditingModeBar {
 		
 		buttons.get(cm.getKey()).setSelected(true);
 	}
+	
+	public void removeAll(ToolBar toolBar){
+		for (int b = 0; b < buttons.size(); b++)
+			toolBar.remove(buttons.get(b));
+	}
+	
 }

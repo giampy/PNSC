@@ -64,6 +64,9 @@ public class MultiNetPane extends JPanel {
 			multiNet.setSelected(selected);
 			replaceWith((Component)multiNet);
 		}
+		
+		mainPane.updateToolbar(new ToolBar(mainPane));
+		
 	}
 		
 	public void saveNet(String filePath) {

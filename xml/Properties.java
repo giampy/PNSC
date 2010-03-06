@@ -139,6 +139,14 @@ public class Properties {
 		return checkPotentialCausalRealTime;
 	}
 	
+	public static void setCheckRealTime(boolean mode){
+		Properties.setCheckActiveCausalRealTime(mode);
+        Properties.setCheckPotentialCausalRealTime(mode);
+        Properties.setCheckActiveConflictRealTime(mode);
+        Properties.setCheckPotentialConflictRealTime(mode);
+	}
+	
+	
 	public static void setCheckPotentialCausalRealTime(boolean mode){
 		checkPotentialCausalRealTime=mode;
 		doc.getTree().findFirst("checkPotentialCausalRealTime").setValue(new Boolean(checkPotentialCausalRealTime));

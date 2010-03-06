@@ -3,6 +3,7 @@ package gui;
 
 
 import java.awt.Desktop;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -13,15 +14,24 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.JToolBar;
+import javax.swing.SwingConstants;
 //import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class ToolBar extends JToolBar {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4896693608883380603L;
+
 	private final MainPane parent;
 	
-	private ElementaryNetEditingModeBar modeBar;
-	
+	private ElementaryNetEditingModeBar 	modeBar;
+	private PropertyCheckForRealTimeBar		checkBar;
+	private JPanel filler;
+	private JButton help;
 	public ToolBar(MainPane parent) {
 		
 		super();
@@ -54,19 +64,35 @@ public class ToolBar extends JToolBar {
 		ExecuteBar executeBar = new ExecuteBar(parent);
 		executeBar.addTo(this);
 		
-		addSeparator();
 		
-		// Add the filler so that next buttons will be placed at the right end of the toolbar
-		JPanel filler = new JPanel();
-        filler.setLayout(new BoxLayout(filler, BoxLayout.X_AXIS));
-        filler.add(Box.createHorizontalGlue());
-        add(filler);
-
-        add(helpButton());
-		
+		createUpdateCheckBar();
+    
+    	
 		setFloatable(false);
 	}
 	
+	public void createUpdateCheckBar() {
+		// TODO Auto-generated method stub
+	
+		if(checkBar != null){
+				checkBar.removeAll(this);
+				this.remove(help);
+				this.remove(filler);
+		}
+		else
+			addSeparator();
+		
+		checkBar = new PropertyCheckForRealTimeBar(parent);
+		checkBar.addTo(this);
+		filler = new JPanel();
+        filler.setLayout(new BoxLayout(filler, BoxLayout.X_AXIS));
+        filler.add(Box.createHorizontalGlue());
+        add(filler);
+        help=helpButton();
+        
+        add(help);
+	}
+
 	public void select(ComposeMode cm) {
 		
 		modeBar.select(cm);

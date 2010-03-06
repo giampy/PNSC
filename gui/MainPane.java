@@ -191,6 +191,7 @@ public class MainPane extends JPanel {
 		remove(this.toolBar);
 		this.toolBar = toolBar;
 		toolBar.select(composeMode);
+		toolBar.createUpdateCheckBar();
 		add(toolBar, 0);
 		revalidate();
 	}

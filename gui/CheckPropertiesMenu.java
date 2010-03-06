@@ -23,6 +23,11 @@ import xml.Properties;
 
 public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4722339566738169507L;
+
 	private MainPane mainPane;
 	
 	private JMenuItem fixInitialMarkingItem = fixInitialMarkingItem(); 
@@ -343,7 +348,7 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 
 	private JMenuItem checkSBNDCItem() {
 		
-		JMenuItem item = new JMenuItem("Check SBNDC Property");
+		JMenuItem item = new JMenuItem("Check SBNDC");
 		if(mainPane.getNet() == null)
 			item.setEnabled(false);
 		item.addActionListener(new ActionListener() {
@@ -360,7 +365,7 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 	
 	private JMenuItem checkBSNNIItem() {
 		
-		JMenuItem item = new JMenuItem("Check BSNNI Property");
+		JMenuItem item = new JMenuItem("Check BSNNI");
 		if(mainPane.getNet() == null)
 			item.setEnabled(false);
 		item.addActionListener(new ActionListener() {
@@ -376,7 +381,7 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 	}
 	private JMenuItem checkPositivePBNIItem() {
 		
-		JMenuItem item = new JMenuItem("Check PBNI+ Property");
+		JMenuItem item = new JMenuItem("Check PBNI+");
 		if(mainPane.getNet() == null)
 			item.setEnabled(false);
 		item.addActionListener(new ActionListener() {

@@ -20,10 +20,10 @@
 <place id="p5"><graphics><position x="630" y="280"/>
 </graphics>
 </place>
-<place id="p6"><graphics><position x="630" y="35"/>
+<place id="p6"><graphics><position x="630" y="105"/>
 </graphics>
 </place>
-<place id="p7"><graphics><position x="630" y="630"/>
+<place id="p7"><graphics><position x="630" y="525"/>
 </graphics>
 </place>
 <place id="p8"><graphics><position x="805" y="140"/>
@@ -49,22 +49,22 @@
 <toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
 </toolspecific>
 </transition>
-<transition id="t3"><graphics><position x="525" y="35"/>
+<transition id="t3"><graphics><position x="525" y="105"/>
 </graphics>
 <toolspecific tool="PNST" version="1.0"><level high="false" secLevel="1"/>
 </toolspecific>
 </transition>
-<transition id="t4"><graphics><position x="525" y="630"/>
+<transition id="t4"><graphics><position x="525" y="525"/>
 </graphics>
 <toolspecific tool="PNST" version="1.0"><level high="false" secLevel="1"/>
 </toolspecific>
 </transition>
-<transition id="t5"><graphics><position x="630" y="140"/>
+<transition id="t5"><graphics><position x="630" y="210"/>
 </graphics>
 <toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
 </toolspecific>
 </transition>
-<transition id="t6"><graphics><position x="630" y="490"/>
+<transition id="t6"><graphics><position x="630" y="420"/>
 </graphics>
 <toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
 </toolspecific>
@@ -92,25 +92,25 @@
 <arc id="a5" source="t2" target="p1"><graphics><position x="159" y="437"/>
 </graphics>
 </arc>
-<arc id="a6" source="t2" target="p3"><graphics><position x="314" y="298"/>
+<arc id="a6" source="t2" target="p3"><graphics><position x="314" y="299"/>
 </graphics>
 </arc>
 <arc id="a7" source="p4" target="t2"><graphics><position x="316" y="420"/>
 </graphics>
 </arc>
-<arc id="a8" source="t1" target="p4"><graphics><position x="313" y="296"/>
+<arc id="a8" source="t1" target="p4"><graphics><position x="313" y="295"/>
 </graphics>
 </arc>
-<arc id="a9" source="p4" target="t4"><graphics><position x="471" y="522"/>
+<arc id="a9" source="p4" target="t4"><graphics><position x="471" y="470"/>
 </graphics>
 </arc>
-<arc id="a10" source="t4" target="p7"><graphics><position x="577" y="630"/>
+<arc id="a10" source="t4" target="p7"><graphics><position x="577" y="525"/>
 </graphics>
 </arc>
-<arc id="a11" source="p7" target="t6"><graphics><position x="630" y="560"/>
+<arc id="a11" source="p7" target="t6"><graphics><position x="630" y="473"/>
 </graphics>
 </arc>
-<arc id="a12" source="t6" target="p9"><graphics><position x="717" y="490"/>
+<arc id="a12" source="t6" target="p9"><graphics><position x="717" y="454"/>
 </graphics>
 </arc>
 <arc id="a13" source="p9" target="t7"><graphics><position x="805" y="385"/>
@@ -119,28 +119,28 @@
 <arc id="a14" source="t7" target="p8"><graphics><position x="805" y="210"/>
 </graphics>
 </arc>
-<arc id="a15" source="p8" target="t5"><graphics><position x="718" y="140"/>
+<arc id="a15" source="p8" target="t5"><graphics><position x="718" y="174"/>
 </graphics>
 </arc>
-<arc id="a16" source="p6" target="t5"><graphics><position x="630" y="87"/>
+<arc id="a16" source="p6" target="t5"><graphics><position x="630" y="157"/>
 </graphics>
 </arc>
-<arc id="a17" source="t5" target="p5"><graphics><position x="630" y="210"/>
+<arc id="a17" source="t5" target="p5"><graphics><position x="630" y="245"/>
 </graphics>
 </arc>
-<arc id="a18" source="p5" target="t6"><graphics><position x="630" y="385"/>
+<arc id="a18" source="p5" target="t6"><graphics><position x="630" y="350"/>
 </graphics>
 </arc>
-<arc id="a19" source="t6" target="p3"><graphics><position x="526" y="334"/>
+<arc id="a19" source="t6" target="p3"><graphics><position x="526" y="299"/>
 </graphics>
 </arc>
-<arc id="a20" source="t5" target="p4"><graphics><position x="526" y="278"/>
+<arc id="a20" source="t5" target="p4"><graphics><position x="527" y="313"/>
 </graphics>
 </arc>
-<arc id="a21" source="p3" target="t3"><graphics><position x="471" y="107"/>
+<arc id="a21" source="p3" target="t3"><graphics><position x="470" y="141"/>
 </graphics>
 </arc>
-<arc id="a22" source="t3" target="p6"><graphics><position x="577" y="35"/>
+<arc id="a22" source="t3" target="p6"><graphics><position x="577" y="105"/>
 </graphics>
 </arc>
 <arc id="a23" source="p3" target="t1"><graphics><position x="317" y="175"/>

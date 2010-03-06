@@ -42,7 +42,7 @@ public class Window extends JFrame implements WindowListener {
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
         size.height -= 29;
         
-        return new Dimension(800, 600);//size;
+        return new Dimension(1024, 768);//size;
 	}
 
 	// WINDOW LISTENER METHODS
