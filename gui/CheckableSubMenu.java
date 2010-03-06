@@ -15,6 +15,10 @@ import javax.swing.JMenuItem;
 
 public class CheckableSubMenu extends JMenu implements MouseListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2894554295518770665L;
 	private JCheckBoxMenuItem cbmi;
 	private Closeable menu;
 	

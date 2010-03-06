@@ -13,6 +13,10 @@ import javax.swing.JTabbedPane;
 
 public class ComparePane extends JPanel implements MultiNet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7853680087085501610L;
 	private MainPane mainPane;
 	
 	public ComparePane(MainPane mainPane) {

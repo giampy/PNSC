@@ -13,10 +13,16 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
+import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.SwingConstants;
+
+import algo.Check;
+
+import xml.Properties;
 //import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class ToolBar extends JToolBar {
@@ -32,6 +38,7 @@ public class ToolBar extends JToolBar {
 	private PropertyCheckForRealTimeBar		checkBar;
 	private JPanel filler;
 	private JButton help;
+	private JLabel	prop;
 	public ToolBar(MainPane parent) {
 		
 		super();
@@ -67,7 +74,6 @@ public class ToolBar extends JToolBar {
 		
 		createUpdateCheckBar();
     
-    	
 		setFloatable(false);
 	}
 	
@@ -77,6 +83,7 @@ public class ToolBar extends JToolBar {
 		if(checkBar != null){
 				checkBar.removeAll(this);
 				this.remove(help);
+				this.remove(prop);
 				this.remove(filler);
 		}
 		else
@@ -84,6 +91,10 @@ public class ToolBar extends JToolBar {
 		
 		checkBar = new PropertyCheckForRealTimeBar(parent);
 		checkBar.addTo(this);
+		prop=new JLabel();
+		prop.setEnabled(false);
+		updateLabel();
+		add(prop);
 		filler = new JPanel();
         filler.setLayout(new BoxLayout(filler, BoxLayout.X_AXIS));
         filler.add(Box.createHorizontalGlue());
@@ -91,6 +102,30 @@ public class ToolBar extends JToolBar {
         help=helpButton();
         
         add(help);
+	}
+
+	public void updateLabel() {
+		// TODO Auto-generated method stub
+		if(Properties.isCheckActiveCausalRealTimeOn())
+			if(checkBar.whatIsActive().equals("BSNNI")){
+				if(parent.getNet()!=null && Check.BSNNI(parent.getNet()))
+					prop.setText("Net is BSNNI");
+				else
+					prop.setText("Net is not BSNNI");
+			}
+			else if (parent.getNet()!=null && checkBar.whatIsActive().equals("SBNDC")){
+				if(Check.SBNDC(parent.getNet()))
+					prop.setText("Net is SBNDC");
+				else
+					prop.setText("Net is not SBNDC");
+			}
+			else if (parent.getNet()!=null && checkBar.whatIsActive().equals("PBNI+")){
+				if(Check.PositivePBNI(parent.getNet()))
+					prop.setText("Net is PBNI+");
+				else
+					prop.setText("Net is not PBNI+");
+			}
+		
 	}
 
 	public void select(ComposeMode cm) {

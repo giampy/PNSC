@@ -23,6 +23,10 @@ import xml.Settings;
 
 public class FileMenu extends JMenu implements ItemListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8295892385221665178L;
 	private final MainPane mainPane;
 	private final Window window;
 
@@ -60,7 +64,7 @@ public class FileMenu extends JMenu implements ItemListener {
 	
 	public void itemStateChanged(ItemEvent ie) {
 	
-		if (ie.getStateChange() == ie.SELECTED) {
+		if (ie.getStateChange() == ItemEvent.SELECTED) {
 			
 			if (mainPane.getNet() == null)
 				for (int non = 0; non < needOpenNet.size(); non++)
@@ -128,6 +132,7 @@ public class FileMenu extends JMenu implements ItemListener {
 		return item;
 	}
 	
+	@SuppressWarnings("unused")
 	private JMenuItem saveAllItem() {
 		
 		JMenuItem item = new JMenuItem("Save all");

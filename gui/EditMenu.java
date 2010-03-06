@@ -19,6 +19,11 @@ import animation.NetHistory;
 
 public class EditMenu extends JMenu implements ItemListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2921833601943159682L;
+
 	private final MainPane mainPane;
 	
 	private JMenuItem undoItem = undoItem();
@@ -63,7 +68,7 @@ public class EditMenu extends JMenu implements ItemListener {
 	
 	public void itemStateChanged(ItemEvent ie) {
 
-		if (ie.getStateChange() == ie.SELECTED) {
+		if (ie.getStateChange() == ItemEvent.SELECTED) {
 			
 			if (mainPane.getNet() == null || mainPane.getNet().getSelection().size() == 0) {
 				

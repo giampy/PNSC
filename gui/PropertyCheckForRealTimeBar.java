@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
 import algo.Check;
@@ -14,11 +15,12 @@ import xml.Properties;
 
 
 public class PropertyCheckForRealTimeBar extends EditingModeBar{
+	JToggleButton a, b, c;
 	public PropertyCheckForRealTimeBar(MainPane mainPane){
 		if(Properties.isCheckActiveCausalRealTimeOn()){
-			add(JToggleButtonItem(mainPane, "BSNNI"));
-			add(JToggleButtonItem(mainPane, "SBNDC"));
-			add(JToggleButtonItem(mainPane, "PBNI+"));
+			add(a=JToggleButtonItem(mainPane, "BSNNI"));
+			add(b=JToggleButtonItem(mainPane, "SBNDC"));
+			add(c=JToggleButtonItem(mainPane, "PBNI+"));
 		}
 		else{
 			add(JButtonItem(mainPane, "BSNNI"));
@@ -27,6 +29,14 @@ public class PropertyCheckForRealTimeBar extends EditingModeBar{
 		}
 	}
 
+	public String whatIsActive(){
+		if(a.isSelected())
+			return a.getText();
+		else if(b.isSelected())
+			return b.getText();
+		else
+			return c.getText();
+	}
 	private JButton JButtonItem(final MainPane mainPane, String str) {
 		// TODO Auto-generated method stub
 		JButton button=new JButton(str);
@@ -64,6 +74,7 @@ public class PropertyCheckForRealTimeBar extends EditingModeBar{
 		button.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
+				mainPane.getToolbar().updateLabel();
 			}
 		});
 		button.setToolTipText("Real Time "+str+" Check");

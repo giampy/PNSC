@@ -797,7 +797,7 @@ public class Net {
 	// Check Properties Methods
 	
 	public void updateNodesProperties() {
-		
+	
 		if (Properties.isCheckSimpleOn()) {
 			
 			Vector<Node> nodes = new Vector<Node>();

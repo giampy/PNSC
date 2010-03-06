@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import structure.Net;
+import xml.Properties;
 
 
 public class NetListener implements MouseListener, MouseMotionListener {
@@ -39,6 +40,7 @@ public class NetListener implements MouseListener, MouseMotionListener {
 				netPanel.requestFocus();
 				netPanel.repaint();
 			}
+			mainPane.getToolbar().updateLabel();
 		}
 
 
@@ -56,10 +58,11 @@ public class NetListener implements MouseListener, MouseMotionListener {
 		
 		if (me.getButton() == MouseEvent.BUTTON1) 
 			net.aboutToDrag(mainPane.getComposeMode(), me.getPoint());
+		mainPane.getToolbar().updateLabel();
 	}
 
 	public void mouseReleased(MouseEvent me) {
-		
+		mainPane.getToolbar().updateLabel();
 		if (me.getButton() == MouseEvent.BUTTON1) {
 
 			net.quitDragging(me.getPoint(), me.isControlDown());
@@ -72,11 +75,12 @@ public class NetListener implements MouseListener, MouseMotionListener {
 
 		net.drag(me.getPoint());
 		netPanel.requestFocus();
+		mainPane.getToolbar().updateLabel();
 		mainPane.repaint();
 	}
 
 	public void mouseMoved(MouseEvent me) {
-		
+		mainPane.getToolbar().updateLabel();
 		net.justHovering(me.getPoint());
 		mainPane.repaint();
 	}

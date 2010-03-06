@@ -142,7 +142,7 @@ public class ElementaryNetEditingModeBar extends EditingModeBar {
 					mainPane.fixInitialMarking();
 					mainPane.updateNodesProperties();
 					mainPane.repaint();
-
+					mainPane.getToolbar().updateLabel();
 					JOptionPane.showMessageDialog(null, "Initial marking set\n\n" + 
 							"Remember that when you edit the marking or it changes due\n" + 
 							"to a transition firing, only the current marking changes, not\n" + 
@@ -150,6 +150,7 @@ public class ElementaryNetEditingModeBar extends EditingModeBar {
 							"anytime.\n" +
 							"Hollow tokens inside the places will always show you what\n" + 
 							"the initial marking is.", "Initial marking set", JOptionPane.INFORMATION_MESSAGE);
+					
 				}
 			}
 		});

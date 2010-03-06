@@ -4,6 +4,6 @@
 <gridSize>35</gridSize>
 <showNodesName>true</showNodesName>
 <compareMode>false</compareMode>
-<startingDir>/home/sh0t/PNSC/sharedResWithDowngraders.pnml</startingDir>
+<startingDir>/home/sh0t/PNSC/BSNNIbutNOTSBNDC.pnml</startingDir>
 <executionDelay>600</executionDelay>
 </settings>

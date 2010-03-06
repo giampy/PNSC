@@ -92,8 +92,10 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 			add(checkActiveCausalItem());
 			add(checkActiveConflictItem());
 		}
-		else
+		else{
 			add(checkActiveItemRealTime());
+			add(checkPotentialItemRealTime());
+			}
 		addSeparator();
 		add(checkSBNDCItem());
 		add(checkBSNNIItem());
