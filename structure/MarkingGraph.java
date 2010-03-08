@@ -8,7 +8,8 @@ import java.util.Vector;
 import algo.Case;
 import algo.Vertex;
 
-
+//prossima estensione utilizzare un TreeMap<K, V> per rendere più efficiente il tutto in termini
+//di complessità computazionale
 public class MarkingGraph extends Vector<Case> {
 
 	/**
