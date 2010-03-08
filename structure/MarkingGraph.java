@@ -11,12 +11,17 @@ import algo.Vertex;
 
 public class MarkingGraph extends Vector<Case> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4736881335014091401L;
+
 	public MarkingGraph(Vector<Place> initialMarking) {
 		
 		super();
 		
 		add(new Case(initialMarking));
-		
+		System.out.println(new Case(initialMarking).orderedValue());
 		for(int c = 0; c < size(); c++) {
 			
 			Vector<Transition> enabledTransitions = get(c).getEnabledTransitions();

@@ -258,7 +258,7 @@ public class Check {
 	
 	
 	public static boolean BSNNI(Net net) {
-		
+		System.out.println("called");
 		MarkingGraph markingGraph1 = new MarkingGraph(net.getInitialMarking());
 		MarkingGraph markingGraph2 = new MarkingGraph(net.getInitialMarking(), true);
 		

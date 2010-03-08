@@ -75,6 +75,10 @@ public class Place extends Node {
 		color = Color.BLUE;
 	}
 	
+	public boolean isFilled(){
+		return this.tokens==1;
+	}
+	
 	public void addToken() {
 		
 		if (tokens == 0)

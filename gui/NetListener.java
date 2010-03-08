@@ -58,7 +58,6 @@ public class NetListener implements  MouseListener, MouseMotionListener {
 		
 		if (me.getButton() == MouseEvent.BUTTON1) 
 			net.aboutToDrag(mainPane.getComposeMode(), me.getPoint());
-		mainPane.getToolbar().updateLabel();
 	}
 
 	public void mouseReleased(MouseEvent me) {
@@ -77,12 +76,10 @@ public class NetListener implements  MouseListener, MouseMotionListener {
 
 		net.drag(me.getPoint());
 		netPanel.requestFocus();
-		mainPane.getToolbar().updateLabel();
 		mainPane.repaint();
 	}
 
 	public void mouseMoved(MouseEvent me) {
-		mainPane.getToolbar().updateLabel();
 		net.justHovering(me.getPoint());
 		mainPane.repaint();
 	}
