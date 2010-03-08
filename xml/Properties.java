@@ -21,6 +21,8 @@ public class Properties {
 	private static boolean	checkPotentialConflictRealTime=false;
 	private static boolean	checkActiveConflictRealTime=false;
 	
+	private static boolean	checkRealTime=false;
+	
 	public static void retrieve() throws Exception {
 		
 		doc = new XMLDocument("Properties.xml");
@@ -40,6 +42,7 @@ public class Properties {
 		checkActiveCausalRealTime = Boolean.parseBoolean(doc.getTree().findFirst("checkActiveCausalRealTime").value());
 		checkActiveConflictRealTime = Boolean.parseBoolean(doc.getTree().findFirst("checkActiveConflictRealTime").value());
 		
+		checkRealTime=Boolean.parseBoolean(doc.getTree().findFirst("checkRealTime").value());
 	}
 	
 	public static void store() {
@@ -139,14 +142,6 @@ public class Properties {
 		return checkPotentialCausalRealTime;
 	}
 	
-	public static void setCheckRealTime(boolean mode){
-		Properties.setCheckActiveCausalRealTime(mode);
-        Properties.setCheckPotentialCausalRealTime(mode);
-        Properties.setCheckActiveConflictRealTime(mode);
-        Properties.setCheckPotentialConflictRealTime(mode);
-	}
-	
-	
 	public static void setCheckPotentialCausalRealTime(boolean mode){
 		checkPotentialCausalRealTime=mode;
 		doc.getTree().findFirst("checkPotentialCausalRealTime").setValue(new Boolean(checkPotentialCausalRealTime));
@@ -178,7 +173,16 @@ public class Properties {
 		checkActiveConflictRealTime=mode;
 		doc.getTree().findFirst("checkActiveConflictRealTime").setValue(new Boolean(checkActiveConflictRealTime));
 	}
+
+	public static boolean isCheckRealTimeOn() {
+		// TODO Auto-generated method stub
+		return checkRealTime;
+		
+	}
 	
-	
+	public static void setCheckRealTime(boolean mode){
+		checkRealTime=mode;
+		doc.getTree().findFirst("checkRealTime").setValue(new Boolean(checkRealTime));
+	}
 	
 }

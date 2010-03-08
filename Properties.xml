@@ -7,8 +7,9 @@
 <checkPotentialConflict>true</checkPotentialConflict>
 <checkActiveCausal>true</checkActiveCausal>
 <checkActiveConflict>true</checkActiveConflict>
+<checkRealTime>true</checkRealTime>
 <checkPotentialCausalRealTime>true</checkPotentialCausalRealTime>
-<checkPotentialConflictRealTime>true</checkPotentialConflictRealTime>
+<checkPotentialConflictRealTime>false</checkPotentialConflictRealTime>
 <checkActiveCausalRealTime>true</checkActiveCausalRealTime>
 <checkActiveConflictRealTime>true</checkActiveConflictRealTime>
 </properties>

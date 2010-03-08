@@ -21,7 +21,7 @@ public class MarkingGraph extends Vector<Case> {
 		super();
 		
 		add(new Case(initialMarking));
-		System.out.println(new Case(initialMarking).orderedValue());
+		
 		for(int c = 0; c < size(); c++) {
 			
 			Vector<Transition> enabledTransitions = get(c).getEnabledTransitions();

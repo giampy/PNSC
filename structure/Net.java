@@ -841,69 +841,18 @@ public class Net {
 				transition.propertyBox.setContacts(placeVectors);
 			}
 		}
-		if (Properties.isCheckPotentialCausalRealTimeOn()) {
 		
-			for (int s = 0; s < places.size(); s++)
-				places.get(s).propertyBox.setPotentialCausal(new Vector<Transition>());
-		
-			Hashtable<Place, Vector<Transition>> potentialCausal = Check.checkPotentialCausal(this);
+		if (Properties.isCheckRealTimeOn() && Properties.isCheckPotentialCausalRealTimeOn()) 
+			showIfAnyPotentialCausal();
+		if (Properties.isCheckRealTimeOn() &&Properties.isCheckActiveCausalRealTimeOn()) 
+			showIfAnyActiveCausal();
+		if (Properties.isCheckRealTimeOn() &&Properties.isCheckPotentialConflictRealTimeOn()) 
+			showIfAnyPotentialConflict();
+		if (Properties.isCheckRealTimeOn() &&Properties.isCheckActiveConflictRealTimeOn()) 
+			showIfAnyActiveConflict();
 	
-			Enumeration<Place> keys = potentialCausal.keys();
-			while (keys.hasMoreElements()) {
-				
-				Place place = keys.nextElement();
-				Vector<Transition> pc = potentialCausal.get(place);
-				place.propertyBox.setPotentialCausal(pc);
-			}
-		}
-		
-		if (Properties.isCheckActiveCausalRealTimeOn()) {
-		
-			for (int s = 0; s < places.size(); s++)
-				places.get(s).propertyBox.setActiveCausal(new Vector<ActiveCase>());
-			
-			Hashtable<Place, Vector<ActiveCase>> activeCausal = Check.checkActiveCausal(this,
-																Check.checkPotentialCausal(this));
-			Enumeration<Place> keys = activeCausal.keys();
-			while (keys.hasMoreElements()) {
-				
-				Place place = keys.nextElement();
-				Vector<ActiveCase> activeCases = activeCausal.get(place);
-				place.propertyBox.setActiveCausal(activeCases);
-			}
-		}
-		
-		if (Properties.isCheckPotentialConflictRealTimeOn()) {
-			
-			for (int s = 0; s < places.size(); s++)
-				places.get(s).propertyBox.setPotentialConflict(new Vector<Transition>());
-			
-			Hashtable<Place, Vector<Transition>> potentialConflict = Check.checkPotentialConflict(this);
-			Enumeration<Place> keys = potentialConflict.keys();
-			while (keys.hasMoreElements()) {
-				
-				Place place = keys.nextElement();
-				Vector<Transition> pc = potentialConflict.get(place);
-				
-				place.propertyBox.setPotentialConflict(pc);
-			}
-		}
-		if (Properties.isCheckActiveConflictRealTimeOn()) {
-			
-			for (int s = 0; s < places.size(); s++)
-				places.get(s).propertyBox.setActiveConflict(new Vector<ActiveCase>());
-			
-			Hashtable<Place, Vector<ActiveCase>> activeConflict = Check.checkActiveConflict(this,
-												Check.checkPotentialConflict(this));
-			Enumeration<Place> keys = activeConflict.keys();
-			while (keys.hasMoreElements()) {
-				
-				Place place = keys.nextElement();
-				Vector<ActiveCase> activeCases = activeConflict.get(place);
-				place.propertyBox.setActiveConflict(activeCases);
-			}
-		}	
 	}
+	
 	public void showIfAnyPotentialCausal(){
 		for (int s = 0; s < places.size(); s++)
 			places.get(s).propertyBox.setPotentialCausal(new Vector<Transition>());
@@ -918,11 +867,35 @@ public class Net {
 			place.propertyBox.setPotentialCausal(pc);
 		}
 	}
+	public void showIfAnyPotentialCausal(Hashtable<Place, Vector<Transition>> potentialCausal){
+		for (int s = 0; s < places.size(); s++)
+			places.get(s).propertyBox.setPotentialCausal(new Vector<Transition>());
+
+		Enumeration<Place> keys = potentialCausal.keys();
+		while (keys.hasMoreElements()) {
+			
+			Place place = keys.nextElement();
+			Vector<Transition> pc = potentialCausal.get(place);
+			place.propertyBox.setPotentialCausal(pc);
+		}
+	}
 	public void showIfAnyActiveCausal(){
 		for (int s = 0; s < places.size(); s++)
 			places.get(s).propertyBox.setActiveCausal(new Vector<ActiveCase>());
 		
 		Hashtable<Place, Vector<ActiveCase>> activeCausal = Check.checkActiveCausal(this, Check.checkPotentialCausal(this));
+		Enumeration<Place> keys = activeCausal.keys();
+		while (keys.hasMoreElements()) {
+			
+			Place place = keys.nextElement();
+			Vector<ActiveCase> activeCases = activeCausal.get(place);
+			place.propertyBox.setActiveCausal(activeCases);
+		}
+	}
+	public void showIfAnyActiveCausal(	Hashtable<Place, Vector<ActiveCase>> activeCausal){
+		for (int s = 0; s < places.size(); s++)
+			places.get(s).propertyBox.setActiveCausal(new Vector<ActiveCase>());
+		
 		Enumeration<Place> keys = activeCausal.keys();
 		while (keys.hasMoreElements()) {
 			
@@ -948,13 +921,40 @@ public class Net {
 		}
 		
 	}
-	
+	public void showIfAnyPotentialConflict(Hashtable<Place, Vector<Transition>> potentialConflict){
+		
+		for (int s = 0; s < places.size(); s++)
+			places.get(s).propertyBox.setPotentialConflict(new Vector<Transition>());
+		
+		Enumeration<Place> keys = potentialConflict.keys();
+		while (keys.hasMoreElements()) {
+			
+			Place place = keys.nextElement();
+			Vector<Transition> pc = potentialConflict.get(place);
+			
+			place.propertyBox.setPotentialConflict(pc);
+		}
+		
+	}
 	
 	public void showIfAnyActiveConflict(){
 		for (int s = 0; s < places.size(); s++)
 			places.get(s).propertyBox.setActiveConflict(new Vector<ActiveCase>());
 		
 		Hashtable<Place, Vector<ActiveCase>> activeConflict = Check.checkActiveConflict(this, Check.checkPotentialConflict(this));
+		Enumeration<Place> keys = activeConflict.keys();
+		while (keys.hasMoreElements()) {
+			
+			Place place = keys.nextElement();
+			Vector<ActiveCase> activeCases = activeConflict.get(place);
+			place.propertyBox.setActiveConflict(activeCases);
+		}
+		
+	}
+	public void showIfAnyActiveConflict(Hashtable<Place, Vector<ActiveCase>> activeConflict){
+		for (int s = 0; s < places.size(); s++)
+			places.get(s).propertyBox.setActiveConflict(new Vector<ActiveCase>());
+		
 		Enumeration<Place> keys = activeConflict.keys();
 		while (keys.hasMoreElements()) {
 			

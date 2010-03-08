@@ -2,6 +2,8 @@ package gui;
 
 
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -17,7 +19,7 @@ public class FocusedNetListener implements MouseListener {
 	}
 	
 	public void mouseClicked(MouseEvent arg0) {
-	
+		mainPane.getToolbar().updateLabel();
 		if (!netPanel.alreadyHasFocus()) {
 
 			netPanel.requestFocus();
@@ -49,5 +51,4 @@ public class FocusedNetListener implements MouseListener {
 		mainPane.getToolbar().updateLabel();
 
 	}
-
 }

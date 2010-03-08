@@ -144,9 +144,6 @@ public class Case extends Vector<Place> {
 	}
 	public int orderedValue(){
 		int value=0;
-		for(int i=0; i<this.size(); ++i)
-			if(this.get(i).getTokens()==1)
-				value=(int) (value+Math.pow(2, i));
 		return value;
 	}
 }

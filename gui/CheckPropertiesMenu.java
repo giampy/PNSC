@@ -15,6 +15,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import structure.PositivePBNIResult;
+
 import algo.Check;
 
 import xml.Properties;
@@ -44,19 +46,16 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 		add(showEnabledTransitionsItem());
 		addSeparator();
 		add(generalProperties());
-//		add(checkSimpleItem(mainPane));
-//		add(checkReducedItem(mainPane));
-//		add(checkContactsItem(mainPane));
+
 		addSeparator();
-		if(!Properties.isCheckActiveCausalRealTimeOn()){
-			add(checkPotentialCausalItem());
-			add(checkPotentialConflictItem());
-			add(checkActiveCausalItem());
-			add(checkActiveConflictItem());
+		if(!Properties.isCheckRealTimeOn()){
+			add(checkPotentialItem());
+			add(checkActiveItem());
 		}
-		else
+		else{
+			add(checkPotentialItemRealTime());
 			add(checkActiveItemRealTime());
-		
+		}
 		addSeparator();
 		add(checkSBNDCItem());
 		add(checkBSNNIItem());
@@ -82,17 +81,14 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 		add(showEnabledTransitionsItem());
 		addSeparator();
 		add(generalProperties());
-//		add(checkSimpleItem(mainPane));
-//		add(checkReducedItem(mainPane));
-//		add(checkContactsItem(mainPane));
 		addSeparator();
-		if(!Properties.isCheckActiveCausalRealTimeOn()){
-			add(checkPotentialCausalItem());
-			add(checkPotentialConflictItem());
-			add(checkActiveCausalItem());
-			add(checkActiveConflictItem());
+		if(!Properties.isCheckRealTimeOn()){
+			Properties.setCheckRealTime(true);
+			add(checkPotentialItem());
+			add(checkActiveItem());
 		}
 		else{
+			Properties.setCheckRealTime(false);
 			add(checkActiveItemRealTime());
 			add(checkPotentialItemRealTime());
 			}
@@ -217,13 +213,15 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 		
 		return item;
 	}
-	private JMenuItem checkPotentialCausalItem() {
+	private JMenuItem checkPotentialItem() {
 		
-		JMenuItem causal = new  JMenuItem("Check potential causal places");
-		if(mainPane.getNet() == null)
+		JMenu potential = new  JMenu("Potential Places");
+		JMenuItem causal = new JMenuItem("Causal Places");
+		JMenuItem conflict = new JMenuItem("Conflict Places");
+		if(mainPane.getNet() == null){
 			causal.setEnabled(false);
-		if(Properties.isCheckPotentialCausalRealTimeOn())
-			causal.setEnabled(false);
+			conflict.setEnabled(false);
+		}
 		causal.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -231,15 +229,6 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 					mainPane.repaint();
 			}
 		});
-		return	causal;
-	}
-	private JMenuItem checkPotentialConflictItem() {
-		
-		JMenuItem conflict = new  JMenuItem("Check potential conflict places");
-		if(mainPane.getNet() == null)
-			conflict.setEnabled(false);
-		if(Properties.isCheckPotentialConflictRealTimeOn())
-			conflict.setEnabled(false);
 		conflict.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -247,14 +236,20 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 					mainPane.repaint();
 			}
 		});
-		return	conflict;
+		potential.add(causal);
+		potential.add(conflict);
+		return	potential;
 	}
-	private JMenuItem checkActiveCausalItem(){
-		JMenuItem causal = new  JMenuItem("Check active casual places");
-		if(mainPane.getNet() == null)
+	
+	private JMenuItem checkActiveItem() {
+		
+		JMenu potential = new  JMenu("Active Places");
+		JMenuItem causal = new JMenuItem("Causal Places");
+		JMenuItem conflict = new JMenuItem("Conflict Places");
+		if(mainPane.getNet() == null){
 			causal.setEnabled(false);
-		if(Properties.isCheckActiveCausalRealTimeOn())
-			causal.setEnabled(false);
+			conflict.setEnabled(false);
+		}
 		causal.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -262,14 +257,6 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 					mainPane.repaint();
 			}
 		});
-		return	causal;
-	}
-	private JMenuItem checkActiveConflictItem(){
-		JMenuItem conflict = new  JMenuItem("Check active conflict places");
-		if(mainPane.getNet() == null)
-			conflict.setEnabled(false);
-		if(Properties.isCheckActiveConflictRealTimeOn())
-			conflict.setEnabled(false);
 		conflict.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -277,43 +264,37 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 					mainPane.repaint();
 			}
 		});
-		return	conflict;
+		potential.add(causal);
+		potential.add(conflict);
+		return	potential;
 	}
 	private CheckableSubMenu checkActiveItemRealTime() {
 		
 		CheckableSubMenu item = new CheckableSubMenu("Check active places", this);
 		
-		final JCheckBoxMenuItem actCausalItem = new JCheckBoxMenuItem("Active causal", Properties.isCheckActiveCausalOn());
+		final JCheckBoxMenuItem actCausalItem = new JCheckBoxMenuItem("Active causal", Properties.isCheckActiveCausalRealTimeOn());
 		actCausalItem.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 
-				Properties.setCheckActiveCausal(actCausalItem.isSelected());
+				Properties.setCheckActiveCausalRealTime(actCausalItem.isSelected());
 				mainPane.updateNodesProperties();
 				mainPane.repaint();
 			}
 		});
 		item.add(actCausalItem);
 		
-		final JCheckBoxMenuItem actConflictItem = new JCheckBoxMenuItem("Active conflict", Properties.isCheckActiveConflictOn());
+		final JCheckBoxMenuItem actConflictItem = new JCheckBoxMenuItem("Active conflict", Properties.isCheckActiveConflictRealTimeOn());
 		actConflictItem.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 
-				Properties.setCheckActiveConflict(actConflictItem.isSelected());
+				Properties.setCheckActiveConflictRealTime(actConflictItem.isSelected());
 				mainPane.updateNodesProperties();
 				mainPane.repaint();
 			}
 		});
 		item.add(actConflictItem);
-		
-		if (mainPane.getNet() == null || mainPane.getNet().getInitialMarking().size() == 0) {
-			
-			actCausalItem.setEnabled(false);
-			actConflictItem.setEnabled(false);
-			actCausalItem.setToolTipText("Need to set the initial marking first");
-			actConflictItem.setToolTipText("Need to set the initial marking first");
-		}
 		
 		return item;
 	}
@@ -321,24 +302,24 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 		
 		CheckableSubMenu item = new CheckableSubMenu("Check potential places", this);
 		
-		final JCheckBoxMenuItem potCausalItem = new JCheckBoxMenuItem("Potentially causal", Properties.isCheckPotentialCausalOn());
+		final JCheckBoxMenuItem potCausalItem = new JCheckBoxMenuItem("Potentially causal", Properties.isCheckPotentialCausalRealTimeOn());
 		potCausalItem.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 
-				Properties.setCheckPotentialCausal(potCausalItem.isSelected());
+				Properties.setCheckPotentialCausalRealTime(potCausalItem.isSelected());
 				mainPane.updateNodesProperties();
 				mainPane.repaint();
 			}
 		});
 		item.add(potCausalItem);
 		
-		final JCheckBoxMenuItem potConflictItem = new JCheckBoxMenuItem("Potentially conflict", Properties.isCheckPotentialConflictOn());
+		final JCheckBoxMenuItem potConflictItem = new JCheckBoxMenuItem("Potentially conflict", Properties.isCheckPotentialConflictRealTimeOn());
 		potConflictItem.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 
-				Properties.setCheckPotentialConflict(potConflictItem.isSelected());
+				Properties.setCheckPotentialConflictRealTime(potConflictItem.isSelected());
 				mainPane.updateNodesProperties();
 				mainPane.repaint();
 			}
@@ -390,7 +371,9 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 		item.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-			JOptionPane.showMessageDialog(mainPane, "Net is " + (Check.PositivePBNI(mainPane.getNet())? "" : "not ") + "PBNI+",
+				PositivePBNIResult res=new PositivePBNIResult();
+				boolean	value=Check.PositivePBNI(mainPane.getNet(), res);
+			JOptionPane.showMessageDialog(mainPane, "Net is " + (value ? "" : "not ") + "PBNI+",
 					"PBNI+ Property",JOptionPane.INFORMATION_MESSAGE);
 			
 			}

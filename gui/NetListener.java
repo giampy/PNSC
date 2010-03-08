@@ -3,6 +3,8 @@ package gui;
 
 
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -11,7 +13,7 @@ import structure.Net;
 import xml.Properties;
 
 
-public class NetListener implements  MouseListener, MouseMotionListener {
+public class NetListener implements  MouseListener, MouseMotionListener{
 
 	private Net net;
 	private NetPanel netPanel;
@@ -83,4 +85,5 @@ public class NetListener implements  MouseListener, MouseMotionListener {
 		net.justHovering(me.getPoint());
 		mainPane.repaint();
 	}
+
 }

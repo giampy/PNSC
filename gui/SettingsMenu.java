@@ -11,8 +11,6 @@ import java.awt.event.MouseListener;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import javax.swing.ButtonGroup;
-import javax.swing.JRadioButtonMenuItem;
 
 import xml.Properties;
 import xml.Settings;
@@ -22,6 +20,11 @@ import animation.RandomTimer;
 
 
 public class SettingsMenu extends JMenu implements Closeable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2138668447500405833L;
 
 	public SettingsMenu(MainPane mainPane) {
 		
@@ -47,14 +50,16 @@ public class SettingsMenu extends JMenu implements Closeable {
         	 public void actionPerformed(ActionEvent e){
         		JCheckBoxMenuItem tmp=(JCheckBoxMenuItem)e.getSource();
         		if(tmp.getState())
-        			Properties.setCheckRealTime(true);       
+        			Properties.setCheckRealTime(true);
+        		
         		else
         			Properties.setCheckRealTime(false);
         		
         		mainPane.getToolbar().createUpdateCheckBar();
+        		mainPane.getNet().updateNodesProperties();
         	 }
          });
-         if(Properties.isCheckActiveCausalRealTimeOn())
+         if(Properties.isCheckRealTimeOn())
         	 modeCheckingMenu.setSelected(true);
          else
         	 modeCheckingMenu.setSelected(false);

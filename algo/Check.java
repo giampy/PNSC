@@ -13,34 +13,41 @@ import structure.MarkingGraph;
 import structure.Net;
 import structure.Node;
 import structure.Place;
+import structure.PositivePBNIResult;
 import structure.Transition;
 
 
 
 public class Check {
-	
-	
 	public static boolean PositivePBNI(Net net){
+		return PositivePBNI(net, null);
+	}
+	
+	public static boolean PositivePBNI(Net net, PositivePBNIResult ret){
 		//Check potential
 		Hashtable<Place, Vector<Transition>> potentialCausal = checkPotentialCausal(net);
 		Hashtable<Place, Vector<Transition>> potentialConflict = checkPotentialConflict(net);
-		if(potentialCausal.size()==0 && potentialConflict.size()==0)
-			return true;
+
+		Hashtable<Place, Vector<ActiveCase>> activeCausal = new Hashtable<Place, Vector<ActiveCase>>();
+		Hashtable<Place, Vector<ActiveCase>> activeConflict = new Hashtable<Place, Vector<ActiveCase>>();
+			
 		//Check active
-		if(potentialCausal.size()>0){
-			Hashtable<Place, Vector<ActiveCase>> result = new Hashtable<Place, Vector<ActiveCase>>();
-			result=checkActiveCausal(net, potentialCausal);
-			if (result.size()>0)
-				return false;
-		}
-		if(potentialConflict.size()>0){
-			Hashtable<Place, Vector<ActiveCase>> result = new Hashtable<Place, Vector<ActiveCase>>();
-			result=checkActiveConflict(net, potentialConflict);
-			if (result.size()>0)
-				return false;
-		}
-		return true;
+		if(potentialCausal.size()>0)
+			activeCausal=checkActiveCausal(net, potentialCausal);
+
+		if(potentialConflict.size()>0)
+			activeConflict=checkActiveConflict(net, potentialConflict);
 		
+		//setting the results for the caller
+		if(ret!=null){
+			ret.setPotentialCausal(potentialCausal);
+			ret.setPotentialConflict(potentialConflict);
+			ret.setActiveCausal(activeCausal);
+			ret.setActiveConflict(activeConflict);
+		}
+		
+		return (activeCausal.size()==0 && activeConflict.size()==0);
+			
 	}
 	
 	public static Hashtable<Place, Vector<Transition>> checkPotentialCausal(Net net) {
@@ -258,10 +265,10 @@ public class Check {
 	
 	
 	public static boolean BSNNI(Net net) {
-		System.out.println("called");
+
 		MarkingGraph markingGraph1 = new MarkingGraph(net.getInitialMarking());
+
 		MarkingGraph markingGraph2 = new MarkingGraph(net.getInitialMarking(), true);
-		
 		Hashtable<Transition, TransitionTemplate> transTable = new Hashtable<Transition, TransitionTemplate>();
 		Vector<Transition> netTransitions = net.getTransitions();
 		for (int t = 0; t < netTransitions.size(); t++) 

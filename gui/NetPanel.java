@@ -60,7 +60,7 @@ public class NetPanel extends JPanel {
 		NetListener listener = new NetListener(net, this, mainPane);
 		addMouseListener(listener);
 		addMouseMotionListener(listener);
-		
+	
 		setPreferredSize(net.getMaxDimension());
 	}
 	
@@ -129,6 +129,7 @@ public class NetPanel extends JPanel {
 					focusedElements.get(f).paint(graphics);
 			}
 		}
+		
 	}
 	
 	public void focusOn(Net focus) {
@@ -137,7 +138,6 @@ public class NetPanel extends JPanel {
 		
 		removeAllMouseListeners();
 		addMouseListener(new FocusedNetListener(this, mainPane));
-		
 		repaint();
 	}
 	

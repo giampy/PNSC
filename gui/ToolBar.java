@@ -106,7 +106,7 @@ public class ToolBar extends JToolBar {
 
 	public void updateLabel() {
 		// TODO Auto-generated method stub
-		if(Properties.isCheckActiveCausalRealTimeOn())
+		if(Properties.isCheckRealTimeOn())
 			if(checkBar.whatIsActive().equals("BSNNI")){
 				if(parent.getNet()!=null && Check.BSNNI(parent.getNet()))
 					prop.setText("Net is BSNNI");
@@ -124,6 +124,7 @@ public class ToolBar extends JToolBar {
 					prop.setText("Net is PBNI+");
 				else
 					prop.setText("Net is not PBNI+");
+				parent.getNet().updateNodesProperties();
 			}
 		
 	}
