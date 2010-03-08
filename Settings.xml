@@ -4,6 +4,6 @@
 <gridSize>35</gridSize>
 <showNodesName>true</showNodesName>
 <compareMode>true</compareMode>
-<startingDir>/home/sh0t/PNSC/BSNNIbutNOTSBNDC.pnml</startingDir>
+<startingDir>/home/sh0t/PNSC/BSNNIbutNOTPBNI+.pnml</startingDir>
 <executionDelay>600</executionDelay>
 </settings>

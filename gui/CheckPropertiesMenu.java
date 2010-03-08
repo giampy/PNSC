@@ -373,6 +373,11 @@ public class CheckPropertiesMenu extends JMenu implements ItemListener, Closeabl
 			public void actionPerformed(ActionEvent e) {
 				PositivePBNIResult res=new PositivePBNIResult();
 				boolean	value=Check.PositivePBNI(mainPane.getNet(), res);
+				mainPane.getNet().showIfAnyPotentialCausal(res.getPotentialCausal());
+				mainPane.getNet().showIfAnyPotentialConflict(res.getPotentialConflict());
+				mainPane.getNet().showIfAnyActiveCausal(res.getActiveCausal());
+				mainPane.getNet().showIfAnyActiveConflict(res.getActiveConflict());
+				mainPane.repaint();
 			JOptionPane.showMessageDialog(mainPane, "Net is " + (value ? "" : "not ") + "PBNI+",
 					"PBNI+ Property",JOptionPane.INFORMATION_MESSAGE);
 			
