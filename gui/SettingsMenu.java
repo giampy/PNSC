@@ -54,6 +54,7 @@ public class SettingsMenu extends JMenu implements Closeable {
         		mainPane.getToolbar().createUpdateCheckBar();
         	 }
          });
+         modeCheckingMenu.setSelected(true);
 		 return modeCheckingMenu;
 	}
 	
