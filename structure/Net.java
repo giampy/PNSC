@@ -1,4 +1,5 @@
 package structure;
+
 import geom.ArcSketch;
 import geom.Dir;
 import geom.SelectingArea;
@@ -215,7 +216,9 @@ public class Net {
 	}
 	
 	public void fixInitialMarking() {
-		
+
+		if(!Properties.isCheckRealTimeOn())
+			zeroAllPlaces();
 		Vector<Place> oldInitialMarking = new Vector<Place>();
 		for (int i = 0; i < initialMarking.size(); i++) 
 			oldInitialMarking.add(initialMarking.get(i));
@@ -394,13 +397,11 @@ public class Net {
 			
 			Place place = findPlaceContaining(point);
 			if (place != null) {
-				
+				if(!Properties.isCheckRealTimeOn())
+					zeroAllPlaces();
 				place.addToken();
 				netHistory.addNet(this);
 				
-				if(!Properties.isCheckRealTimeOn())
-					for(int i=0; i<places.size(); ++i)
-						zeroAllPlaces();
 			}
 		} else if (composeMode.is(ComposeMode.DELETE)) {
 			
@@ -515,13 +516,16 @@ public class Net {
 					sketch = element;
 				else sketch = new ElementSet(selected, element);
 			} else sketch = new SelectingArea(point, this);
-		} else if (composeMode.is(ComposeMode.ARC)) {
+		} 
+		else if (composeMode.is(ComposeMode.ARC)) {
 		
 			Element element = findWhoContains(point);
 			if (element != null) {
-				
-				if (element.isNode())
+				if (element.isNode()){
 					sketch = new ArcSketch(this, (Node)element);
+					if(!Properties.isCheckRealTimeOn())
+						zeroAllPlaces();	
+				}
 				else sketch = element;
 			}
 		} else {

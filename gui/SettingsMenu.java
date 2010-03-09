@@ -54,9 +54,10 @@ public class SettingsMenu extends JMenu implements Closeable {
         		
         		else
         			Properties.setCheckRealTime(false);
-        		
-        		mainPane.getToolbar().createUpdateCheckBar();
-        		mainPane.getNet().updateNodesProperties();
+        		if(mainPane.getToolbar()!=null && mainPane.getNet()!=null){
+        			mainPane.getToolbar().createUpdateCheckBar();
+        			mainPane.getNet().updateNodesProperties();
+        		}
         	 }
          });
          if(Properties.isCheckRealTimeOn())
