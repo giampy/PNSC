@@ -279,8 +279,17 @@ public class Net {
 		return maxDimension;
 	}
 	
-	public void compose(ComposeMode composeMode, Point point, boolean isCtrlDown) {
+	public void zeroAllPlaces(){
+		for(int i=0; i<places.size(); ++i){
+			places.get(i).propertyBox.setPotentialCausal(new Vector<Transition>());
+			places.get(i).propertyBox.setPotentialConflict(new Vector<Transition>());
+			places.get(i).propertyBox.setActiveCausal(new Vector<ActiveCase>());
+			places.get(i).propertyBox.setActiveConflict(new Vector<ActiveCase>());
+		}
+	}
 	
+	public void compose(ComposeMode composeMode, Point point, boolean isCtrlDown) {
+
 		if (composeMode.is(ComposeMode.SELECT)) {
 			
 			if (!isCtrlDown) {
@@ -316,27 +325,37 @@ public class Net {
 		
 		if (composeMode.is(ComposeMode.STATE) && noNodeInTheWay(point)) {
 			
+			if(!Properties.isCheckRealTimeOn())
+				zeroAllPlaces();
 			places.add(new Place(Grid.closestAllowedPoint(point), newId(Element.STATE)));
 			netHistory.addNet(this);
 		} 
 		else if (composeMode.is(ComposeMode.LOW_TRANSITION)) {
 			
+			
 			if (noNodeInTheWay(point)) {
 				
 				transitions.add(new Transition(Grid.closestAllowedPoint(point), Transition.LOW, newId(Element.TRANSITION)));
 				netHistory.addNet(this);
+				if(!Properties.isCheckRealTimeOn())
+					zeroAllPlaces();
 			} else {
 				
 				Element element = findWhoContains(point);
 				if (element != null && element.is(Element.TRANSITION) && !((Transition)element).isLow()){					
 					((Transition)element).setSecurityLevel(Transition.LOW);
 					netHistory.addNet(this);
+					if(!Properties.isCheckRealTimeOn())
+						zeroAllPlaces();
+					
 				}
 			}
 		} 
 		//aggiungiamo gestione downgrade transition 
 		else if (composeMode.is(ComposeMode.DOWNGRADE_TRANSITION)) {
 			if (noNodeInTheWay(point)) {
+				if(!Properties.isCheckRealTimeOn())
+					zeroAllPlaces();
 				transitions.add(new Transition(Grid.closestAllowedPoint(point), Transition.DOWNGRADE, newId(Element.TRANSITION)));
 				netHistory.addNet(this);
 			} else {
@@ -344,6 +363,9 @@ public class Net {
 				if (element != null && element.is(Element.TRANSITION) && !((Transition)element).isDowngrade()) {
 					((Transition)element).setSecurityLevel(Transition.DOWNGRADE);
 					netHistory.addNet(this);
+					if(!Properties.isCheckRealTimeOn())
+						zeroAllPlaces();
+					
 				}
 			}
 		}
@@ -354,11 +376,15 @@ public class Net {
 				
 				transitions.add(new Transition(Grid.closestAllowedPoint(point), Transition.HIGH, newId(Element.TRANSITION)));
 				netHistory.addNet(this);
+				if(!Properties.isCheckRealTimeOn())
+					zeroAllPlaces();
 			} else {
 				Element element = findWhoContains(point);//se sono in compose mode=HIGHTRANS e clicko su una bassa me la trasforma in alta...
 				if (element != null && element.is(Element.TRANSITION) && !((Transition)element).isHigh())  {
 					((Transition)element).setSecurityLevel(Transition.HIGH);
 					netHistory.addNet(this);
+					if(!Properties.isCheckRealTimeOn())
+						zeroAllPlaces();
 				}
 			}
 		} 
@@ -371,6 +397,10 @@ public class Net {
 				
 				place.addToken();
 				netHistory.addNet(this);
+				
+				if(!Properties.isCheckRealTimeOn())
+					for(int i=0; i<places.size(); ++i)
+						zeroAllPlaces();
 			}
 		} else if (composeMode.is(ComposeMode.DELETE)) {
 			
@@ -379,6 +409,8 @@ public class Net {
 				
 				toDelete.deleteFrom(this);
 				netHistory.addNet(this);
+				if(!Properties.isCheckRealTimeOn())
+					zeroAllPlaces();
 			}
 		}
 		
@@ -797,7 +829,7 @@ public class Net {
 	// Check Properties Methods
 	
 	public void updateNodesProperties() {
-	
+		
 		if (Properties.isCheckSimpleOn()) {
 			
 			Vector<Node> nodes = new Vector<Node>();
