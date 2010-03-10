@@ -14,6 +14,9 @@ import structure.Transition;
 
 public class Case extends Vector<Place> {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = -8690855404589186965L;
 	private Hashtable<Transition, Case> links = new Hashtable<Transition, Case>();
 	
@@ -139,12 +142,8 @@ public class Case extends Vector<Place> {
 		
 		return result + ">";
 	}
-	
-	public int getIntValue() {
-		int val=0;
-		for(int i=0; i<this.size(); ++i)
-			if(this.get(i).getTokens()==1)
-				val+=((int)Math.pow(2, i));
-		return val;
+	public int orderedValue(){
+		int value=0;
+		return value;
 	}
 }

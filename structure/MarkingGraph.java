@@ -3,8 +3,6 @@ package structure;
 
 
 import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.TreeMap;
 import java.util.Vector;
 
 import algo.Case;
@@ -12,27 +10,20 @@ import algo.Vertex;
 
 //prossima estensione utilizzare un TreeMap<K, V> per rendere più efficiente il tutto in termini
 //di complessità computazionale
-
-public class MarkingGraph extends TreeMap<Integer, Case> {
+public class MarkingGraph extends Vector<Case> {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 4736881335014091401L;
-	public MarkingGraph(Case initialMarking){
-		new MarkingGraph(initialMarking.toVector());
-	}
+
 	public MarkingGraph(Vector<Place> initialMarking) {
 		
 		super();
-		Case firstCase=new Case(initialMarking); 
 		
-		put(new Integer(firstCase.getIntValue()), firstCase);
+		add(new Case(initialMarking));
 		
-		Iterator<Integer>ite=this.keySet().iterator();
-		while(ite.hasNext()){
-			
-			Integer c= ite.next();
+		for(int c = 0; c < size(); c++) {
 			
 			Vector<Transition> enabledTransitions = get(c).getEnabledTransitions();
 			for (int e = 0; e < enabledTransitions.size(); e++) {
@@ -57,26 +48,24 @@ public class MarkingGraph extends TreeMap<Integer, Case> {
 					
 					Case newCase = new Case(places);
 					get(c).addLink(enabledTransitions.get(e), newCase);
-					put(new Integer(newCase.getIntValue()), newCase);
+					add(newCase);
 				}
 			}
 		}
-	
 	}
 	
 	public MarkingGraph(Vector<Place> initialMarking, boolean restrictionOnH) {
 		
 		super();
-		Case firstCase=new Case(initialMarking);
 		
-		put(new Integer(firstCase.getIntValue()), firstCase);
-		Iterator<Integer>ite=this.keySet().iterator();
-		while(ite.hasNext()){
-			Integer c= ite.next();
+		add(new Case(initialMarking));
+		
+		for(int c = 0; c < size(); c++) {
+			
 			Vector<Transition> enabledTransitions = get(c).getEnabledTransitions();
 			for (int e = 0; e < enabledTransitions.size(); e++) {
 
-				if (!restrictionOnH || enabledTransitions.get(e).isLow()) {
+				if (!restrictionOnH || !enabledTransitions.get(e).isHigh()) {
 
 					Vector<Node> newMarking = new Vector<Node>();
 					newMarking.addAll(get(c));
@@ -98,7 +87,7 @@ public class MarkingGraph extends TreeMap<Integer, Case> {
 
 						Case newCase = new Case(places);
 						get(c).addLink(enabledTransitions.get(e), newCase);
-						put(new Integer(newCase.getIntValue()), newCase);
+						add(newCase);
 					}
 				}
 			}
@@ -106,28 +95,22 @@ public class MarkingGraph extends TreeMap<Integer, Case> {
 	}
 	
 	private Case alreadyIn(Vector<Node> marking) {
-		Iterator<Integer>ite=this.keySet().iterator();
-		while(ite.hasNext()){
-			Integer c= ite.next();
+		
+		for (int c = 0; c < size(); c++)
 			if (get(c).containsAll(marking) && marking.containsAll(get(c)))
 				return get(c);
-			}
+		
 		return null;
 	}
 	
 	public Vector<Case> closestPathTo(Transition transition, Place place) {
 		
 		Hashtable<Case, Vertex> vertexes = new Hashtable<Case, Vertex>();
-		Iterator<Integer>ite=this.keySet().iterator();
-		while(ite.hasNext()){
-			Integer c= ite.next();
+		for (int c = 0; c < size(); c++) 
 			vertexes.put(get(c), new Vertex(get(c), c == 0));
-		}
 		
-		
-		Iterator<Integer>ite1=this.keySet().iterator();
-		while(ite1.hasNext()){
-			Integer c= ite1.next();
+		for (int c = 0; c < size(); c++) {
+			
 			Case thisCase = get(c);
 			Vertex vertex = vertexes.get(thisCase);
 			

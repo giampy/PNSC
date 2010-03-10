@@ -311,7 +311,7 @@ public class Check {
 			
 			Vector<Transition> transitions = state.getEnabledTransitions();
 			for (int t = 0; t < transitions.size(); t++) 
-				if (transitions.get(t).isLow())
+				if (!transitions.get(t).isHigh())//Non le alte... (Ma per per le downgrade come si comporta BSNNI?)
 					newState.linkTo(transTable.get(transitions.get(t)), stateTable2.get(state.goThrough(transitions.get(t))));
 		}
 		
