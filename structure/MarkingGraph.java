@@ -65,7 +65,7 @@ public class MarkingGraph extends Vector<Case> {
 			Vector<Transition> enabledTransitions = get(c).getEnabledTransitions();
 			for (int e = 0; e < enabledTransitions.size(); e++) {
 
-				if (!restrictionOnH || !enabledTransitions.get(e).isHigh()) {
+				if (!restrictionOnH || enabledTransitions.get(e).isLow()) {
 
 					Vector<Node> newMarking = new Vector<Node>();
 					newMarking.addAll(get(c));
