@@ -267,7 +267,6 @@ public class Check {
 	public static boolean BSNNI(Net net) {
 
 		MarkingGraph markingGraph1 = new MarkingGraph(net.getInitialMarking());
-
 		MarkingGraph markingGraph2 = new MarkingGraph(net.getInitialMarking(), true);
 		Hashtable<Transition, TransitionTemplate> transTable = new Hashtable<Transition, TransitionTemplate>();
 		Vector<Transition> netTransitions = net.getTransitions();
@@ -315,7 +314,8 @@ public class Check {
 					newState.linkTo(transTable.get(transitions.get(t)), stateTable2.get(state.goThrough(transitions.get(t))));
 		}
 		
-		if (lowViewBisimilar(stateTable1.get(markingGraph1.get(0)), stateTable2.get(markingGraph2.get(0))))
+		if (lowViewBisimilar(stateTable1.get(markingGraph1.get(0)), 
+				stateTable2.get(markingGraph2.get(0))))
 			return true;
 		else return false;
 	}

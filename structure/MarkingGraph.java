@@ -12,9 +12,6 @@ import algo.Vertex;
 //di complessità computazionale
 public class MarkingGraph extends Vector<Case> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4736881335014091401L;
 
 	public MarkingGraph(Vector<Place> initialMarking) {

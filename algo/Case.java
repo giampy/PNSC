@@ -142,8 +142,13 @@ public class Case extends Vector<Place> {
 		
 		return result + ">";
 	}
-	public int orderedValue(){
-		int value=0;
-		return value;
+	
+	
+	public int getIntValue(){
+		int ret=0;
+		for(int i=0; i<this.size(); ++i)
+			ret+= this.get(i).getTokens()==1 ?Math.pow(2, i):0;
+		return ret;
 	}
+	
 }
