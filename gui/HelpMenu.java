@@ -5,20 +5,20 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
-import javax.swing.JFileChooser;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
-import structure.Net;
-import xml.Settings;
-import xml.XMLDocument;
 
 
 
 public class HelpMenu extends JMenu {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3375921014569944071L;
 
 	public HelpMenu() {
 		

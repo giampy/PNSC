@@ -11,6 +11,10 @@ import structure.Net;
 
 public class MainPane extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -718962506484803989L;
 	private ToolBar toolBar;
 	private MultiNetPane multiNetPane;
 	

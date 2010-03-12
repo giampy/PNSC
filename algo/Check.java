@@ -270,7 +270,7 @@ public class Check {
 		MarkingGraph markingGraph2 = new MarkingGraph(net.getInitialMarking(), true);
 		Hashtable<Transition, TransitionTemplate> transTable = new Hashtable<Transition, TransitionTemplate>();
 		Vector<Transition> netTransitions = net.getTransitions();
-		for (int t = 0; t < netTransitions.size(); t++) 
+		for (int t = 0; t < netTransitions.size(); t++)
 			transTable.put(netTransitions.get(t), new TransitionTemplate(netTransitions.get(t).getId(), netTransitions.get(t).isHigh()));
 		
 		Hashtable<Case, CaseTemplate> stateTable1 = new Hashtable<Case, CaseTemplate>();
@@ -317,6 +317,8 @@ public class Check {
 		if (lowViewBisimilar(stateTable1.get(markingGraph1.get(0)), 
 				stateTable2.get(markingGraph2.get(0))))
 			return true;
+		/*Si potrebbe pensare di overloadare il metodo get che quando prende un INTERO i ritorna l'iesimo elemento
+		 * o forse è una soluzione sbagliata a priori*/	
 		else return false;
 	}
 	
@@ -325,7 +327,7 @@ public class Check {
 		MarkingGraph markingGraph = new MarkingGraph(net.getInitialMarking());
 		//MarkingGraph markingGraph1 = new MarkingGraph(net.getInitialMarking());
 		MarkingGraph markingGraph2 = new MarkingGraph(net.getInitialMarking());
-		
+		Iterator<Integer>	ite;
 		Hashtable<Transition, TransitionTemplate> transTable = new Hashtable<Transition, TransitionTemplate>();
 		Vector<Transition> netTransitions = net.getTransitions();
 		
@@ -339,8 +341,9 @@ public class Check {
 		//Passo  dai case del makingGraph a dei più leggeri CaseTemplate
 		Hashtable<Case, CaseTemplate> caseTable1 = new Hashtable<Case, CaseTemplate>();
 		Hashtable<Case, CaseTemplate> caseTable2 = new Hashtable<Case, CaseTemplate>();
-		for (int mg = 0; mg < markingGraph2.size(); mg++) {
-
+		ite=markingGraph2.keySet().iterator();
+		while(ite.hasNext()){
+			Integer mg=ite.next();
 			Case state = markingGraph.get(mg);
 			
 			if (caseTable1.get(state) == null)
@@ -374,8 +377,9 @@ public class Check {
 		}
 		
 		boolean SBNDC = true;
-		
-		for (int m = 0; m < markingGraph.size(); m++) {
+		ite=markingGraph.keySet().iterator();
+		while(ite.hasNext()){
+			Integer m=ite.next();
 			
 			Case marking = markingGraph.get(m);
 			
@@ -386,6 +390,7 @@ public class Check {
 				if (enabled.isHigh()) {
 					
 					Case nextMarking = marking.goThrough(enabled);
+					//Problema caseTable2.get(nextMarking)==null
 					if (!lowViewBisimilar(caseTable1.get(marking), caseTable2.get(nextMarking)))
 						SBNDC = false;
 				}
@@ -401,7 +406,7 @@ public class Check {
 		
 		couples.add(new Couple(s1, s2));
 		//la size di couples viene modificata nel ciclo
-		// è una specie di visita breadth-first con pila
+		//è una specie di visita breadth-first con pila
 		for (int co = 0; co < couples.size(); co++) {
 			Couple couple = couples.get(co);
 			Hashtable<TransitionTemplate, Vector<CaseTemplate>> firstReach = couple.first.reachLow();

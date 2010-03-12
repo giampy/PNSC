@@ -26,6 +26,10 @@ import structure.Place;
 
 public class NetPanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6072274640530799462L;
 	private Net net;
 	private MainPane mainPane;
 	private final ToolBar toolbar;

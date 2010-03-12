@@ -5,6 +5,11 @@ import javax.swing.JOptionPane;
 
 public class IntegerDialog extends JOptionPane {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1499213355920289491L;
+
 	public static int open(String message, int initialValue) {
 		
 		String result = null;

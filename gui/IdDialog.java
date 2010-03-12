@@ -9,6 +9,11 @@ import structure.Net;
 
 public class IdDialog extends JOptionPane {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1384267676566622085L;
+
 	public static String open(Net net, String message, String initialValue) {
 		
 		String result = null;

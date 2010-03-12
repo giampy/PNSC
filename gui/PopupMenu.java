@@ -3,7 +3,7 @@ package gui;
 
 
 
-import java.awt.Component;
+
 
 
 import javax.swing.JPopupMenu;
@@ -13,6 +13,10 @@ import structure.Net;
 
 public class PopupMenu extends JPopupMenu {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3625695005126865409L;
 	protected Net net;
 	protected NetPanel netPanel;
 	

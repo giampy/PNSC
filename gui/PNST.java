@@ -2,14 +2,14 @@ package gui;
 
 
 
-import java.awt.Point;
+//import java.awt.Point;
 import java.util.Locale;
-import java.util.TreeMap;
-import java.util.Vector;
+//import java.util.TreeMap;
+//import java.util.Vector;
 
-import structure.Place;
+//import structure.Place;
 
-import algo.Case;
+//import algo.Case;
 
 import xml.Properties;
 import xml.Settings;
@@ -27,6 +27,7 @@ public class PNST {
 			
 			Settings.retrieve();
 			Properties.retrieve();
+			@SuppressWarnings("unused")
 			Window window = new Window("Petri Net Security Checker");
 			/*TreeMap<Integer, Case>	tree=new TreeMap<Integer, Case>();
 			Case	c1;

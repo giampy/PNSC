@@ -215,6 +215,7 @@ public class XMLDocument {
 		return 0;
 	}
 	
+	@SuppressWarnings("unused")
 	private boolean extractLevel(XMLTree tree) {
 		
 		for (int c = 0; c < tree.children().size(); c++)

@@ -3,7 +3,6 @@ package gui;
 
 
 import java.awt.Desktop;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -15,10 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
-import javax.swing.JTextField;
 import javax.swing.JToolBar;
-import javax.swing.SwingConstants;
+
 
 import algo.Check;
 
@@ -179,6 +176,7 @@ public class ToolBar extends JToolBar {
 		return button;
 	}
 
+	@SuppressWarnings("unused")
 	private JButton saveAsButton() {
 		
 		JButton button = new JButton(new ImageIcon("toolbarButtonGraphics/general/SaveAs16.gif"));

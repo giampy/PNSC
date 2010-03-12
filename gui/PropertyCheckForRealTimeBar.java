@@ -3,17 +3,14 @@ package gui;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Enumeration;
-import java.util.Hashtable;
-import java.util.Vector;
+
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 
-import structure.Place;
+
 import structure.PositivePBNIResult;
-import structure.Transition;
 
 import algo.Check;
 

@@ -9,7 +9,12 @@ import javax.swing.event.ChangeListener;
 
 public class TabbedPane extends JTabbedPane implements ChangeListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3169403005084431202L;
 	private MainPane mainPane;
+	@SuppressWarnings("unused")
 	private boolean ignoreStateChanges = false;
 	
 	public TabbedPane(final MainPane mainPane) {

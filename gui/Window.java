@@ -16,6 +16,10 @@ import xml.Settings;
 
 public class Window extends JFrame implements WindowListener {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5475318375050607243L;
 	private MenuBar menuBar;
 	private MainPane mainPane;
 	

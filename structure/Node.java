@@ -102,7 +102,7 @@ public abstract class Node extends Element {
 	public void moveTarget(Point point) {
 
 		position = Grid.closestAllowedPoint(point);
-		Point offset = new Point((position.x - lastStablePosition.x) / 2, (position.y - lastStablePosition.y)/ 2);
+		//Point offset = new Point((position.x - lastStablePosition.x) / 2, (position.y - lastStablePosition.y)/ 2);
 		shape.setPosition(position);
 		
 		for (int a = 0; a < arcs.size(); a++) 

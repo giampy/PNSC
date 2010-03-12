@@ -8,6 +8,11 @@ import javax.swing.JScrollPane;
 
 public class MultiTabPane extends TabbedPane implements MultiNet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4349781204098752855L;
+
 	public MultiTabPane(final MainPane mainPane) {
 		
 		super(mainPane);

@@ -22,6 +22,10 @@ import xml.XMLDocument;
 
 public class MultiNetPane extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4958303666027725612L;
 	private MainPane mainPane;
 	private MultiNet multiNet;
 	private Vector<NetPanel> nets = new Vector<NetPanel>();
