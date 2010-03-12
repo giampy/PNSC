@@ -17,7 +17,6 @@ import java.awt.geom.Rectangle2D;
 import java.io.File;
 import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
 
@@ -1066,11 +1065,9 @@ public class Net {
 			Vector<Transition> firedTransitions = new Vector<Transition>();
 
 			MarkingGraph mg = new MarkingGraph(this.getInitialMarking());
-			Iterator<Integer>	ite=mg.keySet().iterator();
-			while(ite.hasNext()){
-				Integer	c=ite.next();
+			for (int c = 0; c < mg.size(); c++) 
 				firedTransitions.addAll(mg.get(c).getEnabledTransitions());
-			}
+
 			for (int t = 0; t < transitions.size(); t++)
 				if (!firedTransitions.contains(transitions.get(t)))
 					notReduced.add(transitions.get(t));
@@ -1084,9 +1081,7 @@ public class Net {
 		Hashtable<Transition, Vector<Case>> contacts = new Hashtable<Transition, Vector<Case>>();
 		
 		MarkingGraph mg = new MarkingGraph(this.getInitialMarking());
-		Iterator<Integer>	ite=mg.keySet().iterator();
-		while(ite.hasNext()){
-			Integer	c=ite.next();
+		for (int c = 0; c < mg.size(); c++) {
 			
 			Vector<Transition> caseContacts = mg.get(c).getContacts();
 			for (int t = 0; t < caseContacts.size(); t++) {

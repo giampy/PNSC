@@ -327,7 +327,7 @@ public class Check {
 		MarkingGraph markingGraph = new MarkingGraph(net.getInitialMarking());
 		//MarkingGraph markingGraph1 = new MarkingGraph(net.getInitialMarking());
 		MarkingGraph markingGraph2 = new MarkingGraph(net.getInitialMarking());
-		Iterator<Integer>	ite;
+		
 		Hashtable<Transition, TransitionTemplate> transTable = new Hashtable<Transition, TransitionTemplate>();
 		Vector<Transition> netTransitions = net.getTransitions();
 		
@@ -341,9 +341,8 @@ public class Check {
 		//Passo  dai case del makingGraph a dei più leggeri CaseTemplate
 		Hashtable<Case, CaseTemplate> caseTable1 = new Hashtable<Case, CaseTemplate>();
 		Hashtable<Case, CaseTemplate> caseTable2 = new Hashtable<Case, CaseTemplate>();
-		ite=markingGraph2.keySet().iterator();
-		while(ite.hasNext()){
-			Integer mg=ite.next();
+		for (int mg = 0; mg < markingGraph2.size(); mg++) {
+
 			Case state = markingGraph.get(mg);
 			
 			if (caseTable1.get(state) == null)
@@ -377,9 +376,8 @@ public class Check {
 		}
 		
 		boolean SBNDC = true;
-		ite=markingGraph.keySet().iterator();
-		while(ite.hasNext()){
-			Integer m=ite.next();
+		
+		for (int m = 0; m < markingGraph.size(); m++) {
 			
 			Case marking = markingGraph.get(m);
 			
@@ -390,7 +388,6 @@ public class Check {
 				if (enabled.isHigh()) {
 					
 					Case nextMarking = marking.goThrough(enabled);
-					//Problema caseTable2.get(nextMarking)==null
 					if (!lowViewBisimilar(caseTable1.get(marking), caseTable2.get(nextMarking)))
 						SBNDC = false;
 				}
