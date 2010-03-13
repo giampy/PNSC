@@ -43,10 +43,10 @@ public class MarkingGraph extends Vector<Case> {
 				newMarking.addAll(get(c));
 				newMarking.removeAll(enabledTransitions.get(e).preset());
 				newMarking.addAll(enabledTransitions.get(e).postset());
-		
-				if (alreadyInTree(newMarking) != null) { //forse è questa procedura di lookUp che alza a manetta la complessità
+				Case tmp=alreadyInTree(newMarking);
+				if (tmp != null) { //forse è questa procedura di lookUp che alza a manetta la complessità
 													//anzi senza forse.
-					Case newCase = alreadyInTree(newMarking);
+					Case newCase = tmp;
 					if (!get(c).isLinkedTo(newCase)) 
 						get(c).addLink(enabledTransitions.get(e), newCase);
 					
@@ -85,10 +85,10 @@ public class MarkingGraph extends Vector<Case> {
 					newMarking.addAll(get(c));
 					newMarking.removeAll(enabledTransitions.get(e).preset());
 					newMarking.addAll(enabledTransitions.get(e).postset());
-				
-					if (alreadyInTree(newMarking) != null) {
+					Case tmp=alreadyInTree(newMarking);
+					if (tmp != null) {
 			
-						Case newCase = alreadyInTree(newMarking);
+						Case newCase = tmp;
 						if (!get(c).isLinkedTo(newCase)) {
 
 							get(c).addLink(enabledTransitions.get(e), newCase);
