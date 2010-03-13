@@ -3,23 +3,37 @@ package structure;
 
 
 import java.util.Hashtable;
+import java.util.TreeMap;
 import java.util.Vector;
 
 import algo.Case;
 import algo.Vertex;
 
-//prossima estensione utilizzare un TreeMap<Integer, Case> per rendere più efficiente il tutto in termini
-//di complessità computazionale
 
 public class MarkingGraph extends Vector<Case> {
 
 	private static final long serialVersionUID = 4736881335014091401L;
+
+	private	Case	firstCase;
+	private TreeMap<String, Case> tree;
 	
+	public Case getFirstCase() {
+		return firstCase;
+	}
+
+	public void setFirstCase(Case firstCase) {
+		this.firstCase = firstCase;
+	}
+
 	public MarkingGraph(Vector<Place> initialMarking) {
 		
 		super();
+		tree=new TreeMap<String, Case>();
+		this.setFirstCase(new Case(initialMarking));
+		tree.put(this.getFirstCase().getOrderedValue(), this.getFirstCase());
 		
-		add(new Case(initialMarking));
+		add(this.getFirstCase());
+		
 		for(int c = 0; c < size(); c++) {
 			
 			Vector<Transition> enabledTransitions = get(c).getEnabledTransitions();
@@ -29,10 +43,10 @@ public class MarkingGraph extends Vector<Case> {
 				newMarking.addAll(get(c));
 				newMarking.removeAll(enabledTransitions.get(e).preset());
 				newMarking.addAll(enabledTransitions.get(e).postset());
-				
-				if (alreadyIn(newMarking) != null) {
-					
-					Case newCase = alreadyIn(newMarking);
+		
+				if (alreadyInTree(newMarking) != null) { //forse è questa procedura di lookUp che alza a manetta la complessità
+													//anzi senza forse.
+					Case newCase = alreadyInTree(newMarking);
 					if (!get(c).isLinkedTo(newCase)) 
 						get(c).addLink(enabledTransitions.get(e), newCase);
 					
@@ -45,6 +59,7 @@ public class MarkingGraph extends Vector<Case> {
 					Case newCase = new Case(places);
 					get(c).addLink(enabledTransitions.get(e), newCase);
 					add(newCase);
+					tree.put(newCase.getOrderedValue(), newCase);
 				}
 			}
 		}
@@ -53,9 +68,12 @@ public class MarkingGraph extends Vector<Case> {
 	public MarkingGraph(Vector<Place> initialMarking, boolean restrictionOnH) {
 		
 		super();
+		this.setFirstCase(new Case(initialMarking));
+		tree=new TreeMap<String, Case>();
 		
-		add(new Case(initialMarking));
-		
+		add(this.getFirstCase());
+		tree.put(this.getFirstCase().getOrderedValue(), this.getFirstCase());
+
 		for(int c = 0; c < size(); c++) {
 			
 			Vector<Transition> enabledTransitions = get(c).getEnabledTransitions();
@@ -67,10 +85,10 @@ public class MarkingGraph extends Vector<Case> {
 					newMarking.addAll(get(c));
 					newMarking.removeAll(enabledTransitions.get(e).preset());
 					newMarking.addAll(enabledTransitions.get(e).postset());
-
-					if (alreadyIn(newMarking) != null) {
-
-						Case newCase = alreadyIn(newMarking);
+				
+					if (alreadyInTree(newMarking) != null) {
+			
+						Case newCase = alreadyInTree(newMarking);
 						if (!get(c).isLinkedTo(newCase)) {
 
 							get(c).addLink(enabledTransitions.get(e), newCase);
@@ -83,16 +101,24 @@ public class MarkingGraph extends Vector<Case> {
 
 						Case newCase = new Case(places);
 						get(c).addLink(enabledTransitions.get(e), newCase);
+						tree.put(newCase.getOrderedValue(), newCase);
 						add(newCase);
 					}
 				}
 			}
 		}
 	}
+	private Case alreadyInTree(Vector<Node> marking) {
+		Vector <Place>vecP=new Vector<Place>();
 	
-	private Case alreadyIn(Vector<Node> marking) {
+		for(int i=0; i<marking.size(); ++i)
+			if(marking.get(i) instanceof Place)
+				vecP.add((Place) marking.get(i));
+		return tree.get(new Case(vecP).getOrderedValue());//O(p)
 		
-		for (int c = 0; c < size(); c++)
+	}
+	private Case alreadyIn(Vector<Node> marking) {
+		for (int c = 0; c < size(); c++)//O(2^p)
 			if (get(c).containsAll(marking) && marking.containsAll(get(c)))
 				return get(c);
 		

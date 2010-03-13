@@ -12,22 +12,22 @@ import structure.Place;
 import structure.Transition;
 
 
-public class Case extends Vector<Place> {
+public class Case extends Vector<Place>{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8690855404589186965L;
 	private Hashtable<Transition, Case> links = new Hashtable<Transition, Case>();
 	
+
 	public Case() {
 		
 		super();
+	
 	}
 	
 	public Case(Vector<Place> places) {
 		
 		super(places);
+		
 	}
 	
 	public Vector<Place> toVector() {
@@ -143,12 +143,12 @@ public class Case extends Vector<Place> {
 		return result + ">";
 	}
 	
-	
-	public int getIntValue(){
-		int ret=0;
-		for(int i=0; i<this.size(); ++i)
-			ret+= this.get(i).getTokens()==1 ?Math.pow(2, i):0;
-		return ret;
+	public String getOrderedValue(){
+		String str="";
+		for(int i=0; i<size(); ++i)
+			str+=get(i).toString()+(get(i).getTokens()==1?"1":"0");
+		return str;
 	}
+	
 	
 }
