@@ -42,8 +42,14 @@ public class Vertex {
 	}
 	
 	public void addLink(Transition transition, Vertex vertex) {
-		
-		links.put(transition, vertex);
+
+		try {
+			links.put(transition, vertex);
+			
+		}catch (Exception e) {
+			System.out.println (transition + "   " + vertex);
+			e.printStackTrace();
+		}
 		vertex.mark(this, transition);
 	}
 	

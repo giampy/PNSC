@@ -108,7 +108,6 @@ public class Check {
 			Vector<ActiveCase> cases = new Vector<ActiveCase>();
 			for (int h = 0; h < high.size(); h++) 
 				for (int l = 0; l < low.size(); l++) {
-
 					Vector<ActiveCase> hlCases = checkActiveCausal(markingGraph, 
 														place, high.get(h), low.get(l));
 					if (hlCases.size() > 0)
@@ -299,7 +298,8 @@ public class Check {
 			
 			Vector<Transition> transitions = state.getEnabledTransitions();
 			for (int t = 0; t < transitions.size(); t++) 
-				newState.linkTo(transTable.get(transitions.get(t)), stateTable1.get(state.goThrough(transitions.get(t))));
+				newState.linkTo(transTable.get(transitions.get(t)), 
+						stateTable1.get(state.goThrough(transitions.get(t))));
 		}
 		
 		Enumeration<Case> stEnum2 = stateTable2.keys();

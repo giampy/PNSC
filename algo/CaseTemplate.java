@@ -24,7 +24,7 @@ public class CaseTemplate {
 		links.put(transition, state);
 		} catch (Exception e) {
 			System.out.println (transition + "   " + state);
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 	
