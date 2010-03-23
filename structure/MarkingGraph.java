@@ -35,7 +35,6 @@ public class MarkingGraph extends Vector<Case> {
 		add(this.getFirstCase());
 		
 		for(int c = 0; c < size(); c++) {
-			
 			Vector<Transition> enabledTransitions = get(c).getEnabledTransitions();
 			for (int e = 0; e < enabledTransitions.size(); e++) {
 				

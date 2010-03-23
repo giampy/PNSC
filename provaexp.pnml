@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><pnml><net><place id="p0"><graphics><position x="595" y="70"/>
+</graphics>
+<initialMarking><value>1</value>
+</initialMarking>
+</place>
+<place id="p1"><graphics><position x="455" y="210"/>
+</graphics>
+</place>
+<place id="p2"><graphics><position x="525" y="210"/>
+</graphics>
+</place>
+<place id="p3"><graphics><position x="595" y="210"/>
+</graphics>
+</place>
+<place id="p4"><graphics><position x="665" y="210"/>
+</graphics>
+</place>
+<place id="p5"><graphics><position x="735" y="210"/>
+</graphics>
+</place>
+<place id="p6"><graphics><position x="35" y="315"/>
+</graphics>
+</place>
+<place id="p7"><graphics><position x="105" y="315"/>
+</graphics>
+</place>
+<place id="p8"><graphics><position x="175" y="315"/>
+</graphics>
+</place>
+<place id="p9"><graphics><position x="245" y="315"/>
+</graphics>
+</place>
+<place id="p10"><graphics><position x="315" y="315"/>
+</graphics>
+</place>
+<place id="p11"><graphics><position x="385" y="315"/>
+</graphics>
+</place>
+<place id="p12"><graphics><position x="455" y="315"/>
+</graphics>
+</place>
+<place id="p13"><graphics><position x="525" y="315"/>
+</graphics>
+</place>
+<place id="p14"><graphics><position x="595" y="315"/>
+</graphics>
+</place>
+<place id="p15"><graphics><position x="665" y="315"/>
+</graphics>
+</place>
+<place id="p16"><graphics><position x="735" y="315"/>
+</graphics>
+</place>
+<place id="p17"><graphics><position x="805" y="315"/>
+</graphics>
+</place>
+<place id="p18"><graphics><position x="875" y="315"/>
+</graphics>
+</place>
+<place id="p19"><graphics><position x="945" y="315"/>
+</graphics>
+</place>
+<place id="p20"><graphics><position x="1015" y="315"/>
+</graphics>
+</place>
+<place id="p21"><graphics><position x="1085" y="315"/>
+</graphics>
+</place>
+<place id="p22"><graphics><position x="1155" y="315"/>
+</graphics>
+</place>
+<place id="p23"><graphics><position x="1225" y="315"/>
+</graphics>
+</place>
+<place id="p24"><graphics><position x="1190" y="245"/>
+</graphics>
+</place>
+<place id="p25"><graphics><position x="1155" y="175"/>
+</graphics>
+</place>
+<transition id="t0"><graphics><position x="595" y="140"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="t1"><graphics><position x="455" y="245"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="t2"><graphics><position x="525" y="245"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="t3"><graphics><position x="595" y="245"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="t4"><graphics><position x="665" y="245"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="t5"><graphics><position x="735" y="245"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<arc id="a0" source="t1" target="p6"><graphics><position x="245" y="280"/>
+</graphics>
+</arc>
+<arc id="a1" source="t1" target="p7"><graphics><position x="285" y="279"/>
+</graphics>
+</arc>
+<arc id="a2" source="t1" target="p8"><graphics><position x="315" y="280"/>
+</graphics>
+</arc>
+<arc id="a3" source="t1" target="p9"><graphics><position x="353" y="279"/>
+</graphics>
+</arc>
+<arc id="a4" source="t2" target="p10"><graphics><position x="423" y="279"/>
+</graphics>
+</arc>
+<arc id="a5" source="t2" target="p11"><graphics><position x="457" y="279"/>
+</graphics>
+</arc>
+<arc id="a6" source="t2" target="p12"><graphics><position x="490" y="280"/>
+</graphics>
+</arc>
+<arc id="a7" source="t2" target="p13"><graphics><position x="525" y="280"/>
+</graphics>
+</arc>
+<arc id="a8" source="t3" target="p14"><graphics><position x="595" y="280"/>
+</graphics>
+</arc>
+<arc id="a9" source="t3" target="p15"><graphics><position x="630" y="280"/>
+</graphics>
+</arc>
+<arc id="a10" source="t3" target="p16"><graphics><position x="663" y="279"/>
+</graphics>
+</arc>
+<arc id="a11" source="t3" target="p17"><graphics><position x="698" y="279"/>
+</graphics>
+</arc>
+<arc id="a12" source="t4" target="p18"><graphics><position x="768" y="279"/>
+</graphics>
+</arc>
+<arc id="a13" source="t4" target="p19"><graphics><position x="805" y="280"/>
+</graphics>
+</arc>
+<arc id="a14" source="t4" target="p20"><graphics><position x="838" y="279"/>
+</graphics>
+</arc>
+<arc id="a15" source="t4" target="p21"><graphics><position x="875" y="280"/>
+</graphics>
+</arc>
+<arc id="a16" source="t5" target="p22"><graphics><position x="945" y="280"/>
+</graphics>
+</arc>
+<arc id="a17" source="t5" target="p23"><graphics><position x="980" y="280"/>
+</graphics>
+</arc>
+<arc id="a18" source="t5" target="p24"><graphics><position x="962" y="245"/>
+</graphics>
+</arc>
+<arc id="a19" source="t5" target="p25"><graphics><position x="945" y="210"/>
+</graphics>
+</arc>
+<arc id="a20" source="p5" target="t5"><graphics><position x="735" y="227"/>
+</graphics>
+</arc>
+<arc id="a21" source="p4" target="t4"><graphics><position x="665" y="227"/>
+</graphics>
+</arc>
+<arc id="a22" source="p3" target="t3"><graphics><position x="595" y="227"/>
+</graphics>
+</arc>
+<arc id="a23" source="p1" target="t1"><graphics><position x="455" y="227"/>
+</graphics>
+</arc>
+<arc id="a24" source="p2" target="t2"><graphics><position x="525" y="227"/>
+</graphics>
+</arc>
+<arc id="a25" source="t0" target="p1"><graphics><position x="527" y="174"/>
+</graphics>
+</arc>
+<arc id="a26" source="t0" target="p3"><graphics><position x="595" y="175"/>
+</graphics>
+</arc>
+<arc id="a27" source="t0" target="p2"><graphics><position x="560" y="175"/>
+</graphics>
+</arc>
+<arc id="a28" source="t0" target="p4"><graphics><position x="630" y="175"/>
+</graphics>
+</arc>
+<arc id="a29" source="t0" target="p5"><graphics><position x="663" y="174"/>
+</graphics>
+</arc>
+<arc id="a30" source="p0" target="t0"><graphics><position x="595" y="105"/>
+</graphics>
+</arc>
+</net>
+</pnml>
