@@ -50,7 +50,6 @@ public class PropertyCheckForRealTimeBar extends EditingModeBar{
 			button.setEnabled(false);
 		button.addActionListener(new ActionListener(){
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				JButton	item;
