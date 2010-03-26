@@ -4,6 +4,6 @@
 <gridSize>35</gridSize>
 <showNodesName>true</showNodesName>
 <compareMode>true</compareMode>
-<startingDir>/home/sh0t/PNSC/accessMonitor.pnml</startingDir>
+<startingDir>/home/sh0t/PNSC/ObjectH.pnml</startingDir>
 <executionDelay>600</executionDelay>
 </settings>
