@@ -3,7 +3,7 @@
 <snapToGrid>true</snapToGrid>
 <gridSize>35</gridSize>
 <showNodesName>true</showNodesName>
-<compareMode>true</compareMode>
-<startingDir>/home/sh0t/PNSC/ObjectH.pnml</startingDir>
+<compareMode>false</compareMode>
+<startingDir>/home/sh0t/PNSC/sharedResWithoutDowngraders.pnml</startingDir>
 <executionDelay>600</executionDelay>
 </settings>

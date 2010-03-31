@@ -160,13 +160,14 @@ public class MarkingGraph extends Vector<Case> {
  					
  					return path;
  				}
- 				
+ 				System.out.println(this.toString()+ ": "+place.amIinASelfLoop());
  				if (!enabled.get(e).postset().contains(place)){
  					if(vertexes.get(thisCase.goThrough(enabled.get(e)))==null)
  						vertexes.put(thisCase.goThrough(enabled.get(e)), new Vertex(thisCase.goThrough(enabled.get(e)), false));
  					//assolutamente non sicuro della linea sopra da me aggiunta
  					vertex.addLink(enabled.get(e), vertexes.get(thisCase.goThrough(enabled.get(e))));
  					}
+ 				
  			}
 		}
 		

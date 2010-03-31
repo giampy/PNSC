@@ -102,17 +102,38 @@ public class Transition extends Node {
 	}
 	
 	public boolean isEnabled() {
+		Vector<Node> preset1 = preset();
+		Vector<Node> postset1 = postset();
+		Vector<Node> intersect = new Vector<Node>();
+		
+		for(int i=0; i<preset1.size(); ++i)
+			if(postset1.contains(preset1.get(i)))
+				intersect.add(preset1.get(i));
+		
+		for (int p = 0; p < intersect.size(); p++)
+			if (((Place)(intersect.get(p))).getTokens() < 1)
+				return false;
+		
 		
 		Vector<Node> preset = preset();
+		for (int p = 0; p < preset.size(); p++)
+			if(intersect.contains(preset.get(p)))
+				preset.remove(p);
 		for (int p = 0; p < preset.size(); p++)
 			if (((Place)(preset.get(p))).getTokens() < 1)
 				return false;
 		
 		Vector<Node> postset = postset();
 		for (int p = 0; p < postset.size(); p++)
+			if(intersect.contains(postset.get(p)))
+				postset.remove(p);
+		for (int p = 0; p < postset.size(); p++)
 			if (((Place)(postset.get(p))).getTokens() > 0)
 				return false;
-			
+		
+		
+		
+		
 		return explicitelyEnabled;
 	}
 	

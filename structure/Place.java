@@ -43,6 +43,17 @@ public class Place extends Node {
 	private JMenuItem activeCausalItem = activeCausalItem();
 	private JMenuItem activeConflictItem = activeConflictItem();
 	
+	public boolean amIinASelfLoop(){
+		for(int index=0; index<this.postset().size(); ++index){
+			for(int i=0; i<this.postset().get(index).postset().size(); ++i)
+						if ((Place)this.postset().get(index).postset().get(i) == this)
+							return true;	
+				}
+		return false;
+	}
+	
+	
+	
 	public Place(Point point, String id) {
 		
 		super(Element.STATE, id);
@@ -62,6 +73,7 @@ public class Place extends Node {
 		lastStablePosition = position;
 		shape = new Circle(point);
 		color = Color.BLUE;
+
 	}
 	
 	public Place(Place place) {
@@ -73,6 +85,8 @@ public class Place extends Node {
 		lastStablePosition = position;
 		shape = new Circle(position);
 		color = Color.BLUE;
+		
+
 	}
 	
 	public boolean isFilled(){
@@ -102,7 +116,6 @@ public class Place extends Node {
 	}
 		
 	public void paint(Graphics2D graphics) {
-		
 		if (((Properties.isCheckPotentialCausalOn() && propertyBox.isPotentialCausal()) || 
 				(Properties.isCheckPotentialConflictOn() && propertyBox.isPotentialConflict())) &&
 				

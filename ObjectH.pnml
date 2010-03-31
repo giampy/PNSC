@@ -43,11 +43,11 @@
 </place>
 <place id="Object00"><graphics><position x="245" y="735"/>
 </graphics>
-<initialMarking><value>1</value>
-</initialMarking>
 </place>
 <place id="Object01"><graphics><position x="1260" y="735"/>
 </graphics>
+<initialMarking><value>1</value>
+</initialMarking>
 </place>
 <place id="p11"><graphics><position x="1190" y="595"/>
 </graphics>
@@ -279,7 +279,7 @@
 <toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
 </toolspecific>
 </transition>
-<arc id="a0" source="Object10" target="Tau6"><graphics><position x="260" y="164"/>
+<arc id="a0" source="Object10" target="Tau6"><graphics><position x="260" y="165"/>
 </graphics>
 </arc>
 <arc id="a1" source="Tau6" target="_Object10"><graphics><position x="264" y="73"/>
@@ -288,10 +288,10 @@
 <arc id="a2" source="_Object10" target="R110"><graphics><position x="229" y="67"/>
 </graphics>
 </arc>
-<arc id="a3" source="R110" target="Object10"><graphics><position x="224" y="148"/>
+<arc id="a3" source="R110" target="Object10"><graphics><position x="224" y="147"/>
 </graphics>
 </arc>
-<arc id="a4" source="Object10" target="Tau5"><graphics><position x="291" y="240"/>
+<arc id="a4" source="Object10" target="Tau5"><graphics><position x="290" y="240"/>
 </graphics>
 </arc>
 <arc id="a5" source="Tau5" target="__Object10"><graphics><position x="333" y="314"/>
@@ -315,43 +315,43 @@
 <arc id="a11" source="W010" target="Object10"><graphics><position x="173" y="246"/>
 </graphics>
 </arc>
-<arc id="a15" source="HW1" target="Object11"><graphics><position x="1192" y="204"/>
+<arc id="a15" source="HW1" target="Object11"><graphics><position x="1192" y="203"/>
 </graphics>
 </arc>
 <arc id="a16" source="Object11" target="Tau8"><graphics><position x="1287" y="237"/>
 </graphics>
 </arc>
-<arc id="a17" source="Tau8" target="_Object11"><graphics><position x="1344" y="309"/>
+<arc id="a17" source="Tau8" target="_Object11"><graphics><position x="1344" y="308"/>
 </graphics>
 </arc>
-<arc id="a18" source="_Object11" target="W011"><graphics><position x="1378" y="322"/>
+<arc id="a18" source="_Object11" target="W011"><graphics><position x="1378" y="323"/>
 </graphics>
 </arc>
-<arc id="a19" source="W011" target="Object11"><graphics><position x="1343" y="252"/>
+<arc id="a19" source="W011" target="Object11"><graphics><position x="1344" y="252"/>
 </graphics>
 </arc>
 <arc id="a20" source="Object11" target="Tau9"><graphics><position x="1260" y="180"/>
 </graphics>
 </arc>
-<arc id="a21" source="Tau9" target="___Object11"><graphics><position x="1274" y="76"/>
+<arc id="a21" source="Tau9" target="___Object11"><graphics><position x="1274" y="77"/>
 </graphics>
 </arc>
-<arc id="a22" source="___Object11" target="W111"><graphics><position x="1308" y="63"/>
+<arc id="a22" source="___Object11" target="W111"><graphics><position x="1308" y="62"/>
 </graphics>
 </arc>
-<arc id="a23" source="W111" target="Object11"><graphics><position x="1301" y="149"/>
+<arc id="a23" source="W111" target="Object11"><graphics><position x="1301" y="148"/>
 </graphics>
 </arc>
-<arc id="a24" source="Object11" target="Tau7"><graphics><position x="1213" y="242"/>
+<arc id="a24" source="Object11" target="Tau7"><graphics><position x="1213" y="241"/>
 </graphics>
 </arc>
-<arc id="a25" source="R111" target="Object11"><graphics><position x="1237" y="256"/>
+<arc id="a25" source="R111" target="Object11"><graphics><position x="1236" y="256"/>
 </graphics>
 </arc>
-<arc id="a26" source="Tau7" target="__Object11"><graphics><position x="1168" y="308"/>
+<arc id="a26" source="Tau7" target="__Object11"><graphics><position x="1168" y="307"/>
 </graphics>
 </arc>
-<arc id="a27" source="__Object11" target="R111"><graphics><position x="1202" y="326"/>
+<arc id="a27" source="__Object11" target="R111"><graphics><position x="1201" y="326"/>
 </graphics>
 </arc>
 <arc id="a28" source="Object11" target="Tau1"><graphics><position x="1068" y="210"/>
@@ -363,34 +363,34 @@
 <arc id="a32" source="Object11" target="Tau3"><graphics><position x="1062" y="276"/>
 </graphics>
 </arc>
-<arc id="a34" source="p4" target="Tau6"><graphics><position x="392" y="199"/>
+<arc id="a34" source="p4" target="Tau6"><graphics><position x="393" y="199"/>
 </graphics>
 </arc>
-<arc id="a35" source="p4" target="Tau9"><graphics><position x="1002" y="307"/>
+<arc id="a35" source="p4" target="Tau9"><graphics><position x="1002" y="308"/>
 </graphics>
 </arc>
-<arc id="a36" source="p4" target="Tau8"><graphics><position x="1296" y="572"/>
+<arc id="a36" source="p4" target="Tau8"><graphics><position x="1295" y="572"/>
 </graphics>
 </arc>
 <arc id="a37" source="p4" target="Tau7"><graphics><position x="957" y="388"/>
 </graphics>
 </arc>
-<arc id="a38" source="R111" target="p4"><graphics><position x="1039" y="366"/>
+<arc id="a38" source="R111" target="p4"><graphics><position x="1255" y="508"/>
 </graphics>
 </arc>
-<arc id="a39" source="R110" target="p4"><graphics><position x="130" y="448"/>
+<arc id="a39" source="R110" target="p4"><graphics><position x="130" y="447"/>
 </graphics>
 </arc>
 <arc id="a40" source="p4" target="Tau5"><graphics><position x="564" y="387"/>
 </graphics>
 </arc>
-<arc id="a41" source="p4" target="Tau4"><graphics><position x="174" y="654"/>
+<arc id="a41" source="p4" target="Tau4"><graphics><position x="175" y="654"/>
 </graphics>
 </arc>
-<arc id="a42" source="W010" target="p4"><graphics><position x="190" y="696"/>
+<arc id="a42" source="W010" target="p4"><graphics><position x="190" y="695"/>
 </graphics>
 </arc>
-<arc id="a43" source="W110" target="p4"><graphics><position x="289" y="283"/>
+<arc id="a43" source="W110" target="p4"><graphics><position x="217" y="512"/>
 </graphics>
 </arc>
 <arc id="a44" source="Tau0" target="p5"><graphics><position x="734" y="140"/>
@@ -423,58 +423,58 @@
 <arc id="a53" source="LW0" target="Object10"><graphics><position x="482" y="210"/>
 </graphics>
 </arc>
-<arc id="a54" source="HW0" target="Object10"><graphics><position x="483" y="284"/>
+<arc id="a54" source="HW0" target="Object10"><graphics><position x="484" y="284"/>
 </graphics>
 </arc>
-<arc id="a55" source="Object10" target="Tau2"><graphics><position x="470" y="244"/>
+<arc id="a55" source="Object10" target="Tau2"><graphics><position x="469" y="244"/>
 </graphics>
 </arc>
-<arc id="a64" source="W111" target="p4"><graphics><position x="1349" y="502"/>
+<arc id="a64" source="W111" target="p4"><graphics><position x="1349" y="501"/>
 </graphics>
 </arc>
 <arc id="a65" source="W011" target="p4"><graphics><position x="1357" y="691"/>
 </graphics>
 </arc>
-<arc id="a66" source="p4" target="Tau3"><graphics><position x="778" y="383"/>
+<arc id="a66" source="p4" target="Tau3"><graphics><position x="778" y="384"/>
 </graphics>
 </arc>
-<arc id="a67" source="HW0" target="p4"><graphics><position x="780" y="393"/>
+<arc id="a67" source="HW0" target="p4"><graphics><position x="779" y="393"/>
 </graphics>
 </arc>
-<arc id="a68" source="p4" target="Tau2"><graphics><position x="647" y="368"/>
+<arc id="a68" source="p4" target="Tau2"><graphics><position x="648" y="368"/>
 </graphics>
 </arc>
-<arc id="a69" source="LW1" target="p4"><graphics><position x="912" y="316"/>
+<arc id="a69" source="LW1" target="p4"><graphics><position x="912" y="315"/>
 </graphics>
 </arc>
-<arc id="a70" source="p4" target="Tau1"><graphics><position x="968" y="327"/>
+<arc id="a70" source="p4" target="Tau1"><graphics><position x="967" y="328"/>
 </graphics>
 </arc>
-<arc id="a71" source="LW0" target="p4"><graphics><position x="551" y="296"/>
+<arc id="a71" source="LW0" target="p4"><graphics><position x="551" y="295"/>
 </graphics>
 </arc>
-<arc id="a72" source="p4" target="Tau0"><graphics><position x="479" y="263"/>
+<arc id="a72" source="p4" target="Tau0"><graphics><position x="480" y="263"/>
 </graphics>
 </arc>
 <arc id="a78" source="Object00" target="Tau15"><graphics><position x="194" y="701"/>
 </graphics>
 </arc>
-<arc id="a79" source="R100" target="Object00"><graphics><position x="225" y="697"/>
+<arc id="a79" source="R100" target="Object00"><graphics><position x="225" y="696"/>
 </graphics>
 </arc>
-<arc id="a82" source="Tau15" target="p15"><graphics><position x="155" y="633"/>
+<arc id="a82" source="Tau15" target="p15"><graphics><position x="155" y="634"/>
 </graphics>
 </arc>
-<arc id="a83" source="p15" target="R100"><graphics><position x="190" y="627"/>
+<arc id="a83" source="p15" target="R100"><graphics><position x="190" y="626"/>
 </graphics>
 </arc>
 <arc id="a86" source="Object01" target="Tau12"><graphics><position x="1243" y="769"/>
 </graphics>
 </arc>
-<arc id="a87" source="Tau12" target="p14"><graphics><position x="1240" y="837"/>
+<arc id="a87" source="Tau12" target="p14"><graphics><position x="1240" y="836"/>
 </graphics>
 </arc>
-<arc id="a88" source="p14" target="R101"><graphics><position x="1275" y="843"/>
+<arc id="a88" source="p14" target="R101"><graphics><position x="1275" y="844"/>
 </graphics>
 </arc>
 <arc id="a89" source="R101" target="Object01"><graphics><position x="1278" y="771"/>
@@ -492,19 +492,19 @@
 <arc id="a93" source="R001" target="Object01"><graphics><position x="1206" y="699"/>
 </graphics>
 </arc>
-<arc id="a94" source="Object01" target="Tau11"><graphics><position x="1275" y="703"/>
+<arc id="a94" source="Object01" target="Tau11"><graphics><position x="1275" y="704"/>
 </graphics>
 </arc>
-<arc id="a95" source="Tau11" target="p12"><graphics><position x="1310" y="633"/>
+<arc id="a95" source="Tau11" target="p12"><graphics><position x="1310" y="634"/>
 </graphics>
 </arc>
-<arc id="a96" source="p12" target="W001"><graphics><position x="1345" y="627"/>
+<arc id="a96" source="p12" target="W001"><graphics><position x="1345" y="626"/>
 </graphics>
 </arc>
-<arc id="a97" source="W001" target="Object01"><graphics><position x="1316" y="698"/>
+<arc id="a97" source="W001" target="Object01"><graphics><position x="1316" y="697"/>
 </graphics>
 </arc>
-<arc id="a98" source="Object00" target="Tau13"><graphics><position x="260" y="767"/>
+<arc id="a98" source="Object00" target="Tau13"><graphics><position x="260" y="766"/>
 </graphics>
 </arc>
 <arc id="a99" source="Tau13" target="p13"><graphics><position x="263" y="839"/>
@@ -513,10 +513,10 @@
 <arc id="a100" source="p13" target="R000"><graphics><position x="228" y="841"/>
 </graphics>
 </arc>
-<arc id="a101" source="R000" target="Object00"><graphics><position x="225" y="773"/>
+<arc id="a101" source="R000" target="Object00"><graphics><position x="225" y="774"/>
 </graphics>
 </arc>
-<arc id="a102" source="p4" target="Tau14"><graphics><position x="581" y="575"/>
+<arc id="a102" source="p4" target="Tau14"><graphics><position x="582" y="575"/>
 </graphics>
 </arc>
 <arc id="a103" source="Object00" target="Tau14"><graphics><position x="313" y="701"/>
@@ -531,34 +531,34 @@
 <arc id="a106" source="W000" target="Object00"><graphics><position x="280" y="700"/>
 </graphics>
 </arc>
-<arc id="a107" source="p4" target="Tau15"><graphics><position x="2" y="438"/>
+<arc id="a107" source="p4" target="Tau15"><graphics><position x="3" y="438"/>
 </graphics>
 </arc>
-<arc id="a108" source="W000" target="p4"><graphics><position x="540" y="579"/>
+<arc id="a108" source="W000" target="p4"><graphics><position x="485" y="759"/>
 </graphics>
 </arc>
-<arc id="a109" source="R100" target="p4"><graphics><position x="293" y="490"/>
+<arc id="a109" source="R100" target="p4"><graphics><position x="293" y="491"/>
 </graphics>
 </arc>
-<arc id="a110" source="p4" target="Tau13"><graphics><position x="527" y="646"/>
+<arc id="a110" source="p4" target="Tau13"><graphics><position x="528" y="646"/>
 </graphics>
 </arc>
-<arc id="a111" source="R000" target="p4"><graphics><position x="368" y="925"/>
+<arc id="a111" source="R000" target="p4"><graphics><position x="367" y="925"/>
 </graphics>
 </arc>
-<arc id="a112" source="p4" target="Tau12"><graphics><position x="995" y="646"/>
+<arc id="a112" source="p4" target="Tau12"><graphics><position x="1194" y="783"/>
 </graphics>
 </arc>
-<arc id="a113" source="R101" target="p4"><graphics><position x="1143" y="927"/>
+<arc id="a113" source="R101" target="p4"><graphics><position x="1144" y="927"/>
 </graphics>
 </arc>
-<arc id="a116" source="p4" target="Tau11"><graphics><position x="1031" y="577"/>
+<arc id="a116" source="p4" target="Tau11"><graphics><position x="1304" y="542"/>
 </graphics>
 </arc>
-<arc id="a117" source="W001" target="p4"><graphics><position x="1675" y="436"/>
+<arc id="a117" source="W001" target="p4"><graphics><position x="1674" y="436"/>
 </graphics>
 </arc>
-<arc id="a118" source="Object00" target="Tau16"><graphics><position x="470" y="701"/>
+<arc id="a118" source="Object00" target="Tau16"><graphics><position x="469" y="701"/>
 </graphics>
 </arc>
 <arc id="a119" source="p4" target="Tau16"><graphics><position x="736" y="575"/>
@@ -576,10 +576,10 @@
 <arc id="a123" source="LW01" target="Object01"><graphics><position x="1050" y="700"/>
 </graphics>
 </arc>
-<arc id="a124" source="Object01" target="Tau17"><graphics><position x="1050" y="735"/>
+<arc id="a124" source="Object01" target="Tau17"><graphics><position x="1253" y="734"/>
 </graphics>
 </arc>
-<arc id="a125" source="p4" target="Tau17"><graphics><position x="770" y="579"/>
+<arc id="a125" source="p4" target="Tau17"><graphics><position x="770" y="578"/>
 </graphics>
 </arc>
 <arc id="a126" source="Tau17" target="p17"><graphics><position x="805" y="735"/>
@@ -588,7 +588,7 @@
 <arc id="a127" source="p17" target="LW00"><graphics><position x="735" y="735"/>
 </graphics>
 </arc>
-<arc id="a128" source="LW00" target="p4"><graphics><position x="767" y="568"/>
+<arc id="a128" source="LW00" target="p4"><graphics><position x="766" y="568"/>
 </graphics>
 </arc>
 <arc id="a129" source="LW00" target="Object00"><graphics><position x="473" y="735"/>
@@ -600,19 +600,19 @@
 <arc id="a131" source="Tau18" target="ErrorLowReadOnHigh0"><graphics><position x="540" y="71"/>
 </graphics>
 </arc>
-<arc id="a132" source="Object11" target="Tau19"><graphics><position x="1174" y="159"/>
+<arc id="a132" source="Object11" target="Tau19"><graphics><position x="1175" y="159"/>
 </graphics>
 </arc>
-<arc id="a133" source="Tau19" target="ErrorLowReadOnHigh1"><graphics><position x="1017" y="72"/>
+<arc id="a133" source="Tau19" target="ErrorLowReadOnHigh1"><graphics><position x="1018" y="72"/>
 </graphics>
 </arc>
 <arc id="a134" source="ErrorLowReadOnHigh1" target="t10"><graphics><position x="1031" y="35"/>
 </graphics>
 </arc>
-<arc id="a135" source="t10" target="Object11"><graphics><position x="1188" y="121"/>
+<arc id="a135" source="t10" target="Object11"><graphics><position x="1188" y="120"/>
 </graphics>
 </arc>
-<arc id="a136" source="t10" target="p4"><graphics><position x="1262" y="207"/>
+<arc id="a136" source="t10" target="p4"><graphics><position x="1262" y="206"/>
 </graphics>
 </arc>
 <arc id="a137" source="ErrorLowReadOnHigh0" target="t11"><graphics><position x="526" y="35"/>
@@ -621,22 +621,22 @@
 <arc id="a138" source="t11" target="Object10"><graphics><position x="334" y="121"/>
 </graphics>
 </arc>
-<arc id="a139" source="t11" target="p4"><graphics><position x="359" y="107"/>
+<arc id="a139" source="t11" target="p4"><graphics><position x="359" y="106"/>
 </graphics>
 </arc>
-<arc id="a140" source="p4" target="Tau18"><graphics><position x="458" y="264"/>
+<arc id="a140" source="p4" target="Tau18"><graphics><position x="459" y="264"/>
 </graphics>
 </arc>
-<arc id="a141" source="p4" target="Tau19"><graphics><position x="1172" y="188"/>
+<arc id="a141" source="p4" target="Tau19"><graphics><position x="1171" y="188"/>
 </graphics>
 </arc>
-<arc id="a142" source="HW1" target="p4"><graphics><position x="1031" y="283"/>
+<arc id="a142" source="HW1" target="p4"><graphics><position x="1031" y="282"/>
 </graphics>
 </arc>
-<arc id="a143" source="p4" target="t7"><graphics><position x="996" y="577"/>
+<arc id="a143" source="p4" target="t7"><graphics><position x="1155" y="757"/>
 </graphics>
 </arc>
-<arc id="a144" source="R001" target="p4"><graphics><position x="964" y="578"/>
+<arc id="a144" source="R001" target="p4"><graphics><position x="964" y="579"/>
 </graphics>
 </arc>
 </net>
