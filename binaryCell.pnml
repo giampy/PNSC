@@ -1,253 +1,141 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><pnml><net><place id="p0"><graphics><position x="735" y="280"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><pnml><net><place id="p0"><graphics><position x="945" y="280"/>
 </graphics>
 </place>
-<place id="p1"><graphics><position x="455" y="280"/>
+<place id="p1"><graphics><position x="315" y="280"/>
 </graphics>
 <initialMarking><value>1</value>
 </initialMarking>
 </place>
-<place id="p2"><graphics><position x="140" y="35"/>
-</graphics>
-</place>
-<place id="p3"><graphics><position x="140" y="525"/>
-</graphics>
-</place>
-<place id="p4"><graphics><position x="1085" y="35"/>
-</graphics>
-</place>
-<place id="p5"><graphics><position x="1085" y="525"/>
-</graphics>
-</place>
-<place id="p6"><graphics><position x="1120" y="210"/>
-</graphics>
-</place>
-<place id="p7"><graphics><position x="1120" y="315"/>
-</graphics>
-</place>
-<place id="p8"><graphics><position x="105" y="210"/>
-</graphics>
-</place>
-<place id="p9"><graphics><position x="105" y="315"/>
-</graphics>
-</place>
-<transition id="wh1"><graphics><position x="595" y="210"/>
+<transition id="WriteHigh0"><graphics><position x="630" y="140"/>
 </graphics>
 <toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
 </toolspecific>
 </transition>
-<transition id="wl1"><graphics><position x="595" y="350"/>
+<transition id="WriteLow0"><graphics><position x="630" y="420"/>
 </graphics>
 <toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
 </toolspecific>
 </transition>
-<transition id="wh0"><graphics><position x="595" y="105"/>
+<transition id="_WriteHigh0"><graphics><position x="980" y="70"/>
 </graphics>
 <toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
 </toolspecific>
 </transition>
-<transition id="wl0"><graphics><position x="595" y="455"/>
-</graphics>
-<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
-</toolspecific>
-</transition>
-<transition id="_wh0"><graphics><position x="735" y="70"/>
+<transition id="_WriteHigh1"><graphics><position x="210" y="70"/>
 </graphics>
 <toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
 </toolspecific>
 </transition>
-<transition id="__wh0"><graphics><position x="910" y="105"/>
+<transition id="_WriteLow1"><graphics><position x="210" y="490"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="_WriteLow0"><graphics><position x="980" y="490"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="ReadHigh0"><graphics><position x="1190" y="175"/>
 </graphics>
 <toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
 </toolspecific>
 </transition>
-<transition id="_wh1"><graphics><position x="455" y="70"/>
+<transition id="ReadLow0"><graphics><position x="1190" y="385"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="ReadHigh1"><graphics><position x="70" y="175"/>
 </graphics>
 <toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
 </toolspecific>
 </transition>
-<transition id="__wh1"><graphics><position x="280" y="105"/>
+<transition id="ReadLow1"><graphics><position x="70" y="385"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="WriteLow1"><graphics><position x="630" y="245"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="WriteHigh1"><graphics><position x="630" y="315"/>
 </graphics>
 <toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
 </toolspecific>
 </transition>
-<transition id="__wl1"><graphics><position x="455" y="490"/>
-</graphics>
-<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
-</toolspecific>
-</transition>
-<transition id="_wl1"><graphics><position x="280" y="455"/>
-</graphics>
-<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
-</toolspecific>
-</transition>
-<transition id="__wl0"><graphics><position x="735" y="490"/>
-</graphics>
-<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
-</toolspecific>
-</transition>
-<transition id="_wl0"><graphics><position x="910" y="420"/>
-</graphics>
-<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
-</toolspecific>
-</transition>
-<transition id="rh0"><graphics><position x="1015" y="175"/>
-</graphics>
-<toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
-</toolspecific>
-</transition>
-<transition id="_rh0"><graphics><position x="1015" y="245"/>
-</graphics>
-<toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
-</toolspecific>
-</transition>
-<transition id="_rl0"><graphics><position x="1015" y="280"/>
-</graphics>
-<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
-</toolspecific>
-</transition>
-<transition id="rl0"><graphics><position x="1015" y="350"/>
-</graphics>
-<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
-</toolspecific>
-</transition>
-<transition id="rh1"><graphics><position x="210" y="175"/>
-</graphics>
-<toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
-</toolspecific>
-</transition>
-<transition id="_rh1"><graphics><position x="210" y="245"/>
-</graphics>
-<toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
-</toolspecific>
-</transition>
-<transition id="_rl1"><graphics><position x="210" y="350"/>
-</graphics>
-<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
-</toolspecific>
-</transition>
-<transition id="rl1"><graphics><position x="210" y="280"/>
-</graphics>
-<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
-</toolspecific>
-</transition>
-<arc id="a0" source="p0" target="wh1"><graphics><position x="679" y="252"/>
+<arc id="a8" source="p0" target="_WriteHigh0"><graphics><position x="924" y="166"/>
 </graphics>
 </arc>
-<arc id="a1" source="p0" target="wl1"><graphics><position x="669" y="313"/>
+<arc id="a12" source="p1" target="_WriteHigh1"><graphics><position x="308" y="176"/>
 </graphics>
 </arc>
-<arc id="a2" source="wh1" target="p1"><graphics><position x="529" y="243"/>
+<arc id="a16" source="p1" target="_WriteLow1"><graphics><position x="299" y="438"/>
 </graphics>
 </arc>
-<arc id="a3" source="wl1" target="p1"><graphics><position x="537" y="321"/>
+<arc id="a17" source="p0" target="_WriteLow0"><graphics><position x="986" y="397"/>
 </graphics>
 </arc>
-<arc id="a4" source="p1" target="wh0"><graphics><position x="520" y="199"/>
+<arc id="a23" source="p0" target="ReadHigh0"><graphics><position x="1085" y="173"/>
 </graphics>
 </arc>
-<arc id="a5" source="wh0" target="p0"><graphics><position x="660" y="186"/>
+<arc id="a27" source="p0" target="ReadLow0"><graphics><position x="1106" y="322"/>
 </graphics>
 </arc>
-<arc id="a6" source="p1" target="wl0"><graphics><position x="520" y="361"/>
+<arc id="a31" source="p1" target="ReadHigh1"><graphics><position x="126" y="256"/>
 </graphics>
 </arc>
-<arc id="a7" source="wl0" target="p0"><graphics><position x="660" y="374"/>
+<arc id="a35" source="p1" target="ReadLow1"><graphics><position x="147" y="401"/>
 </graphics>
 </arc>
-<arc id="a8" source="p0" target="_wh0"><graphics><position x="735" y="175"/>
+<arc id="a46" source="_WriteHigh1" target="p1"><graphics><position x="219" y="163"/>
 </graphics>
 </arc>
-<arc id="a9" source="_wh0" target="p4"><graphics><position x="905" y="53"/>
+<arc id="a47" source="ReadHigh1" target="p1"><graphics><position x="150" y="164"/>
 </graphics>
 </arc>
-<arc id="a10" source="p4" target="__wh0"><graphics><position x="1005" y="67"/>
+<arc id="a48" source="ReadLow1" target="p1"><graphics><position x="120" y="316"/>
 </graphics>
 </arc>
-<arc id="a11" source="__wh0" target="p0"><graphics><position x="829" y="187"/>
+<arc id="a49" source="_WriteLow1" target="p1"><graphics><position x="218" y="406"/>
 </graphics>
 </arc>
-<arc id="a12" source="p1" target="_wh1"><graphics><position x="455" y="175"/>
+<arc id="a52" source="_WriteHigh0" target="p0"><graphics><position x="1000" y="167"/>
 </graphics>
 </arc>
-<arc id="a13" source="_wh1" target="p2"><graphics><position x="304" y="54"/>
+<arc id="a53" source="ReadHigh0" target="p0"><graphics><position x="1072" y="253"/>
 </graphics>
 </arc>
-<arc id="a14" source="p2" target="__wh1"><graphics><position x="202" y="66"/>
+<arc id="a54" source="ReadLow0" target="p0"><graphics><position x="1079" y="383"/>
 </graphics>
 </arc>
-<arc id="a15" source="__wh1" target="p1"><graphics><position x="362" y="186"/>
+<arc id="a55" source="_WriteLow0" target="p0"><graphics><position x="928" y="400"/>
 </graphics>
 </arc>
-<arc id="a16" source="p1" target="__wl1"><graphics><position x="455" y="384"/>
+<arc id="a56" source="p1" target="WriteHigh0"><graphics><position x="470" y="212"/>
 </graphics>
 </arc>
-<arc id="a17" source="p0" target="__wl0"><graphics><position x="735" y="384"/>
+<arc id="a57" source="WriteHigh0" target="p0"><graphics><position x="785" y="208"/>
 </graphics>
 </arc>
-<arc id="a18" source="p5" target="_wl0"><graphics><position x="1005" y="477"/>
+<arc id="a58" source="p1" target="WriteLow0"><graphics><position x="470" y="348"/>
 </graphics>
 </arc>
-<arc id="a19" source="_wl0" target="p0"><graphics><position x="828" y="355"/>
+<arc id="a59" source="WriteLow0" target="p0"><graphics><position x="785" y="352"/>
 </graphics>
 </arc>
-<arc id="a20" source="_wl1" target="p1"><graphics><position x="362" y="374"/>
+<arc id="a60" source="p0" target="WriteLow1"><graphics><position x="792" y="263"/>
 </graphics>
 </arc>
-<arc id="a21" source="p3" target="_wl1"><graphics><position x="206" y="492"/>
+<arc id="a61" source="WriteLow1" target="p1"><graphics><position x="477" y="262"/>
 </graphics>
 </arc>
-<arc id="a22" source="__wl1" target="p3"><graphics><position x="302" y="507"/>
+<arc id="a62" source="p0" target="WriteHigh1"><graphics><position x="790" y="297"/>
 </graphics>
 </arc>
-<arc id="a23" source="p0" target="rh0"><graphics><position x="871" y="229"/>
-</graphics>
-</arc>
-<arc id="a24" source="rh0" target="p6"><graphics><position x="1066" y="192"/>
-</graphics>
-</arc>
-<arc id="a25" source="p6" target="_rh0"><graphics><position x="1069" y="227"/>
-</graphics>
-</arc>
-<arc id="a26" source="_rh0" target="p0"><graphics><position x="883" y="261"/>
-</graphics>
-</arc>
-<arc id="a27" source="p0" target="rl0"><graphics><position x="867" y="313"/>
-</graphics>
-</arc>
-<arc id="a28" source="rl0" target="p7"><graphics><position x="1066" y="333"/>
-</graphics>
-</arc>
-<arc id="a29" source="p7" target="_rl0"><graphics><position x="1073" y="300"/>
-</graphics>
-</arc>
-<arc id="a30" source="_rl0" target="p0"><graphics><position x="875" y="280"/>
-</graphics>
-</arc>
-<arc id="a31" source="p1" target="rh1"><graphics><position x="336" y="229"/>
-</graphics>
-</arc>
-<arc id="a32" source="rh1" target="p8"><graphics><position x="159" y="192"/>
-</graphics>
-</arc>
-<arc id="a33" source="p8" target="_rh1"><graphics><position x="156" y="227"/>
-</graphics>
-</arc>
-<arc id="a34" source="_rh1" target="p1"><graphics><position x="329" y="262"/>
-</graphics>
-</arc>
-<arc id="a35" source="p1" target="_rl1"><graphics><position x="339" y="313"/>
-</graphics>
-</arc>
-<arc id="a36" source="_rl1" target="p9"><graphics><position x="163" y="335"/>
-</graphics>
-</arc>
-<arc id="a37" source="p9" target="rl1"><graphics><position x="156" y="298"/>
-</graphics>
-</arc>
-<arc id="a38" source="rl1" target="p1"><graphics><position x="330" y="280"/>
-</graphics>
-</arc>
-<arc id="a39" source="__wl0" target="p5"><graphics><position x="909" y="507"/>
+<arc id="a63" source="WriteHigh1" target="p1"><graphics><position x="475" y="298"/>
 </graphics>
 </arc>
 </net>

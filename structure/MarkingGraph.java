@@ -15,7 +15,7 @@ public class MarkingGraph extends Vector<Case> {
 	private static final long serialVersionUID = 4736881335014091401L;
 
 	private	Case	firstCase;
-	private TreeMap<String, Case> tree;
+	private TreeMap<String, Case> tree; //per gestire il lookup nel marking graph di un marking in O(n)
 	
 	public Case getFirstCase() {
 		return firstCase;
@@ -43,8 +43,7 @@ public class MarkingGraph extends Vector<Case> {
 				newMarking.removeAll(enabledTransitions.get(e).preset());
 				newMarking.addAll(enabledTransitions.get(e).postset());
 				Case tmp=alreadyInTree(newMarking);
-				if (tmp != null) { //forse è questa procedura di lookUp che alza a manetta la complessità
-													//anzi senza forse.
+				if (tmp != null) { 
 					Case newCase = tmp;
 					if (!get(c).isLinkedTo(newCase)) 
 						get(c).addLink(enabledTransitions.get(e), newCase);
@@ -131,18 +130,16 @@ public class MarkingGraph extends Vector<Case> {
 			vertexes.put(get(c), new Vertex(get(c), c == 0));
 		
 		for (int c = 0; c < size(); c++) {
-			
 			Case thisCase = get(c);
 			Vertex vertex = vertexes.get(thisCase);
-			
 			Vector<Transition> enabled = thisCase.getEnabledTransitions();
  			for (int e = 0; e < enabled.size(); e++) {
  								//nelle dispense c'è scritto che nel modello a tre livelli di sicurezza
  								//per essere active causal la x tale per cui m[hxl> deve appartenere a (L U H)*
  								//perciò togliamo quei percorsi in cui compare una downgrade
  				if (enabled.get(e).equals(transition) && !transition.isDowngrade()) {
- 					
  					Vector<Case> path = new Vector<Case>();
+ 					
  					Vertex step = vertex;
  					Transition linkToNext = transition;
  					Case next = thisCase.goThrough(transition);
@@ -157,17 +154,20 @@ public class MarkingGraph extends Vector<Case> {
  						next = step.getMarking();
  						step = step.getPrevious();
  					}
- 					
  					return path;
+ 					
  				}
- 				System.out.println(this.toString()+ ": "+place.amIinASelfLoop());
- 				if (!enabled.get(e).postset().contains(place)){
+ 				
+ 				if (!enabled.get(e).postset().contains(place) //if modificato per gestire l'estensione per i self-loop
+ 						||enabled.get(e).preset().contains(place)){
  					if(vertexes.get(thisCase.goThrough(enabled.get(e)))==null)
  						vertexes.put(thisCase.goThrough(enabled.get(e)), new Vertex(thisCase.goThrough(enabled.get(e)), false));
  					//assolutamente non sicuro della linea sopra da me aggiunta
  					vertex.addLink(enabled.get(e), vertexes.get(thisCase.goThrough(enabled.get(e))));
  					}
- 				
+ 				/*if (!enabled.get(e).postset().contains(place))
+                    vertex.addLink(enabled.get(e), vertexes.get(thisCase.goThrough(enabled.get(e))));*/
+
  			}
 		}
 		

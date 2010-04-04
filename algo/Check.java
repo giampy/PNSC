@@ -73,14 +73,15 @@ public class Check {
 		Vector<Node> preset = place.preset();
 		Vector<Transition> hiPreset = new Vector<Transition>();
 		for (int p = 0; p < preset.size(); p++)
-			if (((Transition)preset.get(p)).isHigh())
+			if (((Transition)preset.get(p)).isHigh() && !place.postset().contains(preset.get(p)))
 				hiPreset.add((Transition)preset.get(p));
 
 		Vector<Node> postset = place.postset();
 		Vector<Transition> loPostset = new Vector<Transition>();
 		for (int p = 0; p < postset.size(); p++)
-			if (!((Transition)postset.get(p)).isHigh()) 
+			if (((Transition)postset.get(p)).isLow()) 
 				loPostset.add((Transition)postset.get(p));
+		
 		
 		if (hiPreset.size() > 0 && loPostset.size() > 0) {
 			
@@ -199,19 +200,20 @@ public class Check {
 	}
 	
 	
-	public static Vector<ActiveCase> checkActiveConflict(MarkingGraph mg, Place place, Transition high, Transition low) {
+	public static Vector<ActiveCase> checkActiveConflict(MarkingGraph mg, Place place, 
+			Transition high, Transition low) {
 		
 		Vector<ActiveCase> result = new Vector<ActiveCase>();
 
 		for (int c = 0; c < mg.size(); c++) {
-
+		
 			if (mg.get(c).getEnabledTransitions().contains(high)) {
-				
 				MarkingGraph subMg = new MarkingGraph(mg.get(c));
 
 				Vector<Case> path = subMg.closestPathTo(low, place);
-				if (path != null) 
+				if (path != null) {
 					result.add(new ActiveCase(high, path.get(path.size() - 1).firstTransition(), mg.get(c).toVector(), path));
+				}
 			}
 		}
 		
@@ -249,8 +251,14 @@ public class Check {
 
 		Vector<Transition> loPostset = new Vector<Transition>();
 		for (int p = 0; p < postset.size(); p++)
-			if (!((Transition)postset.get(p)).isHigh())
+			if (((Transition)postset.get(p)).isLow())
 				loPostset.add((Transition)postset.get(p));
+	
+		for(int i=0; i<hiPostset.size(); ++i) //aggiunto per gestire i self-loop
+			if(!(hiPostset.get(i).preset().contains(place) &&
+				!hiPostset.get(i).postset().contains(place)	))
+				hiPostset.remove(i);
+		
 		
 		if (hiPostset.size() > 0 && loPostset.size() > 0) {
 			
@@ -325,7 +333,6 @@ public class Check {
 	public static boolean SBNDC(Net net) {
 		
 		MarkingGraph markingGraph = new MarkingGraph(net.getInitialMarking());
-		//MarkingGraph markingGraph1 = new MarkingGraph(net.getInitialMarking());
 		MarkingGraph markingGraph2 = new MarkingGraph(net.getInitialMarking());
 		
 		Hashtable<Transition, TransitionTemplate> transTable = new Hashtable<Transition, TransitionTemplate>();

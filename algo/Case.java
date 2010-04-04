@@ -27,7 +27,6 @@ public class Case extends Vector<Place>{
 	public Case(Vector<Place> places) {
 		
 		super(places);
-		
 	}
 	
 	public Vector<Place> toVector() {
@@ -53,7 +52,7 @@ public class Case extends Vector<Place>{
 	}
 	
 	public Vector<Transition> getEnabledTransitions() {
-		
+
 		Vector<Transition> transitions = new Vector<Transition>();
 		Vector<Transition> enabledTransitions = new Vector<Transition>();
 		
@@ -64,13 +63,11 @@ public class Case extends Vector<Place>{
 				if (!transitions.contains(postset.get(t)))
 					transitions.add((Transition)postset.get(t));
 		}
-		
 		for (int t = 0; t < transitions.size(); t++) {
-			
-			if (containsAll(transitions.get(t).preset()) && containsNoneOf(transitions.get(t).postset()))
+			if (containsAll(transitions.get(t).preset()) && containsNoneOf(transitions.get(t).postset(),
+					transitions.get(t).preset()))
 				enabledTransitions.add(transitions.get(t));
 		}
-			
 		return enabledTransitions;
 	}
 	
@@ -89,18 +86,20 @@ public class Case extends Vector<Place>{
 		
 		for (int t = 0; t < transitions.size(); t++) {
 			
-			if (containsAll(transitions.get(t).preset()) && !containsNoneOf(transitions.get(t).postset()))
+			if (containsAll(transitions.get(t).preset()) && !containsNoneOf(transitions.get(t).postset(),
+					transitions.get(t).preset()))
 				contacts.add(transitions.get(t));
 		}
 		
 		return contacts;
 	}
 	
-	private boolean containsNoneOf(Vector<Node> nodes) {
+	private boolean containsNoneOf(Vector<Node> nodes,Vector<Node> pre) {
 		
 		for (int n = 0; n < nodes.size(); n++)
 			if (contains(nodes.get(n)))
-				return false;
+				if(!pre.contains(nodes.get(n))) //aggiunto questo if per gestire i self-loop
+					return false;				//se il place appartiene sia al preset che al post set non è contatto
 		
 		return true;
 	}
@@ -143,7 +142,7 @@ public class Case extends Vector<Place>{
 		return result + ">";
 	}
 	
-	public String getOrderedValue(){
+	public String getOrderedValue(){ //metodo per gestire l'ordinamento nel TreeMap in MarkingGraph
 		String str="";
 		for(int i=0; i<size(); ++i)
 			str+=get(i).toString()+(get(i).getTokens()==1?"1":"0");
