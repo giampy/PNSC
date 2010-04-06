@@ -1,112 +1,207 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><pnml><net><place id="ObjectLow0"><graphics><position x="210" y="245"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><pnml><net><place id="p0"><graphics><position x="280" y="595"/>
+</graphics>
+</place>
+<place id="p1"><graphics><position x="840" y="595"/>
 </graphics>
 <initialMarking><value>1</value>
 </initialMarking>
 </place>
-<place id="p0"><graphics><position x="560" y="245"/>
+<place id="p2"><graphics><position x="560" y="315"/>
 </graphics>
 <initialMarking><value>1</value>
 </initialMarking>
 </place>
-<place id="p1"><graphics><position x="315" y="420"/>
+<place id="p3"><graphics><position x="490" y="455"/>
 </graphics>
 </place>
-<place id="p2"><graphics><position x="315" y="70"/>
+<place id="p4"><graphics><position x="175" y="420"/>
 </graphics>
 </place>
-<place id="p3"><graphics><position x="315" y="315"/>
+<place id="p5"><graphics><position x="980" y="420"/>
 </graphics>
 </place>
-<place id="p4"><graphics><position x="420" y="490"/>
+<place id="p6"><graphics><position x="630" y="455"/>
+</graphics>
+</place>
+<place id="p7"><graphics><position x="280" y="105"/>
 </graphics>
 <initialMarking><value>1</value>
 </initialMarking>
 </place>
-<transition id="ReadLowByHigh0"><graphics><position x="210" y="420"/>
+<place id="p8"><graphics><position x="175" y="280"/>
+</graphics>
+</place>
+<transition id="ReadLowByLow0"><graphics><position x="245" y="525"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="WriteLowByLow1"><graphics><position x="560" y="630"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="ReadLowByLow1"><graphics><position x="875" y="525"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="WriteLowByLow0"><graphics><position x="560" y="560"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="accessR"><graphics><position x="525" y="420"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="OutputVal00"><graphics><position x="315" y="420"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="OutputVal1"><graphics><position x="805" y="420"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+</toolspecific>
+</transition>
+<transition id="ReadLowByHigh0"><graphics><position x="280" y="665"/>
 </graphics>
 <toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
 </toolspecific>
 </transition>
-<transition id="WriteLowByLow0"><graphics><position x="315" y="245"/>
-</graphics>
-<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
-</toolspecific>
-</transition>
-<transition id="ReadLowByLow0"><graphics><position x="210" y="70"/>
-</graphics>
-<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
-</toolspecific>
-</transition>
-<transition id="Val"><graphics><position x="420" y="420"/>
+<transition id="ReadLowByHigh1"><graphics><position x="840" y="665"/>
 </graphics>
 <toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
 </toolspecific>
 </transition>
-<transition id="t0"><graphics><position x="420" y="70"/>
+<transition id="accessW"><graphics><position x="595" y="420"/>
 </graphics>
 <toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
 </toolspecific>
 </transition>
-<transition id="t1"><graphics><position x="385" y="280"/>
+<transition id="WriteHighByHigh0"><graphics><position x="280" y="35"/>
 </graphics>
-<toolspecific tool="PNST" version="1.0"><level high="false" secLevel="0"/>
+<toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
 </toolspecific>
 </transition>
-<arc id="a0" source="ReadLowByLow0" target="ObjectLow0"><graphics><position x="210" y="155"/>
+<transition id="ReadHighByHigh0"><graphics><position x="245" y="175"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
+</toolspecific>
+</transition>
+<transition id="OutputVal01"><graphics><position x="315" y="280"/>
+</graphics>
+<toolspecific tool="PNST" version="1.0"><level high="true" secLevel="2"/>
+</toolspecific>
+</transition>
+<arc id="a0" source="p0" target="ReadLowByLow0"><graphics><position x="263" y="561"/>
 </graphics>
 </arc>
-<arc id="a0" source="WriteLowByLow0" target="ObjectLow0"><graphics><position x="270" y="245"/>
+<arc id="a1" source="ReadLowByLow0" target="p0"><graphics><position x="259" y="554"/>
 </graphics>
 </arc>
-<arc id="a1" source="ReadLowByHigh0" target="ObjectLow0"><graphics><position x="210" y="319"/>
+<arc id="a4" source="p0" target="WriteLowByLow1"><graphics><position x="416" y="612"/>
 </graphics>
 </arc>
-<arc id="a2" source="ObjectLow0" target="ReadLowByHigh0"><graphics><position x="210" y="332"/>
+<arc id="a5" source="WriteLowByLow1" target="p1"><graphics><position x="696" y="613"/>
 </graphics>
 </arc>
-<arc id="a3" source="ObjectLow0" target="ReadLowByLow0"><graphics><position x="210" y="159"/>
+<arc id="a6" source="p1" target="ReadLowByLow1"><graphics><position x="856" y="563"/>
 </graphics>
 </arc>
-<arc id="a4" source="ObjectLow0" target="WriteLowByLow0"><graphics><position x="262" y="245"/>
+<arc id="a7" source="ReadLowByLow1" target="p1"><graphics><position x="858" y="559"/>
 </graphics>
 </arc>
-<arc id="a5" source="p0" target="ReadLowByHigh0"><graphics><position x="386" y="332"/>
+<arc id="a10" source="p1" target="WriteLowByLow0"><graphics><position x="704" y="578"/>
 </graphics>
 </arc>
-<arc id="a6" source="ReadLowByHigh0" target="p1"><graphics><position x="262" y="420"/>
+<arc id="a11" source="WriteLowByLow0" target="p0"><graphics><position x="428" y="576"/>
 </graphics>
 </arc>
-<arc id="a7" source="p1" target="Val"><graphics><position x="367" y="420"/>
+<arc id="a12" source="p2" target="accessR"><graphics><position x="544" y="363"/>
 </graphics>
 </arc>
-<arc id="a8" source="Val" target="p0"><graphics><position x="488" y="334"/>
+<arc id="a13" source="accessR" target="p3"><graphics><position x="509" y="436"/>
 </graphics>
 </arc>
-<arc id="a9" source="p0" target="ReadLowByLow0"><graphics><position x="387" y="159"/>
+<arc id="a14" source="p3" target="ReadLowByLow0"><graphics><position x="375" y="487"/>
 </graphics>
 </arc>
-<arc id="a10" source="ReadLowByLow0" target="p2"><graphics><position x="262" y="70"/>
+<arc id="a15" source="p3" target="ReadLowByLow1"><graphics><position x="677" y="489"/>
 </graphics>
 </arc>
-<arc id="a11" source="p2" target="t0"><graphics><position x="367" y="70"/>
+<arc id="a16" source="ReadLowByLow0" target="p4"><graphics><position x="211" y="474"/>
 </graphics>
 </arc>
-<arc id="a12" source="t0" target="p0"><graphics><position x="488" y="155"/>
+<arc id="a17" source="p4" target="OutputVal00"><graphics><position x="245" y="420"/>
 </graphics>
 </arc>
-<arc id="a13" source="p0" target="WriteLowByLow0"><graphics><position x="438" y="245"/>
+<arc id="a18" source="OutputVal00" target="p2"><graphics><position x="434" y="369"/>
 </graphics>
 </arc>
-<arc id="a14" source="WriteLowByLow0" target="p3"><graphics><position x="315" y="280"/>
+<arc id="a19" source="ReadLowByLow1" target="p5"><graphics><position x="925" y="475"/>
 </graphics>
 </arc>
-<arc id="a15" source="p3" target="t1"><graphics><position x="349" y="298"/>
+<arc id="a20" source="p5" target="OutputVal1"><graphics><position x="893" y="420"/>
 </graphics>
 </arc>
-<arc id="a16" source="t1" target="p0"><graphics><position x="470" y="263"/>
+<arc id="a21" source="OutputVal1" target="p2"><graphics><position x="686" y="369"/>
 </graphics>
 </arc>
-<arc id="a17" source="Val" target="p4"><graphics><position x="420" y="455"/>
+<arc id="a22" source="ReadLowByHigh0" target="p0"><graphics><position x="280" y="630"/>
+</graphics>
+</arc>
+<arc id="a23" source="p0" target="ReadLowByHigh0"><graphics><position x="280" y="630"/>
+</graphics>
+</arc>
+<arc id="a25" source="p3" target="ReadLowByHigh0"><graphics><position x="387" y="558"/>
+</graphics>
+</arc>
+<arc id="a26" source="ReadLowByHigh0" target="p4"><graphics><position x="230" y="546"/>
+</graphics>
+</arc>
+<arc id="a27" source="p1" target="ReadLowByHigh1"><graphics><position x="840" y="630"/>
+</graphics>
+</arc>
+<arc id="a28" source="ReadLowByHigh1" target="p1"><graphics><position x="840" y="630"/>
+</graphics>
+</arc>
+<arc id="a29" source="p3" target="ReadLowByHigh1"><graphics><position x="661" y="558"/>
+</graphics>
+</arc>
+<arc id="a30" source="ReadLowByHigh1" target="p5"><graphics><position x="908" y="546"/>
+</graphics>
+</arc>
+<arc id="a31" source="p2" target="accessW"><graphics><position x="576" y="364"/>
+</graphics>
+</arc>
+<arc id="a32" source="accessW" target="p6"><graphics><position x="611" y="436"/>
+</graphics>
+</arc>
+<arc id="a33" source="WriteHighByHigh0" target="p7"><graphics><position x="280" y="70"/>
+</graphics>
+</arc>
+<arc id="a34" source="p7" target="WriteHighByHigh0"><graphics><position x="280" y="70"/>
+</graphics>
+</arc>
+<arc id="a35" source="p7" target="ReadHighByHigh0"><graphics><position x="263" y="139"/>
+</graphics>
+</arc>
+<arc id="a36" source="ReadHighByHigh0" target="p7"><graphics><position x="261" y="142"/>
+</graphics>
+</arc>
+<arc id="a37" source="ReadHighByHigh0" target="p8"><graphics><position x="212" y="226"/>
+</graphics>
+</arc>
+<arc id="a38" source="p3" target="ReadHighByHigh0"><graphics><position x="162" y="488"/>
+</graphics>
+</arc>
+<arc id="a39" source="p8" target="OutputVal01"><graphics><position x="245" y="280"/>
+</graphics>
+</arc>
+<arc id="a40" source="OutputVal01" target="p2"><graphics><position x="434" y="297"/>
 </graphics>
 </arc>
 </net>
