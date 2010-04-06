@@ -257,12 +257,10 @@ public class Net {
 	}
 	
 	public Vector<Transition> getEnabledTransitions() {
-		
 		Vector<Transition> enabled = new Vector<Transition>();
 		for (int t = 0; t < transitions.size(); t++)
 			if (transitions.get(t).isEnabled())
 				enabled.add(transitions.get(t));
-		
 		return enabled;
 	}
 	
@@ -1091,7 +1089,6 @@ public class Net {
 				contacts.get(caseContacts.get(t)).add(mg.get(c));
 			}
 		}
-		
 		return contacts;
 	}
 }

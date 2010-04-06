@@ -161,11 +161,12 @@ public class MarkingGraph extends Vector<Case> {
  				if (!enabled.get(e).postset().contains(place) //if modificato per gestire l'estensione per i self-loop
  						||enabled.get(e).preset().contains(place)){
  					if(vertexes.get(thisCase.goThrough(enabled.get(e)))==null)
- 						vertexes.put(thisCase.goThrough(enabled.get(e)), new Vertex(thisCase.goThrough(enabled.get(e)), false));
+ 						vertexes.put(thisCase.goThrough(enabled.get(e)), 
+ 								new Vertex(thisCase.goThrough(enabled.get(e)), false));
  					//assolutamente non sicuro della linea sopra da me aggiunta
  					vertex.addLink(enabled.get(e), vertexes.get(thisCase.goThrough(enabled.get(e))));
  					}
- 				/*if (!enabled.get(e).postset().contains(place))
+/* 				if (!enabled.get(e).postset().contains(place))
                     vertex.addLink(enabled.get(e), vertexes.get(thisCase.goThrough(enabled.get(e))));*/
 
  			}

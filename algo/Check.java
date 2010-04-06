@@ -212,6 +212,7 @@ public class Check {
 
 				Vector<Case> path = subMg.closestPathTo(low, place);
 				if (path != null) {
+					System.out.println(path.toString());
 					result.add(new ActiveCase(high, path.get(path.size() - 1).firstTransition(), mg.get(c).toVector(), path));
 				}
 			}
@@ -240,7 +241,7 @@ public class Check {
 	}
 	
 	private static Vector<Transition> checkPotentialConflict(Place place) {
-		
+	
 		Vector<Transition> potential = new Vector<Transition>();
 		
 		Vector<Node> postset = place.postset();
@@ -253,12 +254,15 @@ public class Check {
 		for (int p = 0; p < postset.size(); p++)
 			if (((Transition)postset.get(p)).isLow())
 				loPostset.add((Transition)postset.get(p));
-	
+		
+		Vector<Transition> toRemove=new Vector<Transition>();
 		for(int i=0; i<hiPostset.size(); ++i) //aggiunto per gestire i self-loop
 			if(!(hiPostset.get(i).preset().contains(place) &&
 				!hiPostset.get(i).postset().contains(place)	))
-				hiPostset.remove(i);
+				toRemove.add(hiPostset.get(i));
 		
+		
+		hiPostset.removeAll(toRemove);//aggiunto per gestire i self-loop
 		
 		if (hiPostset.size() > 0 && loPostset.size() > 0) {
 			

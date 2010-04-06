@@ -102,42 +102,35 @@ public class Transition extends Node {
 	}
 	
 	public boolean isEnabled() {
-		Vector<Node> preset1 = preset();
-		Vector<Node> postset1 = postset();
-		Vector<Node> intersect = new Vector<Node>();
+
 		
-		for(int i=0; i<preset1.size(); ++i)
-			if(postset1.contains(preset1.get(i)))
-				intersect.add(preset1.get(i));
+		Vector<Node>	preset=preset();
+		Vector<Node>	postset=postset();
+		Vector<Place>	intersect=new Vector<Place>();
 		
-		for (int p = 0; p < intersect.size(); p++)
-			if (((Place)(intersect.get(p))).getTokens() < 1)
+		for(int i=0; i<postset.size(); ++i)
+			if(preset.contains(postset.get(i)))
+				intersect.add((Place)postset.get(i));
+		
+		for(int i=0; i<intersect.size(); ++i)
+			if(intersect.get(i).getTokens()<1)
 				return false;
 		
+		preset.removeAll(intersect);
+		postset.removeAll(intersect);
 		
-		Vector<Node> preset = preset();
-		for (int p = 0; p < preset.size(); p++)
-			if(intersect.contains(preset.get(p)))
-				preset.remove(p);
 		for (int p = 0; p < preset.size(); p++)
 			if (((Place)(preset.get(p))).getTokens() < 1)
 				return false;
-		
-		Vector<Node> postset = postset();
-		for (int p = 0; p < postset.size(); p++)
-			if(intersect.contains(postset.get(p)))
-				postset.remove(p);
+
 		for (int p = 0; p < postset.size(); p++)
 			if (((Place)(postset.get(p))).getTokens() > 0)
 				return false;
-		
-		
-		
-		
+			
 		return explicitelyEnabled;
 	}
 	
-	public boolean isEnabledAt(Vector<Place> marking) {
+/*	public boolean isEnabledAt(Vector<Place> marking) {
 		
 		Vector<Node> preset = preset();
 		for (int p = 0; p < preset.size(); p++)
@@ -150,7 +143,7 @@ public class Transition extends Node {
 				return false;
 			
 		return true;
-	}
+	}*/
 	
 	public void setSecurityLevel(boolean level) {
 		
@@ -167,8 +160,8 @@ public class Transition extends Node {
 	
 	public void fire() {
 		
-		if (isEnabled())
-			for (int a = 0; a < arcs.size(); a++) 
+		if (isEnabled()){
+	/*		for (int a = 0; a < arcs.size(); a++) 
 				if (arcs.get(a).getTarget().equals(this)) {
 					
 					Place source = (Place)arcs.get(a).getSource();
@@ -178,7 +171,19 @@ public class Transition extends Node {
 					
 					Place target = (Place)arcs.get(a).getTarget();
 					target.addToken();
+				}*/
+		for (int p = 0; p < preset().size(); p++)
+			if(preset().get(p) instanceof Place){
+				Place p1=(Place)preset().get(p);
+				p1.removeToken();
 				}
+			
+		for (int p = 0; p < postset().size(); p++)
+			if(postset().get(p) instanceof Place){
+				Place p1=(Place)postset().get(p);
+				p1.addToken();
+			}
+		}
 	}
 
 	public PopupMenu getPopupMenu(NetPanel netPanel) {
@@ -187,7 +192,6 @@ public class Transition extends Node {
 		
 		popup.setNet(netPanel);
 		if (isEnabled()) {
-			
 			popup.add(fireItem);
 		} else popup.remove(fireItem);
 		return popup;
@@ -204,7 +208,6 @@ public class Transition extends Node {
 				popup.getNetPanel().repaint();
 			}
 		});
-		
 		return item;		
 	}
 	
@@ -236,7 +239,7 @@ public class Transition extends Node {
 	}
 	
 	public void paint(Graphics2D graphics) {
-		
+	
 		if (Properties.isShowEnabledTransitionsOn()) {
 			
 			if (isEnabled()) {
@@ -253,7 +256,6 @@ public class Transition extends Node {
 	}
 	
 	public void disable() {
-		
 		explicitelyEnabled = false;
 	}
 }
