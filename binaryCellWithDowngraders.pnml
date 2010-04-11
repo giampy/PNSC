@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><pnml><net><place id="p0"><graphics><position x="945" y="280"/>
 </graphics>
+<initialMarking><value>1</value>
+</initialMarking>
 </place>
 <place id="p1"><graphics><position x="315" y="280"/>
 </graphics>
-<initialMarking><value>1</value>
-</initialMarking>
 </place>
 <place id="p2"><graphics><position x="630" y="175"/>
 </graphics>
@@ -130,43 +130,43 @@
 <toolspecific tool="PNST" version="1.0"><level high="false" secLevel="1"/>
 </toolspecific>
 </transition>
-<arc id="a8" source="p0" target="_WriteHigh0"><graphics><position x="924" y="174"/>
+<arc id="a8" source="p0" target="_WriteHigh0"><graphics><position x="924" y="175"/>
 </graphics>
 </arc>
 <arc id="a12" source="p1" target="_WriteHigh1"><graphics><position x="297" y="159"/>
 </graphics>
 </arc>
-<arc id="a23" source="p0" target="ReadHigh0"><graphics><position x="1085" y="181"/>
+<arc id="a23" source="p0" target="ReadHigh0"><graphics><position x="1085" y="182"/>
 </graphics>
 </arc>
-<arc id="a31" source="p1" target="ReadHigh1"><graphics><position x="134" y="256"/>
+<arc id="a31" source="p1" target="ReadHigh1"><graphics><position x="135" y="256"/>
 </graphics>
 </arc>
-<arc id="a46" source="_WriteHigh1" target="p1"><graphics><position x="222" y="157"/>
+<arc id="a46" source="_WriteHigh1" target="p1"><graphics><position x="222" y="156"/>
 </graphics>
 </arc>
-<arc id="a47" source="ReadHigh1" target="p1"><graphics><position x="142" y="164"/>
+<arc id="a47" source="ReadHigh1" target="p1"><graphics><position x="141" y="164"/>
 </graphics>
 </arc>
-<arc id="a48" source="ReadLow1" target="p1"><graphics><position x="179" y="270"/>
+<arc id="a48" source="ReadLow1" target="p1"><graphics><position x="179" y="271"/>
 </graphics>
 </arc>
-<arc id="a49" source="_WriteLow1" target="p1"><graphics><position x="244" y="338"/>
+<arc id="a49" source="_WriteLow1" target="p1"><graphics><position x="244" y="339"/>
 </graphics>
 </arc>
-<arc id="a52" source="_WriteHigh0" target="p0"><graphics><position x="1000" y="159"/>
+<arc id="a52" source="_WriteHigh0" target="p0"><graphics><position x="1000" y="158"/>
 </graphics>
 </arc>
-<arc id="a53" source="ReadHigh0" target="p0"><graphics><position x="1072" y="245"/>
+<arc id="a53" source="ReadHigh0" target="p0"><graphics><position x="1072" y="244"/>
 </graphics>
 </arc>
-<arc id="a54" source="ReadLow0" target="p0"><graphics><position x="992" y="357"/>
+<arc id="a54" source="ReadLow0" target="p0"><graphics><position x="993" y="357"/>
 </graphics>
 </arc>
-<arc id="a55" source="_WriteLow0" target="p0"><graphics><position x="918" y="385"/>
+<arc id="a55" source="_WriteLow0" target="p0"><graphics><position x="918" y="386"/>
 </graphics>
 </arc>
-<arc id="a56" source="p1" target="WriteHigh0"><graphics><position x="414" y="231"/>
+<arc id="a56" source="p1" target="WriteHigh0"><graphics><position x="413" y="231"/>
 </graphics>
 </arc>
 <arc id="a61" source="WriteLow1" target="p1"><graphics><position x="423" y="262"/>
@@ -190,10 +190,10 @@
 <arc id="a67" source="p2" target="t0"><graphics><position x="682" y="175"/>
 </graphics>
 </arc>
-<arc id="a68" source="t0" target="p0"><graphics><position x="838" y="226"/>
+<arc id="a68" source="t0" target="p0"><graphics><position x="837" y="226"/>
 </graphics>
 </arc>
-<arc id="a69" source="p0" target="t2"><graphics><position x="843" y="263"/>
+<arc id="a69" source="p0" target="t2"><graphics><position x="843" y="264"/>
 </graphics>
 </arc>
 <arc id="a70" source="t2" target="p4"><graphics><position x="683" y="245"/>
@@ -214,16 +214,16 @@
 <arc id="a75" source="p5" target="WriteLow0"><graphics><position x="682" y="315"/>
 </graphics>
 </arc>
-<arc id="a76" source="p0" target="t4"><graphics><position x="965" y="399"/>
+<arc id="a76" source="p0" target="t4"><graphics><position x="965" y="398"/>
 </graphics>
 </arc>
-<arc id="a77" source="t4" target="p6"><graphics><position x="997" y="455"/>
+<arc id="a77" source="t4" target="p6"><graphics><position x="997" y="454"/>
 </graphics>
 </arc>
-<arc id="a78" source="p6" target="_WriteLow0"><graphics><position x="965" y="457"/>
+<arc id="a78" source="p6" target="_WriteLow0"><graphics><position x="966" y="457"/>
 </graphics>
 </arc>
-<arc id="a79" source="p0" target="t5"><graphics><position x="1041" y="276"/>
+<arc id="a79" source="p0" target="t5"><graphics><position x="1040" y="276"/>
 </graphics>
 </arc>
 <arc id="a80" source="t5" target="p7"><graphics><position x="1101" y="332"/>
@@ -238,7 +238,7 @@
 <arc id="a83" source="p8" target="t6"><graphics><position x="139" y="368"/>
 </graphics>
 </arc>
-<arc id="a84" source="t6" target="p1"><graphics><position x="244" y="315"/>
+<arc id="a84" source="t6" target="p1"><graphics><position x="244" y="316"/>
 </graphics>
 </arc>
 <arc id="a85" source="_WriteLow1" target="p9"><graphics><position x="245" y="420"/>

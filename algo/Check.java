@@ -212,7 +212,6 @@ public class Check {
 
 				Vector<Case> path = subMg.closestPathTo(low, place);
 				if (path != null) {
-					System.out.println(path.toString());
 					result.add(new ActiveCase(high, path.get(path.size() - 1).firstTransition(), mg.get(c).toVector(), path));
 				}
 			}
