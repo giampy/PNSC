@@ -34,7 +34,7 @@ public class Check {
 		//Check active
 		if(potentialCausal.size()>0)
 			activeCausal=checkActiveCausal(net, potentialCausal);
-
+		
 		if(potentialConflict.size()>0)
 			activeConflict=checkActiveConflict(net, potentialConflict);
 		
@@ -206,13 +206,18 @@ public class Check {
 		Vector<ActiveCase> result = new Vector<ActiveCase>();
 
 		for (int c = 0; c < mg.size(); c++) {
-		
 			if (mg.get(c).getEnabledTransitions().contains(high)) {
 				MarkingGraph subMg = new MarkingGraph(mg.get(c));
-
+		
 				Vector<Case> path = subMg.closestPathTo(low, place);
+			
 				if (path != null) {
-					result.add(new ActiveCase(high, path.get(path.size() - 1).firstTransition(), mg.get(c).toVector(), path));
+					result.add(new ActiveCase(
+								high, 
+								path.get(path.size() - 1).firstTransition(), 
+								mg.get(c).toVector(), 
+								path)
+					);
 				}
 			}
 		}
@@ -256,7 +261,7 @@ public class Check {
 		
 		Vector<Transition> toRemove=new Vector<Transition>();
 		for(int i=0; i<hiPostset.size(); ++i) //aggiunto per gestire i self-loop
-			if(!(hiPostset.get(i).preset().contains(place) &&
+			if((hiPostset.get(i).preset().contains(place) &&
 				!hiPostset.get(i).postset().contains(place)	))
 				toRemove.add(hiPostset.get(i));
 		
@@ -328,8 +333,7 @@ public class Check {
 		if (lowViewBisimilar(stateTable1.get(markingGraph1.get(0)), 
 				stateTable2.get(markingGraph2.get(0))))
 			return true;
-		/*Si potrebbe pensare di overloadare il metodo get che quando prende un INTERO i ritorna l'iesimo elemento
-		 * o forse è una soluzione sbagliata a priori*/	
+		
 		else return false;
 	}
 	
@@ -337,40 +341,50 @@ public class Check {
 		
 		MarkingGraph markingGraph = new MarkingGraph(net.getInitialMarking());
 		MarkingGraph markingGraph2 = new MarkingGraph(net.getInitialMarking());
-		
+		System.out.println("markingGraph: "+markingGraph.toString());
+		System.out.println("markingGraph2: "+markingGraph2.toString());
 		Hashtable<Transition, TransitionTemplate> transTable = new Hashtable<Transition, TransitionTemplate>();
 		Vector<Transition> netTransitions = net.getTransitions();
-		
+		System.out.println("netTransitions: "+net.getTransitions());
 		
 		//Passo dalle transizioni vere e proprie ai TransitionTemplate (più leggeri)
 		for (int t = 0; t < netTransitions.size(); t++) 
 			transTable.put(netTransitions.get(t), 
 					new TransitionTemplate(netTransitions.get(t).getId(), netTransitions.get(t).isHigh()));
 		
-		
+		System.out.println("transTable: "+transTable.toString());
 		//Passo  dai case del makingGraph a dei più leggeri CaseTemplate
 		Hashtable<Case, CaseTemplate> caseTable1 = new Hashtable<Case, CaseTemplate>();
 		Hashtable<Case, CaseTemplate> caseTable2 = new Hashtable<Case, CaseTemplate>();
 		for (int mg = 0; mg < markingGraph2.size(); mg++) {
 
 			Case state = markingGraph.get(mg);
-			
 			if (caseTable1.get(state) == null)
 				caseTable1.put(state, new CaseTemplate(state.toString()));
 			if (caseTable2.get(state) == null)
 				caseTable2.put(state, new CaseTemplate(state.toString()));
 		}
-		
+		System.out.println("caseTable1: "+caseTable1.toString());
+		System.out.println("caseTable2: "+caseTable2.toString());
+
 		Enumeration<Case> stEnum1 = caseTable1.keys();
 		while (stEnum1.hasMoreElements()) {
-			
+			System.out.println("while primo");
 			Case state = stEnum1.nextElement();
+			System.out.println("state: "+state.toString());
 			CaseTemplate newState = caseTable1.get(state);
-			
+			System.out.println("newState: "+newState.toString()); 
 			Vector<Transition> transitions = state.getEnabledTransitions();
-			for (int t = 0; t < transitions.size(); t++) 
+			System.out.println("transitions: "+state.getEnabledTransitions());
+			for (int t = 0; t < transitions.size(); t++){	
+				System.out.println("t: "+t);
+				System.out.println("transitions.get(t): "+transitions.get(t));
+				System.out.println("state.goThrough(transitions.get(t)): "+state.goThrough(transitions.get(t)));
+				System.out.println("caseTable1.get(state.goThrough(transitions.get(t))): "+caseTable1.get(state.goThrough(transitions.get(t))));
 				if (transitions.get(t).isLow())//modifica per gestire il downgrading
-						newState.linkTo(transTable.get(transitions.get(t)), caseTable1.get(state.goThrough(transitions.get(t))));
+						newState.linkTo(transTable.get(transitions.get(t)), 
+								caseTable1.get(state.goThrough(transitions.get(t))));
+				}
 		}
 		
 		Enumeration<Case> stEnum2 = caseTable2.keys();
@@ -392,14 +406,16 @@ public class Check {
 			Case marking = markingGraph.get(m);
 			
 			Vector<Transition> enabledTransitions = marking.getEnabledTransitions();
+
 			for (int e = 0; e < enabledTransitions.size(); e++) {
 				
 				Transition enabled = enabledTransitions.get(e);
 				if (enabled.isHigh()) {
-					
 					Case nextMarking = marking.goThrough(enabled);
-					if (!lowViewBisimilar(caseTable1.get(marking), caseTable2.get(nextMarking)))
+					if (!lowViewBisimilar(caseTable1.get(marking), caseTable2.get(nextMarking))){
 						SBNDC = false;
+						return SBNDC;
+					}
 				}
 			}
 		}

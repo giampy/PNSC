@@ -37,7 +37,6 @@ public class MarkingGraph extends Vector<Case> {
 		for(int c = 0; c < size(); c++) {
 			Vector<Transition> enabledTransitions = get(c).getEnabledTransitions();
 			for (int e = 0; e < enabledTransitions.size(); e++) {
-				
 				Vector<Node> newMarking = new Vector<Node>();
 				newMarking.addAll(get(c));
 				newMarking.removeAll(enabledTransitions.get(e).preset());
@@ -45,7 +44,7 @@ public class MarkingGraph extends Vector<Case> {
 				Case tmp=alreadyInTree(newMarking);
 				if (tmp != null) { 
 					Case newCase = tmp;
-					if (!get(c).isLinkedTo(newCase)) 
+					//if (!get(c).isLinkedTo(newCase)) //qui c'erano problemi con i self-loop ho commentato
 						get(c).addLink(enabledTransitions.get(e), newCase);
 					
 				} else {
@@ -128,8 +127,9 @@ public class MarkingGraph extends Vector<Case> {
 		Hashtable<Case, Vertex> vertexes = new Hashtable<Case, Vertex>();
 		for (int c = 0; c < size(); c++) 
 			vertexes.put(get(c), new Vertex(get(c), c == 0));
-		
+
 		for (int c = 0; c < size(); c++) {
+		
 			Case thisCase = get(c);
 			Vertex vertex = vertexes.get(thisCase);
 			Vector<Transition> enabled = thisCase.getEnabledTransitions();
@@ -145,7 +145,7 @@ public class MarkingGraph extends Vector<Case> {
  					Case next = thisCase.goThrough(transition);
  					
  					while (step != null) {
- 						
+ 							
  						Case newCase = new Case(step.getMarking().toVector());
  						newCase.addLink(linkToNext, next);
  						path.add(0, newCase);
@@ -166,9 +166,9 @@ public class MarkingGraph extends Vector<Case> {
  					//assolutamente non sicuro della linea sopra da me aggiunta
  					vertex.addLink(enabled.get(e), vertexes.get(thisCase.goThrough(enabled.get(e))));
  					}
-/* 				if (!enabled.get(e).postset().contains(place))
-                    vertex.addLink(enabled.get(e), vertexes.get(thisCase.goThrough(enabled.get(e))));*/
-
+ 			/*	if (!enabled.get(e).postset().contains(place))
+                    vertex.addLink(enabled.get(e), vertexes.get(thisCase.goThrough(enabled.get(e))));
+*/
  			}
 		}
 		
