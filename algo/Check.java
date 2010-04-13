@@ -341,18 +341,17 @@ public class Check {
 		
 		MarkingGraph markingGraph = new MarkingGraph(net.getInitialMarking());
 		MarkingGraph markingGraph2 = new MarkingGraph(net.getInitialMarking());
-		System.out.println("markingGraph: "+markingGraph.toString());
-		System.out.println("markingGraph2: "+markingGraph2.toString());
+		
 		Hashtable<Transition, TransitionTemplate> transTable = new Hashtable<Transition, TransitionTemplate>();
 		Vector<Transition> netTransitions = net.getTransitions();
-		System.out.println("netTransitions: "+net.getTransitions());
+
 		
 		//Passo dalle transizioni vere e proprie ai TransitionTemplate (più leggeri)
 		for (int t = 0; t < netTransitions.size(); t++) 
 			transTable.put(netTransitions.get(t), 
 					new TransitionTemplate(netTransitions.get(t).getId(), netTransitions.get(t).isHigh()));
 		
-		System.out.println("transTable: "+transTable.toString());
+	
 		//Passo  dai case del makingGraph a dei più leggeri CaseTemplate
 		Hashtable<Case, CaseTemplate> caseTable1 = new Hashtable<Case, CaseTemplate>();
 		Hashtable<Case, CaseTemplate> caseTable2 = new Hashtable<Case, CaseTemplate>();
@@ -364,23 +363,18 @@ public class Check {
 			if (caseTable2.get(state) == null)
 				caseTable2.put(state, new CaseTemplate(state.toString()));
 		}
-		System.out.println("caseTable1: "+caseTable1.toString());
-		System.out.println("caseTable2: "+caseTable2.toString());
+		
 
 		Enumeration<Case> stEnum1 = caseTable1.keys();
 		while (stEnum1.hasMoreElements()) {
-			System.out.println("while primo");
+		
 			Case state = stEnum1.nextElement();
-			System.out.println("state: "+state.toString());
+		
 			CaseTemplate newState = caseTable1.get(state);
-			System.out.println("newState: "+newState.toString()); 
+			
 			Vector<Transition> transitions = state.getEnabledTransitions();
-			System.out.println("transitions: "+state.getEnabledTransitions());
+			
 			for (int t = 0; t < transitions.size(); t++){	
-				System.out.println("t: "+t);
-				System.out.println("transitions.get(t): "+transitions.get(t));
-				System.out.println("state.goThrough(transitions.get(t)): "+state.goThrough(transitions.get(t)));
-				System.out.println("caseTable1.get(state.goThrough(transitions.get(t))): "+caseTable1.get(state.goThrough(transitions.get(t))));
 				if (transitions.get(t).isLow())//modifica per gestire il downgrading
 						newState.linkTo(transTable.get(transitions.get(t)), 
 								caseTable1.get(state.goThrough(transitions.get(t))));

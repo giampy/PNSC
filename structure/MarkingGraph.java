@@ -86,10 +86,10 @@ public class MarkingGraph extends Vector<Case> {
 					if (tmp != null) {
 			
 						Case newCase = tmp;
-						if (!get(c).isLinkedTo(newCase)) {
+						//if (!get(c).isLinkedTo(newCase)) {
 
 							get(c).addLink(enabledTransitions.get(e), newCase);
-						} 
+						//} 
 					} else {
 
 						Vector<Place> places = new Vector<Place>();
@@ -114,6 +114,7 @@ public class MarkingGraph extends Vector<Case> {
 		return tree.get(new Case(vecP).getOrderedValue());//O(p)
 		
 	}
+	@SuppressWarnings("unused")
 	private Case alreadyIn(Vector<Node> marking) {
 		for (int c = 0; c < size(); c++)//O(2^p)
 			if (get(c).containsAll(marking) && marking.containsAll(get(c)))
