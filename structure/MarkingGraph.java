@@ -156,7 +156,6 @@ public class MarkingGraph extends Vector<Case> {
  						step = step.getPrevious();
  					}
  					return path;
- 					
  				}
  				
  				if (!enabled.get(e).postset().contains(place) //if modificato per gestire l'estensione per i self-loop
